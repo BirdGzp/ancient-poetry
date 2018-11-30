@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: ancient-poetry-server-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/BirdGzp/config/
+          search-paths: respo
+
+server:
+  port: 8888
