@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.moon</groupId>
+    <artifactId>ancient-poetry</artifactId>
+    <version>${ancient-poetry.version}</version>
+
+    <name>ancient-poetry</name>
+
+
+    <properties>
+        <project.name>ancient-poetry</project.name>
+        <project.name.web>ancient-poetry-web</project.name.web>
+        <project.name.eureka-server>eureka-server</project.name.eureka-server>
+        <project.common>ancient-poetry-common</project.common>
+        <project.gateway>ancient-poetry-gateway</project.gateway>
+        <project.config>ancient-poetry-config</project.config>
+
+        <ancient-poetry.version>1.0.0</ancient-poetry.version>
+        <ancient-poetry-common.version>1.0.0</ancient-poetry-common.version>
+        <ancient-poetry--user-core.version>1.0.0</ancient-poetry--user-core.version>
+        <ancient-poetry--poetry-core.version>1.0.0</ancient-poetry--poetry-core.version>
+        <ancient-poetry-gateway.version>1.0.0</ancient-poetry-gateway.version>
+        <ancient-poetry-user-web.version>1.0.0</ancient-poetry-user-web.version>
+        <ancient-poetry-poetry-web.version>1.0.0</ancient-poetry-poetry-web.version>
+        <ancient-poetry-eureka-server.version>1.0.0</ancient-poetry-eureka-server.version>
+        <ancient-poetry-server-config.version>1.0.0</ancient-poetry-server-config.version>
+
+        <java.version>1.8</java.version>
+        <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
+        <springboot.version>2.0.3.RELEASE</springboot.version>
+
+        <kafka.version></kafka.version>
+        <zookeeper.version></zookeeper.version>
+        <slf4j.version></slf4j.version>
+        <log4j2.version></log4j2.version>
+        <redis.version></redis.version>
+        <druid.version></druid.version>
+        <fastjson.version>1.2.53</fastjson.version>
+
+
+        <java.encoding>UTF-8</java.encoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
+
+    <modules>
+        <module>ancient-poetry-common</module>
+        <module>ancient-poetry-eureka-server</module>
+        <module>ancient-poetry-config-server</module>
+        <module>ancient-poetry-gateway</module>
+        <module>ancient-poetry-user-core</module>
+        <module>ancient-poetry-poetry-core</module>
+        <module>ancient-poetry-user-web</module>
+        <module>ancient-poetry-poetry-web</module>
+    </modules>
+
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.3.RELEASE</version>
+        <relativePath/>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+
+            <dependency>
+                <groupId>com.allin</groupId>
+                <artifactId>ancient-poetry-common</artifactId>
+                <version>${ancient-poetry-common.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <configuration>
+                    <attach>true</attach>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+    </build>
+</project>
