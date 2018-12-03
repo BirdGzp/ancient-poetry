@@ -1,41 +1,60 @@
 package com.moon.ancientpoetry.common.po;
 
+
 import java.time.LocalDateTime;
 
 public class AncientArticle {
-    /** 古文id */
     private Integer articleId;
-    
-    /** 古文名称 */
+
     private String articleName;
-    
-    /** 作者 id */
+
     private Integer authorId;
 
-    /** 作者名称 */
     private String authorName;
 
-    /** 朝代id */
     private Integer dynastyId;
 
-    /** 朝代名称 */
-    private String dyanstyName;
+    private String dynastyName;
 
-    /** 文章内容 */
     private String articleContent;
 
-    /** 文章标签id */
-    private Integer articleTagIds;
+    private String articleTagIds;
 
-    /** 文章标签 */
     private String articleTags;
 
-    /** 文章的URL */
     private String articleUrl;
 
+    private Integer likes;
+
+    private Integer visitCount;
+
     private LocalDateTime dataCreateTime;
+
     private LocalDateTime dataModifyTime;
-    private Byte dataIsDeleted;
+
+    private Boolean dataIsDeleted;
+
+    public AncientArticle(Integer articleId, String articleName, Integer authorId, String authorName, Integer dynastyId, String dynastyName, String articleContent, String articleTagIds, String articleTags, String articleUrl, Integer likes, Integer visitCount, LocalDateTime dataCreateTime, LocalDateTime dataModifyTime, Boolean dataIsDeleted) {
+        this.articleId = articleId;
+        this.articleName = articleName;
+        this.authorId = authorId;
+        this.authorName = authorName;
+        this.dynastyId = dynastyId;
+        this.dynastyName = dynastyName;
+        this.articleContent = articleContent;
+        this.articleTagIds = articleTagIds;
+        this.articleTags = articleTags;
+        this.articleUrl = articleUrl;
+        this.likes = likes;
+        this.visitCount = visitCount;
+        this.dataCreateTime = dataCreateTime;
+        this.dataModifyTime = dataModifyTime;
+        this.dataIsDeleted = dataIsDeleted;
+    }
+
+    public AncientArticle() {
+        super();
+    }
 
     public Integer getArticleId() {
         return articleId;
@@ -50,7 +69,7 @@ public class AncientArticle {
     }
 
     public void setArticleName(String articleName) {
-        this.articleName = articleName;
+        this.articleName = articleName == null ? null : articleName.trim();
     }
 
     public Integer getAuthorId() {
@@ -66,7 +85,7 @@ public class AncientArticle {
     }
 
     public void setAuthorName(String authorName) {
-        this.authorName = authorName;
+        this.authorName = authorName == null ? null : authorName.trim();
     }
 
     public Integer getDynastyId() {
@@ -77,12 +96,12 @@ public class AncientArticle {
         this.dynastyId = dynastyId;
     }
 
-    public String getDyanstyName() {
-        return dyanstyName;
+    public String getDynastyName() {
+        return dynastyName;
     }
 
-    public void setDyanstyName(String dyanstyName) {
-        this.dyanstyName = dyanstyName;
+    public void setDynastyName(String dynastyName) {
+        this.dynastyName = dynastyName == null ? null : dynastyName.trim();
     }
 
     public String getArticleContent() {
@@ -90,15 +109,15 @@ public class AncientArticle {
     }
 
     public void setArticleContent(String articleContent) {
-        this.articleContent = articleContent;
+        this.articleContent = articleContent == null ? null : articleContent.trim();
     }
 
-    public Integer getArticleTagIds() {
+    public String getArticleTagIds() {
         return articleTagIds;
     }
 
-    public void setArticleTagIds(Integer articleTagIds) {
-        this.articleTagIds = articleTagIds;
+    public void setArticleTagIds(String articleTagIds) {
+        this.articleTagIds = articleTagIds == null ? null : articleTagIds.trim();
     }
 
     public String getArticleTags() {
@@ -106,7 +125,7 @@ public class AncientArticle {
     }
 
     public void setArticleTags(String articleTags) {
-        this.articleTags = articleTags;
+        this.articleTags = articleTags == null ? null : articleTags.trim();
     }
 
     public String getArticleUrl() {
@@ -114,7 +133,23 @@ public class AncientArticle {
     }
 
     public void setArticleUrl(String articleUrl) {
-        this.articleUrl = articleUrl;
+        this.articleUrl = articleUrl == null ? null : articleUrl.trim();
+    }
+
+    public Integer getLikes() {
+        return likes;
+    }
+
+    public void setLikes(Integer likes) {
+        this.likes = likes;
+    }
+
+    public Integer getVisitCount() {
+        return visitCount;
+    }
+
+    public void setVisitCount(Integer visitCount) {
+        this.visitCount = visitCount;
     }
 
     public LocalDateTime getDataCreateTime() {
@@ -133,30 +168,11 @@ public class AncientArticle {
         this.dataModifyTime = dataModifyTime;
     }
 
-    public Byte getDataIsDeleted() {
+    public Boolean getDataIsDeleted() {
         return dataIsDeleted;
     }
 
-    public void setDataIsDeleted(Byte dataIsDeleted) {
+    public void setDataIsDeleted(Boolean dataIsDeleted) {
         this.dataIsDeleted = dataIsDeleted;
-    }
-
-    @Override
-    public String toString() {
-        return "AncientArticle{" +
-                "articleId=" + articleId +
-                ", articleName='" + articleName + '\'' +
-                ", authorId=" + authorId +
-                ", authorName='" + authorName + '\'' +
-                ", dynastyId=" + dynastyId +
-                ", dyanstyName='" + dyanstyName + '\'' +
-                ", articleContent='" + articleContent + '\'' +
-                ", articleTagIds=" + articleTagIds +
-                ", articleTags='" + articleTags + '\'' +
-                ", articleUrl='" + articleUrl + '\'' +
-                ", dataCreateTime=" + dataCreateTime +
-                ", dataModifyTime=" + dataModifyTime +
-                ", dataIsDeleted=" + dataIsDeleted +
-                '}';
     }
 }
