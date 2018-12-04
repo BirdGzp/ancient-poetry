@@ -18,16 +18,18 @@
         <project.common>ancient-poetry-common</project.common>
         <project.gateway>ancient-poetry-gateway</project.gateway>
         <project.config>ancient-poetry-config</project.config>
+        <project.poetry.poetry.core>ancient-poetry-poetry-core</project.poetry.poetry.core>
 
         <ancient-poetry.version>1.0.0</ancient-poetry.version>
         <ancient-poetry-common.version>1.0.0</ancient-poetry-common.version>
-        <ancient-poetry--user-core.version>1.0.0</ancient-poetry--user-core.version>
-        <ancient-poetry--poetry-core.version>1.0.0</ancient-poetry--poetry-core.version>
+        <ancient-poetry-user-core.version>1.0.0</ancient-poetry-user-core.version>
+        <ancient-poetry-poetry-core.version>1.0.0</ancient-poetry-poetry-core.version>
         <ancient-poetry-gateway.version>1.0.0</ancient-poetry-gateway.version>
         <ancient-poetry-user-web.version>1.0.0</ancient-poetry-user-web.version>
         <ancient-poetry-poetry-web.version>1.0.0</ancient-poetry-poetry-web.version>
         <ancient-poetry-eureka-server.version>1.0.0</ancient-poetry-eureka-server.version>
         <ancient-poetry-server-config.version>1.0.0</ancient-poetry-server-config.version>
+        <mybatis-spring-boot.version>1.3.2</mybatis-spring-boot.version>
 
         <java.version>1.8</java.version>
         <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
@@ -38,8 +40,9 @@
         <slf4j.version></slf4j.version>
         <log4j2.version></log4j2.version>
         <redis.version></redis.version>
-        <druid.version></druid.version>
+        <druid.version>1.0.29</druid.version>
         <fastjson.version>1.2.53</fastjson.version>
+        <pagehelper.version>1.1.2</pagehelper.version>
 
 
         <java.encoding>UTF-8</java.encoding>
@@ -77,7 +80,6 @@
 
     <dependencyManagement>
         <dependencies>
-
             <dependency>
                 <groupId>com.allin</groupId>
                 <artifactId>ancient-poetry-common</artifactId>
@@ -89,7 +91,21 @@
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis-spring-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelper.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>org.springframework.cloud</groupId>

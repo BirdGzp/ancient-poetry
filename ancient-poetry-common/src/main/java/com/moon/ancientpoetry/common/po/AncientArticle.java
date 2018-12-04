@@ -175,4 +175,25 @@ public class AncientArticle {
     public void setDataIsDeleted(Boolean dataIsDeleted) {
         this.dataIsDeleted = dataIsDeleted;
     }
+
+    @Override
+    public String toString() {
+        return "AncientArticle{" +
+                "articleId=" + articleId +
+                ", articleName='" + articleName + '\'' +
+                ", authorId=" + authorId +
+                ", authorName='" + authorName + '\'' +
+                ", dynastyId=" + dynastyId +
+                ", dynastyName='" + dynastyName + '\'' +
+                ", articleContent='" + articleContent + '\'' +
+                ", articleTagIds='" + articleTagIds + '\'' +
+                ", articleTags='" + articleTags + '\'' +
+                ", articleUrl='" + articleUrl + '\'' +
+                ", likes=" + likes +
+                ", visitCount=" + visitCount +
+                ", dataCreateTime=" + dataCreateTime +
+                ", dataModifyTime=" + dataModifyTime +
+                ", dataIsDeleted=" + dataIsDeleted +
+                '}';
+    }
 }

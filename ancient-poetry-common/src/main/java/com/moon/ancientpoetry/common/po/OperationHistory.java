@@ -87,4 +87,17 @@ public class OperationHistory {
     public void setDataIsDeleted(Boolean dataIsDeleted) {
         this.dataIsDeleted = dataIsDeleted;
     }
+
+    @Override
+    public String toString() {
+        return "OperationHistory{" +
+                "operationId=" + operationId +
+                ", operationUserId=" + operationUserId +
+                ", articleId=" + articleId +
+                ", operationType=" + operationType +
+                ", dataCreateTime=" + dataCreateTime +
+                ", dataModifyTime=" + dataModifyTime +
+                ", dataIsDeleted=" + dataIsDeleted +
+                '}';
+    }
 }

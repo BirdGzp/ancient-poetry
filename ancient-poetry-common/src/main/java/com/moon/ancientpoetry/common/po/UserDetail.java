@@ -163,4 +163,24 @@ public class UserDetail {
     public void setDataIsDeleted(Boolean dataIsDeleted) {
         this.dataIsDeleted = dataIsDeleted;
     }
+
+    @Override
+    public String toString() {
+        return "UserDetail{" +
+                "userId=" + userId +
+                ", writingCount=" + writingCount +
+                ", followCount=" + followCount +
+                ", followerCount=" + followerCount +
+                ", userFame='" + userFame + '\'' +
+                ", userCall='" + userCall + '\'' +
+                ", userAlternativeName='" + userAlternativeName + '\'' +
+                ", favoriteAuthorId=" + favoriteAuthorId +
+                ", favoriteAuthorName='" + favoriteAuthorName + '\'' +
+                ", favoriteArticleId=" + favoriteArticleId +
+                ", favoriteArticleName='" + favoriteArticleName + '\'' +
+                ", dataCreateTime=" + dataCreateTime +
+                ", dataModifyTime=" + dataModifyTime +
+                ", dataIsDeleted=" + dataIsDeleted +
+                '}';
+    }
 }

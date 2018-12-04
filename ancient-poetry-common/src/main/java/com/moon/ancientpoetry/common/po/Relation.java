@@ -98,4 +98,18 @@ public class Relation {
     public void setDataIsDeleted(Boolean dataIsDeleted) {
         this.dataIsDeleted = dataIsDeleted;
     }
+
+    @Override
+    public String toString() {
+        return "Relation{" +
+                "relationId=" + relationId +
+                ", userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", followId=" + followId +
+                ", followName='" + followName + '\'' +
+                ", dataCreateTime=" + dataCreateTime +
+                ", dataModifyTime=" + dataModifyTime +
+                ", dataIsDeleted=" + dataIsDeleted +
+                '}';
+    }
 }

@@ -1,6 +1,7 @@
 package com.moon.ancientpoetry.common.util.spider;
 
 import com.moon.ancientpoetry.common.po.AncientArticle;
+import com.moon.ancientpoetry.common.po.AncientAuthor;
 import com.moon.ancientpoetry.common.util.spider.Dao.AuthorDao;
 import com.moon.ancientpoetry.common.util.FileUtil;
 import com.moon.ancientpoetry.common.util.UrlImageDownloadUtil;
@@ -26,7 +27,7 @@ public class AuthorSpider {
             AuthorDao authorDao = new AuthorDao();
             for (int i = 7114; i < temp.length; i++) {
                 System.out.println(i);
-                Author author = getAuthorMessage(temp[i]);
+                AncientAuthor author = getAuthorMessage(temp[i]);
 
 
                 if(!flag && author.getAuthorName().equals("黄大受")){
@@ -45,8 +46,8 @@ public class AuthorSpider {
 
     }
 
-    public static AncientArticle getAuthorMessage(String url) throws IOException {
-        AncientArticle author = new AncientArticle();
+    public static AncientAuthor getAuthorMessage(String url) throws IOException {
+        AncientAuthor author = new AncientAuthor();
 
         String  agent="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko)Chrome/56.0.2924.87 Safari/537.36" ;
 
@@ -59,7 +60,7 @@ public class AuthorSpider {
         elements = document.select("p[style]");
         for (Element element : elements) {
             String text = element.text();
-            author.setAncientA(text);
+            author.setAuthorIntroduce(text);
             try {
                 String authorLifetime =  text.substring(text.indexOf('（') + 1, text.indexOf('）'));
                 if((authorLifetime.contains("-") || authorLifetime.contains("——") ||authorLifetime.contains("—")) && authorLifetime.length() < 30){
@@ -109,7 +110,7 @@ public class AuthorSpider {
                         }
                     }
                 }else if(temp.contains("篇诗文")){
-                    author.setAuthorAritcleCount(Integer.parseInt(temp.substring(temp.indexOf("► ") + 2, temp.length() - 3)));
+                    author.setAuthorArticleCount(Integer.parseInt(temp.substring(temp.indexOf("► ") + 2, temp.length() - 3)));
                 }
                 if(i == flag){
                     break;
@@ -125,8 +126,8 @@ public class AuthorSpider {
                 UrlImageDownloadUtil.getHtmlPicture(element.attr("src"));
             }
         }
-        if(author.getAuthorAritcleCount() == null){
-            author.setAuthorAritcleCount(0);
+        if(author.getAuthorArticleCount() == null){
+            author.setAuthorArticleCount(0);
         }
         System.out.println(author.toString());
         return author;

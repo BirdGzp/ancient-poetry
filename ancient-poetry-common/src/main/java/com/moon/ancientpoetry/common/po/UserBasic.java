@@ -35,15 +35,13 @@ public class UserBasic {
 
     private String detailAddress;
 
-    private LocalDateTime lastLoginTime;
-
     private LocalDateTime dataCreateTime;
 
     private LocalDateTime dataModifyTime;
 
     private Boolean dataIsDeleted;
 
-    public UserBasic(Integer userId, String userName, String penName, String userCharacter, Boolean sex, LocalDateTime birthDate, String telephone, String email, String password, String ip, String userImage, Integer likes, Integer readCount, String briefIntroduce, Integer addressId, String detailAddress, LocalDateTime lastLoginTime, LocalDateTime dataCreateTime, LocalDateTime dataModifyTime, Boolean dataIsDeleted) {
+    public UserBasic(Integer userId, String userName, String penName, String userCharacter, Boolean sex, LocalDateTime birthDate, String telephone, String email, String password, String ip, String userImage, Integer likes, Integer readCount, String briefIntroduce, Integer addressId, String detailAddress, LocalDateTime dataCreateTime, LocalDateTime dataModifyTime, Boolean dataIsDeleted) {
         this.userId = userId;
         this.userName = userName;
         this.penName = penName;
@@ -60,7 +58,6 @@ public class UserBasic {
         this.briefIntroduce = briefIntroduce;
         this.addressId = addressId;
         this.detailAddress = detailAddress;
-        this.lastLoginTime = lastLoginTime;
         this.dataCreateTime = dataCreateTime;
         this.dataModifyTime = dataModifyTime;
         this.dataIsDeleted = dataIsDeleted;
@@ -198,14 +195,6 @@ public class UserBasic {
         this.detailAddress = detailAddress == null ? null : detailAddress.trim();
     }
 
-    public LocalDateTime getLastLoginTime() {
-        return lastLoginTime;
-    }
-
-    public void setLastLoginTime(LocalDateTime lastLoginTime) {
-        this.lastLoginTime = lastLoginTime;
-    }
-
     public LocalDateTime getDataCreateTime() {
         return dataCreateTime;
     }
@@ -228,5 +217,30 @@ public class UserBasic {
 
     public void setDataIsDeleted(Boolean dataIsDeleted) {
         this.dataIsDeleted = dataIsDeleted;
+    }
+
+    @Override
+    public String toString() {
+        return "UserBasic{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", penName='" + penName + '\'' +
+                ", userCharacter='" + userCharacter + '\'' +
+                ", sex=" + sex +
+                ", birthDate=" + birthDate +
+                ", telephone='" + telephone + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", ip='" + ip + '\'' +
+                ", userImage='" + userImage + '\'' +
+                ", likes=" + likes +
+                ", readCount=" + readCount +
+                ", briefIntroduce='" + briefIntroduce + '\'' +
+                ", addressId=" + addressId +
+                ", detailAddress='" + detailAddress + '\'' +
+                ", dataCreateTime=" + dataCreateTime +
+                ", dataModifyTime=" + dataModifyTime +
+                ", dataIsDeleted=" + dataIsDeleted +
+                '}';
     }
 }

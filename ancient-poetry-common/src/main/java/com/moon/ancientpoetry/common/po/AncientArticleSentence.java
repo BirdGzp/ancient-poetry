@@ -153,4 +153,23 @@ public class AncientArticleSentence {
     public void setDataIsDeleted(Boolean dataIsDeleted) {
         this.dataIsDeleted = dataIsDeleted;
     }
+
+    @Override
+    public String toString() {
+        return "AncientArticleSentence{" +
+                "ancientArticleSentennceId=" + ancientArticleSentennceId +
+                ", ancientArticleSentence='" + ancientArticleSentence + '\'' +
+                ", ancientArticleSentenceTranslate='" + ancientArticleSentenceTranslate + '\'' +
+                ", ancientArticleSentenceLine=" + ancientArticleSentenceLine +
+                ", ancientArticleId=" + ancientArticleId +
+                ", ancientArticleName='" + ancientArticleName + '\'' +
+                ", authorId=" + authorId +
+                ", authorName='" + authorName + '\'' +
+                ", readCount=" + readCount +
+                ", likes=" + likes +
+                ", dataCreateTime=" + dataCreateTime +
+                ", dataModifyTime=" + dataModifyTime +
+                ", dataIsDeleted=" + dataIsDeleted +
+                '}';
+    }
 }

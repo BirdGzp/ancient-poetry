@@ -1,4 +1,4 @@
-package com.moon.ancientpoetr.ypoetry.core;
+package com.moon.ancientpoetry.poetry.core;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

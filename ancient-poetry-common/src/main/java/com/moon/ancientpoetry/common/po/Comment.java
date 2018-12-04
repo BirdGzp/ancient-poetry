@@ -120,4 +120,20 @@ public class Comment {
     public void setDataIsDeleted(Boolean dataIsDeleted) {
         this.dataIsDeleted = dataIsDeleted;
     }
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "commentId=" + commentId +
+                ", commentContent='" + commentContent + '\'' +
+                ", articleId=" + articleId +
+                ", userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", likes=" + likes +
+                ", parentCommentId=" + parentCommentId +
+                ", dataCreateTime=" + dataCreateTime +
+                ", dataModifyTime=" + dataModifyTime +
+                ", dataIsDeleted=" + dataIsDeleted +
+                '}';
+    }
 }

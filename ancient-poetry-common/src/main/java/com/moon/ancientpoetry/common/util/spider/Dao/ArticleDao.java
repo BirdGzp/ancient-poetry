@@ -1,5 +1,7 @@
 package com.moon.ancientpoetry.common.util.spider.Dao;
 
+import com.moon.ancientpoetry.common.po.AncientArticle;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -20,7 +22,7 @@ public class ArticleDao {
         preparedStatement.setInt(2, article.getAuthorId());
         preparedStatement.setString(3, article.getAuthorName());
         preparedStatement.setInt(4, article.getDynastyId());
-        preparedStatement.setString(5, article.getDyanstyName());
+        preparedStatement.setString(5, article.getDynastyName());
         preparedStatement.setString(6 ,article.getArticleContent());
         preparedStatement.setString(7, article.getArticleTags());
         preparedStatement.setString(8, article.getArticleUrl());

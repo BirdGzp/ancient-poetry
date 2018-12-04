@@ -37,16 +37,14 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <configuration>
-                    <attach>true</attach>
-                </configuration>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.5</version>
                 <executions>
                     <execution>
-                        <phase>compile</phase>
+                        <id>Generate MyBatis Artifacts</id>
                         <goals>
-                            <goal>jar</goal>
+                            <goal>generate</goal>
                         </goals>
                     </execution>
                 </executions>

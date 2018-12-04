@@ -131,4 +131,21 @@ public class Address {
     public void setDataIsDeleted(Boolean dataIsDeleted) {
         this.dataIsDeleted = dataIsDeleted;
     }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "addressId=" + addressId +
+                ", parentId=" + parentId +
+                ", path='" + path + '\'' +
+                ", level=" + level +
+                ", name='" + name + '\'' +
+                ", nameEn='" + nameEn + '\'' +
+                ", nameZh='" + nameZh + '\'' +
+                ", code='" + code + '\'' +
+                ", dataModifyTime=" + dataModifyTime +
+                ", dataCreateTime=" + dataCreateTime +
+                ", dataIsDeleted=" + dataIsDeleted +
+                '}';
+    }
 }

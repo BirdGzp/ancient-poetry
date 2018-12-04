@@ -1,5 +1,7 @@
 package com.moon.ancientpoetry.common.util.spider.article.spider;
 
+import com.moon.ancientpoetry.common.po.AncientArticle;
+import com.moon.ancientpoetry.common.po.AncientAuthor;
 import com.moon.ancientpoetry.common.util.spider.Dao.ArticleDao;
 import com.moon.ancientpoetry.common.util.spider.Dao.AuthorDao;
 import com.moon.ancientpoetry.common.util.WriteToFile;
@@ -37,11 +39,11 @@ public class AritcleSpider {
 
 
         for (int i = 5; i <= 15655; i++) {
-            Author author = null;
+            AncientAuthor author = null;
             try {
                 author = authorDao.getAuthor(i);
                 new AritcleSpider(author.getAuthorId(), author.getAuthorName(),
-                        author.getAuthorDynastyId(), author.getAuthorDynstyName())
+                        author.getAuthorDynastyId(), author.getAuthorDynastyName())
                         .parseUrl(author.getArticleUrl(), 1000);
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -119,7 +121,7 @@ public class AritcleSpider {
             ancientArticle.setArticleUrl("https://so.gushiwen.org" + articleUrl.get(j + 3).attr("href"));
             ancientArticle.setAuthorId(authorId);
             ancientArticle.setAuthorName(authorName);
-            ancientArticle.setDyanstyName(dynastyName);
+            ancientArticle.setDynastyName(dynastyName);
             ancientArticle.setDynastyId(dynastyId);
             if(articleTag.size() > j) {
                 ancientArticle.setArticleTags(articleTag.get(j).text());

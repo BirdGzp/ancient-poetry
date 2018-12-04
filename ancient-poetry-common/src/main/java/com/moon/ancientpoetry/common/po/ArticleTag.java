@@ -86,4 +86,17 @@ public class ArticleTag {
     public void setDataIsDeleted(Boolean dataIsDeleted) {
         this.dataIsDeleted = dataIsDeleted;
     }
+
+    @Override
+    public String toString() {
+        return "ArticleTag{" +
+                "articleTagId=" + articleTagId +
+                ", articleTagName='" + articleTagName + '\'' +
+                ", articleParentTagId=" + articleParentTagId +
+                ", articleParentTag='" + articleParentTag + '\'' +
+                ", dataCreateTime=" + dataCreateTime +
+                ", dataModifyTime=" + dataModifyTime +
+                ", dataIsDeleted=" + dataIsDeleted +
+                '}';
+    }
 }

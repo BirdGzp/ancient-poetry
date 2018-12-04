@@ -1,6 +1,7 @@
 package com.moon.ancientpoetry.common.util.spider.Parse;
 
 import com.moon.ancientpoetry.common.enums.Dynasty;
+import com.moon.ancientpoetry.common.po.AncientAuthor;
 import com.moon.ancientpoetry.common.util.spider.Dao.AuthorDao;
 import com.moon.ancientpoetry.common.util.FileUtil;
 
@@ -19,7 +20,7 @@ public class FileParse {
 
 
         boolean flag = true;
-        Author author = null;
+        AncientAuthor author = null;
         String str = null;
         try {
             str = FileUtil.readTxtFile("D:\\project\\idea_project\\ancient-poetry\\ancient-poetry-common\\src\\main\\resources\\author_era_urls.txt");
@@ -29,7 +30,7 @@ public class FileParse {
         String[] temp = str.split("\r\n");
         AuthorDao authorDao = new AuthorDao();
         for (int i = 0; i < temp.length; i++) {
-            author = new Author();
+            author = new AncientAuthor();
             String[] info = temp[i].split(" #");
             if(info.length < 4){
                 continue;
@@ -39,12 +40,12 @@ public class FileParse {
                 continue;
             }
             authors.put(info[1], info[0]);
-            author.setAuthorDynstyName(info[0]);
+            author.setAuthorDynastyName(info[0]);
             author.setAuthorDynastyId(Dynasty.getDynasty(info[0]));
             author.setAuthorName(info[1]);
             author.setAuthorIntroduce(info[2]);
             author.setArticleUrl(info[3]);
-            author.setAuthorAritcleCount(Integer.parseInt(info[4].substring(1, info[4].indexOf("篇"))));
+            author.setAuthorArticleCount(Integer.parseInt(info[4].substring(1, info[4].indexOf("篇"))));
             parseIntroduce(info[2], author);
             if(!flag && author.getAuthorName().equals("黄大受")){
                 flag = true;
@@ -63,7 +64,7 @@ public class FileParse {
         }
     }
 
-    public static void parseIntroduce(String text, Author author){
+    public static void parseIntroduce(String text, AncientAuthor author){
         try {
             String authorLifetime =  text.substring(text.indexOf('（') + 1, text.indexOf('）'));
             if((authorLifetime.contains("－") || authorLifetime.contains("——") ||authorLifetime.contains("—")) && authorLifetime.length() < 30){

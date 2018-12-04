@@ -131,4 +131,21 @@ public class AncientWordTranslate {
     public void setDataIsDeleted(Boolean dataIsDeleted) {
         this.dataIsDeleted = dataIsDeleted;
     }
+
+    @Override
+    public String toString() {
+        return "AncientWordTranslate{" +
+                "articleWordId=" + articleWordId +
+                ", wordId=" + wordId +
+                ", word='" + word + '\'' +
+                ", wordTranslate='" + wordTranslate + '\'' +
+                ", wordFromArticleId=" + wordFromArticleId +
+                ", wordFromArticleName='" + wordFromArticleName + '\'' +
+                ", wordFromSentenceId=" + wordFromSentenceId +
+                ", wordFromSentence='" + wordFromSentence + '\'' +
+                ", dataCreateTime=" + dataCreateTime +
+                ", dataModifyTime=" + dataModifyTime +
+                ", dataIsDeleted=" + dataIsDeleted +
+                '}';
+    }
 }

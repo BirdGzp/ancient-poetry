@@ -1,5 +1,6 @@
 package com.moon.ancientpoetry.common.util.spider;
 
+import com.moon.ancientpoetry.common.po.AncientAuthor;
 import com.moon.ancientpoetry.common.util.UrlImageDownloadUtil;
 import com.moon.ancientpoetry.common.util.WriteToFile;
 import org.jsoup.Jsoup;
@@ -17,7 +18,7 @@ import java.util.Set;
 public class EraAuthorSpider {
 
     Set ahthorSet = new HashSet();
-    List<Author> authors = new ArrayList<>();
+    List<AncientAuthor> authors = new ArrayList<>();
     String  agent="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko)Chrome/56.0.2924.87 Safari/537.36" ;
 
     private WriteToFile writeToFile;

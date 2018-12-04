@@ -1,4 +1,4 @@
-package com.moon.ancientpoetry.common.mapper;
+package com.moon.ancientpoetry.user.core.mapper;
 
 import com.moon.ancientpoetry.common.po.UserDetail;
 

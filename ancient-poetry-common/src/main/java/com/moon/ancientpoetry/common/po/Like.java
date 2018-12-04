@@ -98,4 +98,18 @@ public class Like {
     public void setDataIsDeleted(Boolean dataIsDeleted) {
         this.dataIsDeleted = dataIsDeleted;
     }
+
+    @Override
+    public String toString() {
+        return "Like{" +
+                "likeId=" + likeId +
+                ", userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", fromType=" + fromType +
+                ", fromId=" + fromId +
+                ", dataCreateTime=" + dataCreateTime +
+                ", dataModifyTime=" + dataModifyTime +
+                ", dataIsDeleted=" + dataIsDeleted +
+                '}';
+    }
 }

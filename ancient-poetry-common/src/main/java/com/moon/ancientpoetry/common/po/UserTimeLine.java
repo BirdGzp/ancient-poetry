@@ -119,4 +119,20 @@ public class UserTimeLine {
     public void setDataIsDeleted(Boolean dataIsDeleted) {
         this.dataIsDeleted = dataIsDeleted;
     }
+
+    @Override
+    public String toString() {
+        return "UserTimeLine{" +
+                "eventId=" + eventId +
+                ", eventTitle='" + eventTitle + '\'' +
+                ", userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", eventDetail='" + eventDetail + '\'' +
+                ", eventState=" + eventState +
+                ", eventHapenTime=" + eventHapenTime +
+                ", dataCreateTime=" + dataCreateTime +
+                ", dataMidifyTime=" + dataMidifyTime +
+                ", dataIsDeleted=" + dataIsDeleted +
+                '}';
+    }
 }

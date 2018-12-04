@@ -1,11 +1,14 @@
-package com.moon.ancientpoetry.common.mapper;
+package com.moon.ancientpoetry.user.core.mapper;
 
 import com.moon.ancientpoetry.common.po.UserBasic;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface UserBasicMapper {
+
     int deleteByPrimaryKey(Integer userId);
 
-    int insert(UserBasic record);
+    int insertUserBasic(UserBasic userBasic);
 
     int insertSelective(UserBasic record);
 

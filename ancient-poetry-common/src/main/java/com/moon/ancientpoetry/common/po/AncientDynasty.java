@@ -76,4 +76,16 @@ public class AncientDynasty {
     public void setDataIsDeleted(Boolean dataIsDeleted) {
         this.dataIsDeleted = dataIsDeleted;
     }
+
+    @Override
+    public String toString() {
+        return "AncientDynasty{" +
+                "dynastyId=" + dynastyId +
+                ", dynastyEn='" + dynastyEn + '\'' +
+                ", dynastyZh='" + dynastyZh + '\'' +
+                ", dataCreateTime=" + dataCreateTime +
+                ", dataModifyTime=" + dataModifyTime +
+                ", dataIsDeleted=" + dataIsDeleted +
+                '}';
+    }
 }

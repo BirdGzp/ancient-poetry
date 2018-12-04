@@ -196,4 +196,27 @@ public class Article {
     public void setDataIsDeleted(Boolean dataIsDeleted) {
         this.dataIsDeleted = dataIsDeleted;
     }
+
+    @Override
+    public String toString() {
+        return "Article{" +
+                "articleId=" + articleId +
+                ", articleName='" + articleName + '\'' +
+                ", articlePath='" + articlePath + '\'' +
+                ", articleState=" + articleState +
+                ", floderId=" + floderId +
+                ", floderName='" + floderName + '\'' +
+                ", authorId=" + authorId +
+                ", authorName='" + authorName + '\'' +
+                ", articleTypeId=" + articleTypeId +
+                ", articleTypeName='" + articleTypeName + '\'' +
+                ", articleTagIds='" + articleTagIds + '\'' +
+                ", articleTags='" + articleTags + '\'' +
+                ", likes=" + likes +
+                ", visitCount=" + visitCount +
+                ", dataCreateTime=" + dataCreateTime +
+                ", dataModifyTime=" + dataModifyTime +
+                ", dataIsDeleted=" + dataIsDeleted +
+                '}';
+    }
 }

@@ -153,4 +153,23 @@ public class ArticleFloder {
     public void setDataIsDeleted(Boolean dataIsDeleted) {
         this.dataIsDeleted = dataIsDeleted;
     }
+
+    @Override
+    public String toString() {
+        return "ArticleFloder{" +
+                "floderId=" + floderId +
+                ", floderName='" + floderName + '\'' +
+                ", userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", briefIntroduce='" + briefIntroduce + '\'' +
+                ", parentFloaderId=" + parentFloaderId +
+                ", parentFloderName='" + parentFloderName + '\'' +
+                ", articleCount='" + articleCount + '\'' +
+                ", likes=" + likes +
+                ", readCount=" + readCount +
+                ", dataCreateTime=" + dataCreateTime +
+                ", dataModifyTime=" + dataModifyTime +
+                ", dataIsDeleted=" + dataIsDeleted +
+                '}';
+    }
 }

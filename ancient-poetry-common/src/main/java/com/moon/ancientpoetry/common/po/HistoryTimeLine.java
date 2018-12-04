@@ -141,4 +141,22 @@ public class HistoryTimeLine {
     public void setDataIsDeleted(Boolean dataIsDeleted) {
         this.dataIsDeleted = dataIsDeleted;
     }
+
+    @Override
+    public String toString() {
+        return "HistoryTimeLine{" +
+                "eventId=" + eventId +
+                ", eventTitle='" + eventTitle + '\'' +
+                ", eventOfType=" + eventOfType +
+                ", eventOfId=" + eventOfId +
+                ", eventOfName='" + eventOfName + '\'' +
+                ", showName=" + showName +
+                ", uploadUserId=" + uploadUserId +
+                ", uploadUserName='" + uploadUserName + '\'' +
+                ", eventContent='" + eventContent + '\'' +
+                ", dataCreateTime=" + dataCreateTime +
+                ", dataModifyTime=" + dataModifyTime +
+                ", dataIsDeleted=" + dataIsDeleted +
+                '}';
+    }
 }
