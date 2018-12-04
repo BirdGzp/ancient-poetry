@@ -15,7 +15,7 @@ public class UserSeriveImpl {
         userBasic.setPenName("巨子");
         userBasic.setTelephone("15797631630");
         userBasic.setIp("192.168.1.1");
-        userBasicMapper.insert(userBasic);
+        //userBasicMapper.insert(userBasic);
         return userBasic;
     }
 }
