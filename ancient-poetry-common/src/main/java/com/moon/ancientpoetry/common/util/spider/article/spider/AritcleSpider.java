@@ -1,7 +1,5 @@
 package com.moon.ancientpoetry.common.util.spider.article.spider;
 
-import com.moon.ancientpoetry.common.po.AncientArticle;
-import com.moon.ancientpoetry.common.po.AncientAuthor;
 import com.moon.ancientpoetry.common.util.spider.Dao.ArticleDao;
 import com.moon.ancientpoetry.common.util.spider.Dao.AuthorDao;
 import com.moon.ancientpoetry.common.util.WriteToFile;

@@ -1,7 +1,5 @@
 package com.moon.ancientpoetry.user.core.service;
 
-import com.moon.ancientpoetry.common.po.AncientAuthor;
-import com.moon.ancientpoetry.user.core.mapper.AncientAuthorMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,5 @@
 package com.moon.ancientpoetry.common.util.spider.Dao;
 
-import com.moon.ancientpoetry.common.po.AncientAuthor;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

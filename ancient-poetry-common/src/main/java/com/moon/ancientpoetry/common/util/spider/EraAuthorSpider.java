@@ -1,6 +1,5 @@
 package com.moon.ancientpoetry.common.util.spider;
 
-import com.moon.ancientpoetry.common.po.AncientAuthor;
 import com.moon.ancientpoetry.common.util.UrlImageDownloadUtil;
 import com.moon.ancientpoetry.common.util.WriteToFile;
 import org.jsoup.Jsoup;

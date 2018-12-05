@@ -60,6 +60,8 @@
         <module>ancient-poetry-poetry-core</module>
         <module>ancient-poetry-user-web</module>
         <module>ancient-poetry-poetry-web</module>
+        <module>history-line-core</module>
+        <module>history-line-web</module>
     </modules>
 
 

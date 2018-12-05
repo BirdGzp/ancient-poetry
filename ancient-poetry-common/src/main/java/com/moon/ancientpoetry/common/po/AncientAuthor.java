@@ -1,6 +1,5 @@
 package com.moon.ancientpoetry.common.po;
 
-import java.nio.channels.Pipe;
 import java.time.LocalDateTime;
 
 public class AncientAuthor {

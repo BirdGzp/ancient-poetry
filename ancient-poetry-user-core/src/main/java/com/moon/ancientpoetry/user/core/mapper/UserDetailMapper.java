@@ -1,7 +1,5 @@
 package com.moon.ancientpoetry.user.core.mapper;
 
-import com.moon.ancientpoetry.common.po.UserDetail;
-
 public interface UserDetailMapper {
     int deleteByPrimaryKey(Integer userId);
 
