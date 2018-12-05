@@ -1,4 +1,5 @@
 ﻿/.svn
+.idea
 *.classpath
 */target
 *.settings
@@ -7,14 +8,12 @@
 *.bin
 *.iml
 /pom.xml.bak
-.idea
 .DS_Store
 node_modules/
 /node_modules
-epay-uc/service-api/target/
-epay-uc/service/target/
-epay-web/log/
-epay-core/log/
+mvnw.*
+maven-wrapper.*
+mvnw
 logs/
 /dist/
 ~/.m2/
