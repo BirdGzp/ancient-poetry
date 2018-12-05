@@ -1,6 +1,7 @@
-package com.moon.ancientpoetry.user.core.controller;
+package com.moon.ancientpoetry.poetry.core.controller;
 
-import com.moon.ancientpoetry.user.core.service.AncientAuthorServiceImpl;
+import com.moon.ancientpoetry.common.po.AncientAuthor;
+import com.moon.ancientpoetry.poetry.core.service.impl.AncientAuthorServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

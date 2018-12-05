@@ -1,5 +1,7 @@
 package com.moon.ancientpoetry.poetry.core.mapper;
 
+import com.moon.ancientpoetry.common.po.AncientWord;
+
 public interface AncientWordMapper {
     int deleteByPrimaryKey(Integer wordId);
 

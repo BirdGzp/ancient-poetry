@@ -1,5 +1,8 @@
 package com.moon.ancientpoetry.poetry.core.mapper;
 
+
+import com.moon.ancientpoetry.common.po.AncientDynasty;
+
 public interface AncientDynastyMapper {
     int deleteByPrimaryKey(Integer dynastyId);
 

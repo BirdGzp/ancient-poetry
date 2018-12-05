@@ -1,5 +1,8 @@
 package com.moon.ancientpoetry.poetry.core.mapper;
 
+
+import com.moon.ancientpoetry.common.po.AncientAuthor;
+
 public interface AncientAuthorMapper {
     int deleteByPrimaryKey(Integer authorId);
 

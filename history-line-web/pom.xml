@@ -5,24 +5,17 @@
 
     <groupId>com.moon</groupId>
     <artifactId>history-line-web</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <dependencies>
-        <dependency>
-            <groupId>com.moon</groupId>
-            <artifactId>ancient-poetry-common</artifactId>
-            <version>1.0.0</version>
-            <scope>compile</scope>
-        </dependency>
-    </dependencies>
+    <version>${history-line-web.version}</version>
+
     <packaging>jar</packaging>
 
     <name>history-line-web</name>
-    <description></description>
 
     <parent>
         <groupId>com.moon</groupId>
         <artifactId>ancient-poetry</artifactId>
-        <version>${ancient-poetry.version}</version>
+        <version>0.0.1.SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
 

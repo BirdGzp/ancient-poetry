@@ -4,36 +4,25 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.moon</groupId>
-    <artifactId>history-line</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>history-line-core</artifactId>
+    <version>${history-line-core.version}</version>
     <packaging>jar</packaging>
 
-    <name>history-line</name>
-    <description>Demo project for Spring Boot</description>
+    <name>history-line-core</name>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.1.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <groupId>com.moon</groupId>
+        <artifactId>ancient-poetry</artifactId>
+        <version>0.0.1.SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-    </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <groupId>com.moon</groupId>
+            <artifactId>ancient-poetry-common</artifactId>
         </dependency>
     </dependencies>
 

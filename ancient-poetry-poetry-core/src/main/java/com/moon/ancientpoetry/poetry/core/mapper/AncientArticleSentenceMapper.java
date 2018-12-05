@@ -1,5 +1,7 @@
 package com.moon.ancientpoetry.poetry.core.mapper;
 
+import com.moon.ancientpoetry.common.po.AncientArticleSentence;
+
 public interface AncientArticleSentenceMapper {
     int deleteByPrimaryKey(Integer ancientArticleSentennceId);
 

@@ -1,5 +1,7 @@
 package com.moon.ancientpoetry.user.core.mapper;
 
+import com.moon.ancientpoetry.common.po.OperationHistory;
+
 public interface OperationHistoryMapper {
     int deleteByPrimaryKey(Integer operationId);
 

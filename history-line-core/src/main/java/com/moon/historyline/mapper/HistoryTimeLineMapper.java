@@ -1,4 +1,4 @@
-package com.moon.historyline.web.mapper;
+package com.moon.historyline.mapper;
 
 import com.moon.ancientpoetry.common.po.HistoryTimeLine;
 
