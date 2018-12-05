@@ -18,4 +18,6 @@
         WHERE author_id = #{userId, jdbcType=INTEGER}
     </select>
 
+
+
 </mapper>

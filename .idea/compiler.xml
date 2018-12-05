@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ancient-poetry" />
+        <module name="ancient-poetry-common" />
+        <module name="ancient-poetry-config-server" />
+        <module name="ancient-poetry-eureka-server" />
+        <module name="ancient-poetry-gateway" />
+        <module name="ancient-poetry-poetry-core" />
+        <module name="ancient-poetry-poetry-web" />
+        <module name="ancient-poetry-user-core" />
+        <module name="ancient-poetry-user-web" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>

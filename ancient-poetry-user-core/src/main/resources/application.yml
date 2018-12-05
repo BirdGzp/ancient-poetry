@@ -1,4 +1,7 @@
 
+server:
+  port: 7777
+
 spring:
   datasource:
     name: test
@@ -23,5 +26,11 @@ spring:
 mybatis:
   type-aliases-package: com.moon.ancientpoetry.common.po
   mapper-locations: classpath:mapper/*.xml
-server:
-  port: 7777
+
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+  returnPageInfo: check
