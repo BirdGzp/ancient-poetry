@@ -9,6 +9,7 @@
     <packaging>jar</packaging>
 
     <name>ancient-poetry-common</name>
+
     <parent>
         <groupId>com.moon</groupId>
         <artifactId>ancient-poetry</artifactId>
@@ -20,11 +21,13 @@
         <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
-            <version>1.10.2</version>
         </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+        </dependency>
+
     </dependencies>
-
-
 
     <build>
         <plugins>

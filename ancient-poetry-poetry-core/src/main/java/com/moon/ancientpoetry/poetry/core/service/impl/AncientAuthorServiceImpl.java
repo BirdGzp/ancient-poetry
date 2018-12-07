@@ -8,7 +8,6 @@ import com.moon.ancientpoetry.poetry.core.service.AncientAuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 
 @Service("ancientAuthorService")
 public class AncientAuthorServiceImpl implements AncientAuthorService {
@@ -23,10 +22,8 @@ public class AncientAuthorServiceImpl implements AncientAuthorService {
      */
     @Override
     public PageInfo listAllAncientAuthor(int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
-        List<AncientAuthor> ancientAuthors = ancientAuthorMapper.listAllAncientAuthor();
-        PageInfo result = new PageInfo(ancientAuthors);
-        return result;
+        PageHelper.startPage(pageNum, pageSize);;
+        return new PageInfo(ancientAuthorMapper.listAllAncientAuthor());
     }
 
     /**
@@ -38,9 +35,7 @@ public class AncientAuthorServiceImpl implements AncientAuthorService {
     @Override
     public PageInfo listAllBriefAncientAuthor(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
-        List<AncientAuthor> ancientAuthors = ancientAuthorMapper.listAllBriefAncientAuthor();
-        PageInfo result = new PageInfo(ancientAuthors);
-        return result;
+        return new PageInfo(ancientAuthorMapper.listAllBriefAncientAuthor());
     }
 
     /**
@@ -53,7 +48,6 @@ public class AncientAuthorServiceImpl implements AncientAuthorService {
         if(ancientAuthorId == null){
             return null;
         }
-        System.out.println(ancientAuthorId);
         return ancientAuthorMapper.getAncientAuthorByAuthorId(ancientAuthorId);
     }
 
@@ -115,7 +109,7 @@ public class AncientAuthorServiceImpl implements AncientAuthorService {
      * @return
      */
     @Override
-    public int updateAncientAuthorByAuthorId(AncientAuthor ancientAuthor) {
+    public int updateAncientAuthor(AncientAuthor ancientAuthor) {
         return ancientAuthorMapper.updateAncientAuthorByAuthorId(ancientAuthor);
     }
 
@@ -127,7 +121,7 @@ public class AncientAuthorServiceImpl implements AncientAuthorService {
      * @return
      */
     @Override
-    public int updateAncientAuthorLikesAndVisitCountByAuthorId(Integer authorId, Integer likes, Integer visitCount) {
+    public int updateAncientAuthorLikesAndVisitCount(Integer authorId, Integer likes, Integer visitCount) {
         AncientAuthor ancientAuthor = new AncientAuthor();
         ancientAuthor.setAuthorId(authorId);
         ancientAuthor.setLikes(likes);

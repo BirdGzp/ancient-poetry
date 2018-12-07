@@ -2,9 +2,11 @@ package com.moon.ancientpoetry.poetry.core.mapper;
 
 
 import com.moon.ancientpoetry.common.po.AncientDynasty;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
+@Mapper
 public interface AncientDynastyMapper {
     /**
      * 获得所有详细的朝代信息

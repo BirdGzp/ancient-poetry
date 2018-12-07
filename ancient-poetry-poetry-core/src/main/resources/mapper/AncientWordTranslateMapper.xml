@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.moon.ancientpoetry.poetry.core.mapper.AncientWordTranslateMapper" >
+    <sql id="BASE_TABLE">
+      ancient_word_translate
+    </sql>
+    <sql id="FULL_INFO" >
+       ancient_word_id,  word_id,  word, word_translate, word_from_article_id, word_from_article_name,
+       word_from_sentence_id, word_from_sentence, data_create_time, data_modify_time, data_is_deleted
+    </sql>
+    <sql id="BRIEF_INFO">
+      ancient_word_id,  word_id,  word, word_translate, word_from_article_id, word_from_article_name,
+      word_from_sentence_id, word_from_sentence
+    </sql>
+
+    <select id="listFullAncientWordTranslate" resultType="com.moon.ancientpoetry.common.po.AncientWordTranslate">
+        SELECT <include refid="FULL_INFO"/>
+        FROM <include refid="BASE_TABLE"/>
+    </select>
+
+    <select id="listAncientWordTranslateByWordFromArticleId" resultType="com.moon.ancientpoetry.common.po.AncientWordTranslate" parameterType="java.lang.Integer">
+        SELECT <include refid="BRIEF_INFO"/>
+        FROM <include refid="BASE_TABLE"/>
+        WHERE word_from_article_id = #{wordFromArticleId}
+        AND data_is_deleted = 0
+    </select>
+
+    <select id="listAncientWordTranslateByWordId" resultType="com.moon.ancientpoetry.common.po.AncientWordTranslate" parameterType="java.lang.Integer">
+        SELECT <include refid="BRIEF_INFO"/>
+        FROM <include refid="BASE_TABLE"/>
+        WHERE word_id = #{wordId}
+        AND data_is_deleted = 0
+    </select>
+    <select id="listAncientWordTranslateByWordFromSentenceId" resultType="com.moon.ancientpoetry.common.po.AncientWordTranslate">
+        SELECT <include refid="BRIEF_INFO"/>
+        FROM <include refid="BASE_TABLE"/>
+        WHERE word_id = #{wordFromSentenceId}
+        AND data_is_deleted = 0
+    </select>
+
+    <select id="getAncientWordTranslateByAncientWordId" resultType="com.moon.ancientpoetry.common.po.AncientWordTranslate">
+        SELECT <include refid="BRIEF_INFO"/>
+        FROM <include refid="BASE_TABLE"/>
+        WHERE ancient_word_id = #{ancientWordId}
+    </select>
+
+    <update id="updateAncientWordTranslate" parameterType="com.moon.ancientpoetry.common.po.AncientWordTranslate">
+        UPDATE <include refid="BASE_TABLE"/>
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="wordId != null">
+                word_id = #{wordId},
+            </if>
+            <if test="word != null">
+                word = #{word},
+            </if>
+            <if test="wordTranslate != null">
+                word_translate = #{wordTranslate },
+            </if>
+            <if test="wordFromArticleId != null">
+                word_from_article_id = #{wordFromArticleId },
+            </if>
+            <if test="wordFromArticleName != null">
+                word_from_article_name = #{wordFromArticleName },
+            </if>
+            <if test="wordFromSentenceId != null">
+                word_from_sentence_id = #{wordFromSentenceId },
+            </if>
+            <if test="wordFromSentence != null">
+                word_from_sentence = #{wordFromSentence },
+            </if>
+        </trim>
+        where author_id = #{authorId, jdbcType=INTEGER}
+    </update>
+
+    <insert id="insertAncientWordTranslate" parameterType="com.moon.ancientpoetry.common.po.AncientWordTranslate">
+        INSERT INTO <include refid="BASE_TABLE"/>
+        <trim prefix="(" suffix=")" >
+            word_id, word, word_translate,
+            <if test="wordFromArticleId != null">
+                word_from_article_id,
+            </if>
+            <if test="wordFromArticleName != null">
+                word_from_article_name,
+            </if>
+            <if test="wordFromSentenceId != null">
+                word_from_sentence_id,
+            </if>
+            <if test="wordFromSentence != null">
+                word_from_sentence,
+            </if>
+        </trim>
+        <trim prefix="VALUES(" suffix=")">
+            #{wordId, jdbcType=VARCHAR},
+            #{word},
+            #{wordTranslate, jdbcType=VARCHAR},
+            <if test="wordFromArticleId != null">
+                #{wordFromArticleId },
+            </if>
+            <if test="wordFromArticleName != null">
+                #{wordFromArticleName },
+            </if>
+            <if test="wordFromSentenceId != null">
+                #{wordFromSentenceId},
+            </if>
+            <if test="wordFromSentence != null">
+                #{wordFromSentence},
+            </if>
+        </trim>
+    </insert>
+
+</mapper>

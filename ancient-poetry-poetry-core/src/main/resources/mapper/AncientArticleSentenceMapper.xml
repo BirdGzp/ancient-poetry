@@ -7,7 +7,7 @@
     <sql id="FULL_INFO" >
        ancient_article_sentence_id,  ancient_article_sentence,  ancient_article_sentence_translate,
        ancient_article_sentence_line, ancient_article_id,  ancient_article_name, author_id,
-       author_name, visit_count, likes, data_modify_time, data_is_deleted
+       author_name, visit_count, likes, dataa_create_time, data_modify_time, data_is_deleted
     </sql>
     <sql id="BRIEF_INFO">
       ancient_article_sentence_id,  ancient_article_sentence, ancient_article_sentence_translate,

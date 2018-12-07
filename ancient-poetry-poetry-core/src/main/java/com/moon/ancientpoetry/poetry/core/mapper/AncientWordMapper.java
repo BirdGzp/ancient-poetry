@@ -1,7 +1,9 @@
 package com.moon.ancientpoetry.poetry.core.mapper;
 
 import com.moon.ancientpoetry.common.po.AncientWord;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface AncientWordMapper {
 
     /**

@@ -1,12 +1,10 @@
-
 server:
-  port: 7777
+  port: 7100
 
 spring:
   datasource:
-    name: test
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/ancient_article?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8
+    url: jdbc:mysql://localhost:3306/ancient_article?useUnicode=true&characterEncoding=utf8
     username: root
     password: root
     type: com.alibaba.druid.pool.DruidDataSource
@@ -23,14 +21,17 @@ spring:
     testOnReturn: false
     poolPreparedStatements: true
     maxOpenPreparedStatements: 20
+
 mybatis:
   type-aliases-package: com.moon.ancientpoetry.common.po
   mapper-locations: classpath:mapper/*.xml
+  configuration:
+    #开启驼峰
+    map-underscore-to-camel-case: true
 
-
+#pagehelper分页插件
 pagehelper:
   helperDialect: mysql
   reasonable: true
   supportMethodsArguments: true
   params: count=countSql
-  returnPageInfo: check

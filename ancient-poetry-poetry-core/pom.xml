@@ -43,10 +43,6 @@
             <groupId>com.moon</groupId>
             <artifactId>ancient-poetry-common</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.moon</groupId>
-            <artifactId>ancient-poetry-common</artifactId>
-        </dependency>
 
     </dependencies>
 

@@ -1,9 +1,11 @@
 package com.moon.ancientpoetry.poetry.core.mapper;
 
 import com.moon.ancientpoetry.common.po.AncientArticleSentence;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
+@Mapper
 public interface AncientArticleSentenceMapper {
 
     /**

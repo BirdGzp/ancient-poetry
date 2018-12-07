@@ -12,7 +12,7 @@
 
 
     <properties>
-        <project.ancient-poetry.common>ancient-poetry-common</project.ancient-poetry.common>
+
 
         <ancient-poetry.version>0.0.1.SNAPSHOT</ancient-poetry.version>
         <ancient-poetry-article-core.version>1.0.0</ancient-poetry-article-core.version>
@@ -42,6 +42,8 @@
         <pagehelper.version>1.2.5</pagehelper.version>
         <druid.version>1.1.9</druid.version>
         <fastjson.version>1.2.53</fastjson.version>
+        <jsoup.version>1.10.2</jsoup.version>
+        <commons.lang.version>2.6</commons.lang.version>
 
 
         <java.encoding>UTF-8</java.encoding>
@@ -123,6 +125,18 @@
                 <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jsoup</groupId>
+                <artifactId>jsoup</artifactId>
+                <version>${jsoup.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>${commons.lang.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

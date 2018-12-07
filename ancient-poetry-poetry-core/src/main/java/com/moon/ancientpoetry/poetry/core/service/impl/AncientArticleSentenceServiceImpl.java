@@ -1,12 +1,13 @@
 package com.moon.ancientpoetry.poetry.core.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.moon.ancientpoetry.common.po.AncientArticleSentence;
 import com.moon.ancientpoetry.poetry.core.mapper.AncientArticleSentenceMapper;
 import com.moon.ancientpoetry.poetry.core.service.AncientArticleSentenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 
 @Service("ancientArticleSentenceService")
 public class AncientArticleSentenceServiceImpl implements AncientArticleSentenceService{
@@ -19,8 +20,9 @@ public class AncientArticleSentenceServiceImpl implements AncientArticleSentence
      * @return
      */
     @Override
-    public List<AncientArticleSentence> listFullAncientArticleSentence(){
-        return ancientArticleSentenceMapper.listFullAncientArticleSentence();
+    public PageInfo listFullAncientArticleSentence(Integer pageNum, Integer pageSize){
+        PageHelper.startPage(pageNum, pageSize);
+        return new PageInfo(ancientArticleSentenceMapper.listFullAncientArticleSentence());
     }
 
     /**
@@ -29,8 +31,9 @@ public class AncientArticleSentenceServiceImpl implements AncientArticleSentence
      * @return
      */
     @Override
-    public List<AncientArticleSentence> listAncientArticleSentenceByAncientArticleId(Integer ancientArticleId){
-        return ancientArticleSentenceMapper.listAncientArticleSentenceByAncientArticleId(ancientArticleId);
+    public PageInfo listAncientArticleSentenceByAncientArticleId(Integer ancientArticleId, Integer pageNum, Integer pageSize){
+        PageHelper.startPage(pageNum, pageSize);
+        return new PageInfo( ancientArticleSentenceMapper.listAncientArticleSentenceByAncientArticleId(ancientArticleId));
     }
 
     /**
@@ -39,8 +42,9 @@ public class AncientArticleSentenceServiceImpl implements AncientArticleSentence
      * @return
      */
     @Override
-    public List<AncientArticleSentence> listAncientArticleSentenceByAuthorId(Integer ancientAuthorId){
-        return ancientArticleSentenceMapper.listAncientArticleSentenceByAuthorId(ancientAuthorId);
+    public PageInfo listAncientArticleSentenceByAuthorId(Integer ancientAuthorId, Integer pageNum, Integer pageSize){
+        PageHelper.startPage(pageNum, pageSize);
+        return new PageInfo(ancientArticleSentenceMapper.listAncientArticleSentenceByAuthorId(ancientAuthorId));
     }
 
     /**
@@ -59,7 +63,7 @@ public class AncientArticleSentenceServiceImpl implements AncientArticleSentence
      * @return
      */
     @Override
-    public int updateAncientArticleSentenceByAncientArticleSentenceId(AncientArticleSentence ancientArticleSentence){
+    public int updateAncientArticleSentence(AncientArticleSentence ancientArticleSentence){
         return ancientArticleSentenceMapper.updateAncientArticleSentenceByAncientArticleSentenceId(ancientArticleSentence);
     }
 

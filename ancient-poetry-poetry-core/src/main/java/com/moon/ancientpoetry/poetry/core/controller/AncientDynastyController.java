@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/ancient_dynasty")
+@RequestMapping("/ancient/dynasty")
 public class AncientDynastyController {
     @Autowired
     private AncientDynastyService ancientDynastyService;

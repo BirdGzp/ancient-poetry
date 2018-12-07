@@ -1,17 +1,9 @@
 package com.moon.ancientpoetry.user.core.mapper;
 
 import com.moon.ancientpoetry.common.po.UserTimeLine;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface UserTimeLineMapper {
-    int deleteByPrimaryKey(Integer eventId);
 
-    int insert(UserTimeLine record);
-
-    int insertSelective(UserTimeLine record);
-
-    UserTimeLine selectByPrimaryKey(Integer eventId);
-
-    int updateByPrimaryKeySelective(UserTimeLine record);
-
-    int updateByPrimaryKey(UserTimeLine record);
 }
