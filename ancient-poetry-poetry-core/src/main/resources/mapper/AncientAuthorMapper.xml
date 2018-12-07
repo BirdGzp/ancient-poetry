@@ -1,23 +1,171 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.moon.ancientpoetry.poetry.core.mapper.AncientAuthorMapper" >
-    <resultMap id="BaseResultMap" type="com.moon.ancientpoetry.common.po.AncientAuthor" >
-        <id column="author_id" property="authorId" jdbcType="INTEGER" />
-        <result column="author_name" property="authorName" jdbcType="VARCHAR" />
-        <result column="author_article_count" property="authorArticleCount" jdbcType="INTEGER" />
-    </resultMap>
-
-    <sql id="Base_Column_List" >
-      author_id, author_name, author_article_count
+    <sql id="BASE_TABLE">
+      ancient_author
+    </sql>
+    <sql id="DETAIL_INFO" >
+      author_id, author_name, author_image, author_article_count, author_lifetime, author_address,
+      author_character, author_fame, author_call, author_alternative_name, author_dynasty_id,
+      author_dynasty_name,author_introduce, likes, visit_count
+    </sql>
+    <sql id="BRIEF_INFO">
+      author_id, author_name, author_article_count, author_lifetime, author_character, author_fame, author_call,
+      author_alternative_name, author_dynasty_id, author_dynasty_name, likes, visit_count
+    </sql>
+    <sql id="FULL_INFO">
+      author_id, author_name, author_image, author_article_count, author_lifetime, author_address,
+      author_character, author_fame, author_call, author_alternative_name, author_dynasty_id,
+      author_dynasty_name,author_introduce, article_url, likes, visit_count, data_create_time, data_modify_time, data_is_deleted
     </sql>
 
-    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
-        SELECT
-        <include refid="Base_Column_List" />
-        FROM ancient_author
-        WHERE author_id = #{userId, jdbcType=INTEGER}
+    <!-- 全部信息  -->
+    <select id="listAllAncientAuthor" resultType="com.moon.ancientpoetry.common.po.AncientAuthor">
+        SELECT <include refid="FULL_INFO"/>
+        FROM <include refid="BASE_TABLE"/>
+    </select>
+
+    <!-- 详细的 -->
+    <select id="getAncientAuthorByAuthorId" resultType="com.moon.ancientpoetry.common.po.AncientAuthor" parameterType="java.lang.Integer">
+        SELECT <include refid="DETAIL_INFO" />
+        FROM <include refid="BASE_TABLE"/>
+        WHERE author_id = #{authorId, jdbcType=INTEGER}
+    </select>
+    <select id="getAncientAuthorByAuthorName" resultType="com.moon.ancientpoetry.common.po.AncientAuthor" parameterType="java.lang.String">
+        SELECT <include refid="DETAIL_INFO" />
+        FROM <include refid="BASE_TABLE"/>
+        WHERE author_name = #{authorName, jdbcType=INTEGER}
+    </select>
+
+    <!--  简单的作者信息 -->
+    <select id="listAllBriefAncientAuthor" resultType="com.moon.ancientpoetry.common.po.AncientAuthor">
+        SELECT <include refid="BRIEF_INFO"/>
+        FROM <include refid="BASE_TABLE"/>
+        WHERE data_is_deleted = 0
+    </select>
+    <select id="getBriefAncientAuthorByAuthorId" resultType="com.moon.ancientpoetry.common.po.AncientAuthor" parameterType="java.lang.Integer">
+        SELECT <include refid="BRIEF_INFO" />
+        FROM <include refid="BASE_TABLE"/>
+        WHERE author_id = #{authorId, jdbcType=INTEGER}
+    </select>
+    <select id="getBriefAncientAuthorByAuthorName" resultType="com.moon.ancientpoetry.common.po.AncientAuthor" parameterType="java.lang.String">
+        SELECT <include refid="BRIEF_INFO" />
+        FROM <include refid="BASE_TABLE"/>
+        WHERE author_name = #{authorName, jdbcType=INTEGER}
     </select>
 
 
 
+    <insert id="insertAncientAuthor" parameterType="com.moon.ancientpoetry.common.po.AncientAuthor">
+        INSERT INTO <include refid="BASE_TABLE"/>
+        <trim prefix="(" suffix=")" >
+            author_name,
+            <if test="authorImage != null">
+                author_image,
+            </if>
+            author_article_count, author_lifetime,
+            <if test="authorAddress != null">
+               author_address,
+            </if>
+            <if test="authorCharacter != null">
+                author_character,
+            </if>
+            <if test="authorFame != null">
+                author_fame,
+            </if>
+            <if test="authorCall != null">
+                author_call,
+            </if>
+            <if test="authorAlternativeName != null">
+                author_alternative_name,
+            </if>
+            author_dynasty_id, author_dynasty_name,author_introduce, likes,  visit_count
+        </trim>
+        <trim prefix="VALUES(" suffix=")">
+            #{authorName, jdbcType=VARCHAR},
+            <if test="authorImage != null">
+                #{authorImage },
+            </if>
+            #{authorArticleCount}, #{authorLifetime, jdbcType=VARCHAR},
+            <if test="authorAddress != null">
+                #{authorArticlAddress},
+            </if>
+            <if test="authorCharacter != null">
+                #{authorArticlChracter},
+            </if>
+            <if test="authorFame != null">
+                #{authorFame},
+            </if>
+            <if test="authorCall != null">
+                #{authorCall},
+            </if>
+            <if test="authorAlternativeName != null">
+                #{authorAlternativeName},
+            </if>
+            #{authorDynastyId }, #{authorDynastyName }, #{authorIntroduce},#{likes },
+            #{visitCount}
+        </trim>
+    </insert>
+
+    <update id="updateAncientAuthorByAuthorId" parameterType="com.moon.ancientpoetry.common.po.AncientAuthor">
+        UPDATE <include refid="BASE_TABLE"/>
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="authorImage != null">
+                author_image = #{authorImage, jdbcType=VARCHAR},
+            </if>
+            <if test="authorArticleCount != null">
+                author_article_count = #{authorArticleCount},
+            </if>
+            <if test="authorLifetime != null">
+                author_lifetime = #{authorLifetime },
+            </if>
+            <if test="authorAddress != null">
+                author_article_count = #{authorAddress },
+            </if>
+            <if test="authorCharacter != null">
+                author_character = #{authorCharacter },
+            </if>
+            <if test="authorFame != null">
+                author_fame = #{authorFame },
+            </if>
+            <if test="authorCall != null">
+                author_call = #{authorCall },
+            </if>
+            <if test="authorAlternativeName != null">
+                author_alternative_name = #{authorAlternativeName },
+            </if>
+            <if test="authorDynastyId != null">
+                author_dynasty_id = #{authorDynastyId },
+            </if>
+            <if test="authorDynastyName != null">
+                author_dynasty_name = #{authorDynastyName },
+            </if>
+            <if test="authorIntroduce != null">
+                author_introduce = #{authorIntroduce },
+            </if>
+            <if test="likes != null">
+                likes = #{likes },
+            </if>
+            <if test="visitCount != null">
+                visit_count = #{visitCount },
+            </if>
+            <if test="dataIsDeleted != null">
+                data_is_deleted = #{dataIsDeleted },
+            </if>
+        </trim>
+        where author_id = #{authorId, jdbcType=INTEGER}
+    </update>
+
+    <update id="updateAncientAuthorLikesAndVisitCountByAuthorId" parameterType="com.moon.ancientpoetry.common.po.AncientAuthor">
+        UPDATE <include refid="BASE_TABLE"/>
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="likes != null">
+                likes = #{likes },
+            </if>
+            <if test="visitCount != null">
+                visit_count = #{visitCount },
+            </if>
+        </trim>
+        where author_id = #{authorId, jdbcType=INTEGER}
+    </update>
 </mapper>

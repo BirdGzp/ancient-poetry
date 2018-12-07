@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.moon.ancientpoetry.poetry.core.mapper.AncientDynastyMapper" >
+    <sql id="BASE_TABLE">
+      ancient_dynasty
+    </sql>
+    <sql id="DETAIL_INFO" >
+      dynasty_id, dynasty_en, dynasty_zh, data_create_time, data_modify_time, data_is_deleted
+    </sql>
+    <sql id="BRIEF_INFO">
+      dynasty_id, dynasty_en, dynasty_zh
+    </sql>
+
+    <select id="listAllAncientDynasty" resultType="com.moon.ancientpoetry.common.po.AncientDynasty">
+        SELECT <include refid="DETAIL_INFO"/>
+        FROM <include refid="BASE_TABLE"/>
+    </select>
+    <select id="listAllBriefAncientDynasty" resultType="com.moon.ancientpoetry.common.po.AncientDynasty">
+        SELECT <include refid="BRIEF_INFO"/>
+        FROM <include refid="BASE_TABLE"/>
+        WHERE data_is_deleted = 0
+    </select>
+
+    <insert id="insertAncientDynasty" parameterType="com.moon.ancientpoetry.common.po.AncientDynasty">
+        INSERT INTO <include refid="BASE_TABLE"/>
+        ( dynasty_en, dynasty_zh )
+        VALUES (#{dynasty_en }, #{dynasty_zh })
+    </insert>
+</mapper>

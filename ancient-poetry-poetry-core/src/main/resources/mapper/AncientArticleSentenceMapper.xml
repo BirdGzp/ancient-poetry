@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.moon.ancientpoetry.poetry.core.mapper.AncientArticleSentenceMapper" >
+    <sql id="BASE_TABLE">
+      ancient_article_sentence
+    </sql>
+    <sql id="FULL_INFO" >
+       ancient_article_sentence_id,  ancient_article_sentence,  ancient_article_sentence_translate,
+       ancient_article_sentence_line, ancient_article_id,  ancient_article_name, author_id,
+       author_name, visit_count, likes, data_modify_time, data_is_deleted
+    </sql>
+    <sql id="BRIEF_INFO">
+      ancient_article_sentence_id,  ancient_article_sentence, ancient_article_sentence_translate,
+      ancient_article_id,  ancient_article_name, author_id, author_name, visit_count, likes
+    </sql>
+
+
+    <select id="listFullAncientArticleSentence" resultType="com.moon.ancientpoetry.common.po.AncientArticleSentence">
+        SELECT <include refid="FULL_INFO"/>
+        FROM <include refid="BASE_TABLE"/>
+    </select>
+    <select id="listAncientArticleSentenceByAncientArticleId" resultType="com.moon.ancientpoetry.common.po.AncientArticleSentence"  parameterType="java.lang.Integer">
+        SELECT <include refid="BRIEF_INFO"/>
+        FROM <include refid="BASE_TABLE"/>
+        WHERE ancient_article_id = #{ancientArticleId}
+        AND data_is_deleted = 0
+    </select>
+    <select id="listAncientArticleSentenceByAuthorId" resultType="com.moon.ancientpoetry.common.po.AncientArticleSentence" parameterType="java.lang.Integer">
+        SELECT <include refid="BRIEF_INFO"/>
+        FROM <include refid="BASE_TABLE"/>
+        WHERE author_id = #{authorId}
+        AND data_is_deleted = 0
+    </select>
+    <select id="getAncientArticleSentenceById" resultType="com.moon.ancientpoetry.common.po.AncientArticleSentence" parameterType="java.lang.Integer">
+        SELECT <include refid="BRIEF_INFO"/>
+        FROM <include refid="BASE_TABLE"/>
+        WHERE ancient_article_sentence_id = #{ancientArticleSentenceId}
+    </select>
+
+    <update id="updateAncientArticleSentenceByAncientArticleSentenceId" parameterType="com.moon.ancientpoetry.common.po.AncientArticleSentence">
+        UPDATE <include refid="BASE_TABLE"/>
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="ancientArticleSentence != null">
+                ancient_article_sentence = #{ancientArticleSentence, jdbcType=VARCHAR},
+            </if>
+            <if test="ancientArticleSentenceTranslate != null">
+                ancient_article_sentence_translate = #{ancientArticleSentenceTranslate},
+            </if>
+            <if test="ancientArticleSentenceLine != null">
+                ancient_article_sentence_line = #{ancientArticleSentenceLine },
+            </if>
+            <if test="authorArticleId != null">
+                author_article_id = #{authorArticleId },
+            </if>
+            <if test="authorArticleName != null">
+                author_article_name = #{authorArticleName },
+            </if>
+            <if test="authorId != null">
+                author_id = #{authorId },
+            </if>
+            <if test="authorName != null">
+                author_name = #{authorName },
+            </if>
+            <if test="visitCount != null">
+                visit_count = #{visitCount },
+            </if>
+            <if test="likes != null">
+                likes = #{likes },
+            </if>
+            <if test="dataIsDeleted != null">
+                data_is_deleted = #{dataIsDeleted },
+            </if>
+        </trim>
+        where ancient_article_sentence_id = #{ancientArticleSentenceId, jdbcType=INTEGER}
+    </update>
+
+
+    <insert id="insertAncientDynasty" parameterType="com.moon.ancientpoetry.common.po.AncientDynasty">
+        INSERT INTO <include refid="BASE_TABLE"/>
+        <trim prefix="(" suffix=")" >
+            ancient_article_sentence,
+            <if test="ancientArticleSentenceTranslate != null">
+                ancient_article_sentence_translate,
+            </if>
+            <if test="ancientArticleSentenceLine != null">
+                ancient_article_sentence_line,
+            </if>
+            <if test="authorArticleId != null">
+                author_article_id,
+            </if>
+            <if test="authorArticleName != null">
+                author_article_name,
+            </if>
+            <if test="authorId != null">
+                author_id,
+            </if>
+            <if test="authorName != null">
+                author_name,
+            </if>
+            visit_count, likes
+        </trim>
+        <trim prefix="VALUES(" suffix=")" >
+            #{ancientArticleSentence, jdbcType=VARCHAR},
+            <if test="ancientArticleSentenceTranslate != null">
+                #{ancientArticleSentenceTranslate, jdbcType=VARCHAR},
+            </if>
+            <if test="ancientArticleSentenceLine != null">
+                #{ancientArticleSentenceLine},
+            </if>
+            <if test="authorArticleId != null">
+                #{authorArticleId},
+            </if>
+            <if test="authorArticleName != null">
+                #{authorArticleName},
+            </if>
+            <if test="authorId != null">
+                #{authorId},
+            </if>
+            <if test="authorName != null">
+                #{authorName},
+            </if>
+            #{visitCount}, #{likes}
+        </trim>
+    </insert>
+</mapper>

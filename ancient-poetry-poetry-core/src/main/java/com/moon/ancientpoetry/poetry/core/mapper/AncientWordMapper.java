@@ -3,15 +3,25 @@ package com.moon.ancientpoetry.poetry.core.mapper;
 import com.moon.ancientpoetry.common.po.AncientWord;
 
 public interface AncientWordMapper {
-    int deleteByPrimaryKey(Integer wordId);
 
-    int insert(AncientWord record);
+    /**
+     *  根据 id 查找字词信息
+     * @param ancientWordId
+     * @return
+     */
+    AncientWord getAncientWordByAncientWordId(Integer ancientWordId);
 
-    int insertSelective(AncientWord record);
+    /**
+     * 通过字词 得到字词的信息
+     * @param ancientWord
+     * @return
+     */
+    AncientWord getAncientWordByAncientWord(String ancientWord);
 
-    AncientWord selectByPrimaryKey(Integer wordId);
-
-    int updateByPrimaryKeySelective(AncientWord record);
-
-    int updateByPrimaryKey(AncientWord record);
+    /**
+     * 插入一条古文的字词
+     * @param ancientWord
+     * @return
+     */
+    int insertAuthorWord(AncientWord ancientWord);
 }

@@ -1,11 +1,10 @@
-package com.moon.ancientpoetry.poetry.core.mapper;
+package com.moon.ancientpoetry.poetry.core.service;
 
 import com.moon.ancientpoetry.common.po.AncientArticleSentence;
 
 import java.util.List;
 
-public interface AncientArticleSentenceMapper {
-
+public interface AncientArticleSentenceService {
     /**
      * 获得全部的句子
      * @return
@@ -46,6 +45,5 @@ public interface AncientArticleSentenceMapper {
      * @return
      */
     int insertAncientArticleSentence(AncientArticleSentence ancientArticleSentence);
-
 
 }

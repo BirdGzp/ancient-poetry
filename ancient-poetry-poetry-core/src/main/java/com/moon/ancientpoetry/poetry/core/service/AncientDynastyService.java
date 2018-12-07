@@ -1,11 +1,10 @@
-package com.moon.ancientpoetry.poetry.core.mapper;
-
+package com.moon.ancientpoetry.poetry.core.service;
 
 import com.moon.ancientpoetry.common.po.AncientDynasty;
 
 import java.util.List;
 
-public interface AncientDynastyMapper {
+public interface AncientDynastyService {
     /**
      * 获得所有详细的朝代信息
      * @return

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.moon.ancientpoetry.poetry.core.mapper.AncientWordMapper" >
+    <sql id="BASE_TABLE">
+      ancient_word
+    </sql>
+    <sql id="BRIEF_INFO">
+        word_id, word
+    </sql>
+    <sql id="FULL_INFO">
+      word_id, word, data_create_time, data_modify_time, data_is_deleted
+    </sql>
+
+    <insert id="insertAncientDynasty" parameterType="com.moon.ancientpoetry.common.po.AncientDynasty">
+        INSERT INTO <include refid="BASE_TABLE"/>
+        ( word )
+        VALUES (#{word })
+    </insert>
+</mapper>

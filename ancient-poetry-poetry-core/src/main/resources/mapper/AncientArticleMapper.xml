@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.moon.ancientpoetry.poetry.core.mapper.AncientArticleMapper" >
+    <sql id="BASE_TABLE">
+      ancient_article
+    </sql>
+    <sql id="BRIEF_INFO">
+        article_id, article_name, author_id, author_name, dynasty_id, dynasty_name,
+        article_content, article_tag_ids, article_tags, likes, visit_count
+    </sql>
+    <sql id="FULL_INFO">
+      article_id, article_name, author_id, author_name, dynasty_id, dynasty_name,
+      article_content, article_tag_ids, article_tags,  article_url,
+      likes, visit_count, data_create_time, data_modify_time, data_is_deleted
+    </sql>
+
+    <select id="listFullAncientArticle" resultType="com.moon.ancientpoetry.common.po.AncientArticle">
+        SELECT <include refid="FULL_INFO"/>
+        FROM <include refid="BASE_TABLE"/>
+    </select>
+
+    <select id="getAncientArticleByArticleId" resultType="com.moon.ancientpoetry.common.po.AncientArticle">
+        SELECT <include refid="BRIEF_INFO"/>
+        FROM <include refid="BASE_TABLE"/>
+        WHERE author_id = ${authorId}
+        AND data_is_deleted = 0
+    </select>
+
+
+    <select id="getAncientArticleByArticleId" resultType="com.moon.ancientpoetry.common.po.AncientArticle">
+        SELECT <include refid="BRIEF_INFO"/>
+        FROM <include refid="BASE_TABLE"/>
+        WHERE article_id = ${articleId}
+        AND data_is_deleted = 0
+    </select>
+
+    <update id="updateAncientArticle" parameterType="com.moon.ancientpoetry.common.po.AncientArticle">
+        UPDATE <include refid="BASE_TABLE"/>
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="articleName != null">
+                article_name = #{articleName},
+            </if>
+            <if test="authorId != null">
+                author_id = #{authorId},
+            </if>
+            <if test="authorName != null">
+                author_name = #{authorName },
+            </if>
+            <if test="dynastyId != null">
+                dynasty_id = #{dynastyId },
+            </if>
+            <if test="dynastyName != null">
+                dynasty_name = #{dynastyName },
+            </if>
+            <if test="articleContent != null">
+                article_content = #{articleContent },
+            </if>
+            <if test="articleTagIds != null">
+                article_tag_ids = #{articleTagIds },
+            </if>
+            <if test="articleTags != null">
+                article_tags = #{articleTags },
+            </if>
+            <if test="articleUrl != null">
+                article_url = #{articleUrl },
+            </if>
+            <if test="likes != null">
+                likes = #{likes },
+            </if>
+            <if test="visitCount != null">
+                visit_count = #{visitCount },
+            </if>
+            <if test="dataIsDeleted != null">
+                data_is_deleted = #{dataIsDeleted },
+            </if>
+        </trim>
+        where author_id = #{authorId, jdbcType=INTEGER}
+    </update>
+
+    <insert id="insertAncientArticle" parameterType="com.moon.ancientpoetry.common.po.AncientArticle">
+        INSERT INTO <include refid="BASE_TABLE"/>
+        <trim prefix="(" suffix=")" >
+            article_name, author_id, author_name,
+            <if test="dynastyId != null">
+                dynasty_id,
+            </if>
+            <if test="dynastyName != null">
+                dynasty_name,
+            </if>
+            article_content,
+            <if test="articleTagIds != null">
+                article_tag_ids,
+            </if>
+            <if test="articleTags != null">
+                article_tags,
+            </if>
+           likes,  visit_count
+        </trim>
+        <trim prefix="VALUES(" suffix=")">
+            #{articleName, jdbcType=VARCHAR},
+            #{authorId, jdbcType=VARCHAR},
+            #{authorName, jdbcType=VARCHAR},
+            <if test="dynastyId != null">
+                #{dynastyId },
+            </if>
+            <if test="dynastyName != null">
+                #{dynastyName },
+            </if>
+            #{article_content},
+            <if test="articleTagIds != null">
+                #{articleTagIds},
+            </if>
+            <if test="articleTags != null">
+                #{articleTags},
+            </if>
+            #{likes },
+            #{visitCount}
+        </trim>
+    </insert>
+</mapper>

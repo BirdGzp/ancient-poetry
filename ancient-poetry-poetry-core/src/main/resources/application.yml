@@ -25,6 +25,9 @@ spring:
 mybatis:
   type-aliases-package: com.moon.ancientpoetry.common.po
   mapper-locations: classpath:mapper/*.xml
+  configuration:
+    #开启驼峰
+    map-underscore-to-camel-case: true
 
 #pagehelper分页插件
 pagehelper:
