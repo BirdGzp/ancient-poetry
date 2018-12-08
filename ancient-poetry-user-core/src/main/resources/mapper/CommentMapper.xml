@@ -20,7 +20,7 @@
     </select>
 
     <select id="selectCommentByParentCommentId" resultType="com.moon.ancientpoetry.common.po.Comment" parameterType="java.lang.Integer">
-        SELECT <include refid="BRIEF_INFO"/>
+        SELECT <include refid="FULL_INFO"/>
         FROM <include refid="BASE_TABLE"/>
         WHERE parent_comment_id = #{parentCommentId}
         AND data_is_deleted = 0
@@ -28,7 +28,7 @@
     </select>
 
     <select id="selectCommentByUserIdOrderByTime" resultType="com.moon.ancientpoetry.common.po.Comment" parameterType="java.lang.Integer">
-        SELECT <include refid="BRIEF_INFO"/>
+        SELECT <include refid="FULL_INFO"/>
         FROM <include refid="BASE_TABLE"/>
         WHERE user_id = #{userId}
         AND data_is_deleted = 0
@@ -36,7 +36,7 @@
     </select>
 
     <select id="selectCommentsByArticleId" resultType="com.moon.ancientpoetry.common.po.Comment" parameterType="java.lang.Integer">
-        SELECT <include refid="BRIEF_INFO"/>
+        SELECT <include refid="FULL_INFO"/>
         FROM <include refid="BASE_TABLE"/>
         WHERE article_id = #{articleId}
         AND data_is_deleted = 0
@@ -57,18 +57,17 @@
     <insert id="insertComment" parameterType="com.moon.ancientpoetry.common.po.Comment">
         INSERT INTO <include refid="BASE_TABLE"/>
         ( <include refid="BRIEF_INFO"/> )
-        VALUES
-        (#{comment.commentContent}, #{comment.articleId}, #{comment.userId}, #{comment.userName}, #{comment.likes},
-        #{comment.parentCommentId},)
+        VALUE
+        (null, #{commentContent}, #{articleId}, #{userId}, #{userName}, #{likes}, #{parentCommentId})
     </insert>
 
     <insert id="insertBatchComments" parameterType="com.moon.ancientpoetry.common.po.Comment">
         INSERT INTO <include refid="BASE_TABLE"/>
         ( <include refid="BRIEF_INFO"/> )
-        VALUES
+        VALUE
         <foreach collection ="list" item="comment" separator =",">
-            (#{comment.commentContent}, #{comment.articleId}, #{comment.userId}, #{comment.userName}, #{comment.likes},
-            #{comment.parentCommentId},)
+            (null, #{comment.commentContent}, #{comment.articleId}, #{comment.userId}, #{comment.userName}, #{comment.likes},
+            #{comment.parentCommentId})
         </foreach >
     </insert>
 

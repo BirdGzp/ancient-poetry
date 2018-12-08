@@ -79,6 +79,7 @@
 
     <insert id="insertAncientArticle" parameterType="com.moon.ancientpoetry.common.po.AncientArticle">
         INSERT INTO <include refid="BASE_TABLE"/>
+        VALUE
         <trim prefix="(" suffix=")" >
             article_name, author_id, author_name,
             <if test="dynastyId != null">

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.moon.ancientpoetry.user.core.mapper.RelationMapper" >
+    <sql id="BASE_TABLE">
+      relation
+    </sql>
+    <sql id="BRIEF_INFO">
+       relation_id, user_id, user_name, follow_id, follow_name
+    </sql>
+    <sql id="FULL_INFO">
+       relation_id, user_id, user_name, follow_id, follow_name,data_create_time, data_modify_time, data_is_deleted
+    </sql>
+
+    <select id="listRelationByFollowId" parameterType="java.lang.Integer">
+        SELECT  <include refid="BRIEF_INFO"/>
+        FROM <include refid="BASE_TABLE"/>
+        WHERE follow_id = #{followId }
+        AND data_is_deleted = 0
+    </select>
+
+    <select id="listRelationByUserId" parameterType="java.lang.Integer">
+       SELECT  <include refid="BRIEF_INFO"/>
+       FROM <include refid="BASE_TABLE"/>
+       WHERE user_id = #{userId}
+       AND data_is_deleted = 0
+    </select>
+
+    <update id="updateBatchRelationDeleteState" parameterType="com.moon.ancientpoetry.common.po.Relation">
+        <foreach collection="list" item="relation">
+            UPDATE <include refid="BASE_TABLE"/>
+            SET  data_is_deleted = #{relation.dataIsDeleted }
+            WHERE user_id = #{relation.userId }
+            AND follow_id = #{relation.followId }
+        </foreach>
+
+    </update>
+
+    <update id="updateRelationDeleteState" parameterType="com.moon.ancientpoetry.common.po.Relation">
+        UPDATE <include refid="BASE_TABLE"/>
+        SET  data_is_deleted = #{dataIsDeleted }
+        WHERE user_id = #{userId}
+        AND follow_id = #{followId}
+    </update>
+
+    <insert id="insertBatchRelation" parameterType="com.moon.ancientpoetry.common.po.Relation">
+        INSERT INTO <include refid="BASE_TABLE"/> ( <include refid="BRIEF_INFO"/>  )
+        VALUE
+        <foreach collection ="list" item="relation" separator =",">
+            (null, #{relation.userId }, #{relation.userName }, #{relation.followId }, #{relation.followName })
+        </foreach >
+    </insert>
+
+    <insert id="insertRelation" parameterType="com.moon.ancientpoetry.common.po.Relation">
+        INSERT INTO <include refid="BASE_TABLE"/> ( <include refid="BRIEF_INFO"/>  )
+        VALUE (null, #{userId }, #{userName}, #{followId}, #{followName})
+    </insert>
+
+</mapper>

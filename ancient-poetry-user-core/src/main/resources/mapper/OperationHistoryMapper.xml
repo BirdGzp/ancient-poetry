@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.moon.ancientpoetry.user.core.mapper.OperationHistoryMapper" >
+    <sql id="BASE_TABLE">
+      operation_history
+    </sql>
+    <sql id="BRIEF_INFO">
+       operation_id, operatopn_user_id, article_id, operation_type
+    </sql>
+
+    <sql id="FULL_INFO">
+      operation_id, operatopn_user_id, article_id, operation_type,data_create_time, data_modify_time, data_is_deleted
+    </sql>
+
+    <select id="listOperationHistoryByUserIdAndOperationType" >
+        SELECT <include refid="BRIEF_INFO"/>
+        FROM  <include refid="BASE_TABLE"/>
+        WHERE user_id = #{user_id}
+        AND operation_type = #{operationType}
+        AND data_is_deleted = 0
+    </select>
+
+    <select id="listOperationHistoryByUserIdOrderByTime" >
+        SELECT <include refid="BRIEF_INFO"/>
+        FROM  <include refid="BASE_TABLE"/>
+        WHERE user_id = #{user_id}
+        AND data_is_deleted = 0
+        ORDER BY LIKE data_create_time
+    </select>
+
+    <update id="updateBatchOperationHistoryDeleteState" >
+        <foreach collection="list" item="operationHistory">
+            UPDATE <include refid="BASE_TABLE"/>
+            SET data_is_deleted = #{operationHistory.dataIsDeleted}
+            WHERE operation_id = #{operationHistory.operatorId}
+        </foreach>
+    </update>
+
+    <update id="updateOperationHistoryDeleteState" parameterType="com.moon.ancientpoetry.common.po.OperationHistory">
+        UPDATE <include refid="BASE_TABLE"/>
+        SET data_is_deleted = #{operationHistory.dataIsDeleted}
+        WHERE operation_id = #{operationHistory.operatorId}
+    </update>
+
+    <insert id="insertBatchOperationHistory" parameterType="com.moon.ancientpoetry.common.po.OperationHistory">
+        INSERT INTO <include refid="BASE_TABLE"/>
+        ( <include refid="BRIEF_INFO"/> )
+        VALUES
+        <foreach collection ="list" item="like" separator =",">
+            (null, #{operationUserId}, #{article_id }, #{operation_type})
+        </foreach >
+    </insert>
+
+    <insert id="insertOperationHistory" parameterType="com.moon.ancientpoetry.common.po.OperationHistory">
+        INSERT INTO <include refid="BASE_TABLE"/>
+        ( <include refid="BRIEF_INFO"/> )
+        VALUES
+        (null, #{operationUserId}, #{article_id }, #{operation_type})
+    </insert>
+</mapper>

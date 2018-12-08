@@ -8,20 +8,21 @@ import java.util.List;
 @Mapper
 public interface LikeMapper {
 
+    int selectCountByFromIdAndFromType(Integer fromId, Integer fromType);
 
     /**
      * 获得用户的点赞记录(时间排序)
      * @param userId
      * @return
      */
-    List<Like> selectFromUserIdOrderByTime(Integer userId);
+    List<Like> selectLikeByUserIdOrderByTime(Integer userId);
 
     /**
      * 更新一条记录为删除状态
      * @param like
      * @return
      */
-    int updataLike(Like like);
+    int updataLikeDeleteState(Like like);
 
     /**
      * 批量插入一批点赞记录
