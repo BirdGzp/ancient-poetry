@@ -15,24 +15,24 @@ public class UserTimeLine {
 
     private Byte eventState;
 
-    private LocalDateTime eventHapenTime;
+    private LocalDateTime eventHappenTime;
 
     private LocalDateTime dataCreateTime;
 
-    private LocalDateTime dataMidifyTime;
+    private LocalDateTime dataModifyTime;
 
     private Boolean dataIsDeleted;
 
-    public UserTimeLine(Integer eventId, String eventTitle, Integer userId, String userName, String eventDetail, Byte eventState, LocalDateTime eventHapenTime, LocalDateTime dataCreateTime, LocalDateTime dataMidifyTime, Boolean dataIsDeleted) {
+    public UserTimeLine(Integer eventId, String eventTitle, Integer userId, String userName, String eventDetail, Byte eventState, LocalDateTime eventHappenTime, LocalDateTime dataCreateTime, LocalDateTime dataModifyTime, Boolean dataIsDeleted) {
         this.eventId = eventId;
         this.eventTitle = eventTitle;
         this.userId = userId;
         this.userName = userName;
         this.eventDetail = eventDetail;
         this.eventState = eventState;
-        this.eventHapenTime = eventHapenTime;
+        this.eventHappenTime = eventHappenTime;
         this.dataCreateTime = dataCreateTime;
-        this.dataMidifyTime = dataMidifyTime;
+        this.dataModifyTime = dataModifyTime;
         this.dataIsDeleted = dataIsDeleted;
     }
 
@@ -88,12 +88,12 @@ public class UserTimeLine {
         this.eventState = eventState;
     }
 
-    public LocalDateTime getEventHapenTime() {
-        return eventHapenTime;
+    public LocalDateTime getEventHappenTime() {
+        return eventHappenTime;
     }
 
-    public void setEventHapenTime(LocalDateTime eventHapenTime) {
-        this.eventHapenTime = eventHapenTime;
+    public void setEventHappenTime(LocalDateTime eventHapenTime) {
+        this.eventHappenTime = eventHappenTime;
     }
 
     public LocalDateTime getDataCreateTime() {
@@ -104,12 +104,12 @@ public class UserTimeLine {
         this.dataCreateTime = dataCreateTime;
     }
 
-    public LocalDateTime getDataMidifyTime() {
-        return dataMidifyTime;
+    public LocalDateTime getDataModifyTime() {
+        return dataModifyTime;
     }
 
-    public void setDataMidifyTime(LocalDateTime dataMidifyTime) {
-        this.dataMidifyTime = dataMidifyTime;
+    public void setDataModifyTime(LocalDateTime dataModifyTime) {
+        this.dataModifyTime = dataModifyTime;
     }
 
     public Boolean getDataIsDeleted() {
@@ -129,9 +129,9 @@ public class UserTimeLine {
                 ", userName='" + userName + '\'' +
                 ", eventDetail='" + eventDetail + '\'' +
                 ", eventState=" + eventState +
-                ", eventHapenTime=" + eventHapenTime +
+                ", eventHappenTime=" + eventHappenTime +
                 ", dataCreateTime=" + dataCreateTime +
-                ", dataMidifyTime=" + dataMidifyTime +
+                ", dataModifyTime=" + dataModifyTime +
                 ", dataIsDeleted=" + dataIsDeleted +
                 '}';
     }

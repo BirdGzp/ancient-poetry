@@ -15,32 +15,39 @@ public interface UserBasicMapper {
     List<UserBasic> listFullUserBasic();
 
     /**
-     * 根据用户邮箱 获得用户密码
-     * @param userEmail
+     * 根据用户主键 获得用户密码
+     * @param userId
      * @return
      */
-    UserBasic getPasswordByUserEmail(String userEmail);
-
-    /**
-     * 根据用户手机号码 获得用户密码
-     * @param userTelephone
-     * @return
-     */
-    UserBasic getPasswordByUserTelephone(String userTelephone);
+    UserBasic getUserFullBasicByUserId(Integer userId);
 
     /**
      * 根据用户 id  获得用户的基本信息
      * @param userId
      * @return
      */
-    UserBasic getUserBasicByUserId(Integer userId);
+    UserBasic getUserBriefBasicByUserId(Integer userId);
 
     /**
      * 根据用户手机号码 来查询用户
      * @param userTelephone
      * @return
      */
-    UserBasic getUserBasicByUserTelephone(String userTelephone);
+    UserBasic getUserBriefBasicByUserTelephone(String userTelephone);
+
+    /**
+     * 根据用户邮箱 获得用户密码等信息，用来校验
+     * @param userEmail
+     * @return
+     */
+    UserBasic getCheckInfoByUserEmail(String userEmail);
+
+    /**
+     * 根据用户手机号码 获得用户密码等信息，用来校验
+     * @param userTelephone
+     * @return
+     */
+    UserBasic getCheckInfoByUserTelephone(String userTelephone);
 
 
     /**
@@ -48,7 +55,7 @@ public interface UserBasicMapper {
      * @param listUserBasic
      * @return
      */
-    int updateUserBasic(List<UserBasic> listUserBasic);
+    int updateBatchUserBasic(List<UserBasic> listUserBasic);
 
     /**
      * 更新用户基本信息

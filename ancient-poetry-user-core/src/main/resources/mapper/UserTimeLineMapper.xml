@@ -1,4 +1,175 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.moon.ancientpoetry.user.core.mapper.UserTimeLineMapper" >
+
+    <sql id="BASE_TABLE">
+        user_time_line
+    </sql>
+    <sql id="less_INFO">
+       event_id,  event_title, user_id, event_happen_time
+    </sql>
+    <sql id="BRIEF_INFO">
+       event_id,  event_title, user_id, user_name, event_detail, event_state, event_happen_time
+    </sql>
+    <sql id="FULL_INFO">
+       event_id,  event_title, user_id, user_name, event_detail, event_state, event_happen_time,
+       data_create_time, data_modify_time, data_is_deleted
+    </sql>
+
+    <select id="listUserTimeLineByUserIdAndStateOrderByTime">
+        SELECT  <include refid="BRIEF_INFO"/>
+        FROM <include refid="BASE_TABLE"/>
+        WHERE user_id = #{userId }
+        AND event_state = #{eventState}
+        AND data_is_deleted = 0
+        ORDER BY event_happen_time
+    </select>
+
+    <select id="listUserTimeLineByUserIdOrderByTime">
+        SELECT  <include refid="BRIEF_INFO"/>
+        FROM <include refid="BASE_TABLE"/>
+        WHERE user_id = #{userId }
+        AND data_is_deleted = 0
+        ORDER BY event_happen_time
+    </select>
+
+    <select id="getUserTimeLineByEventId">
+        SELECT  <include refid="FULL_INFO"/>
+        FROM <include refid="BASE_TABLE"/>
+        WHERE event_id = #{eventId }
+        AND data_is_deleted = 0
+    </select>
+
+
+    <update id="updateBatchUserTimeLine" parameterType="com.moon.ancientpoetry.common.po.UserTimeLine">
+        <foreach collection="list" item="userTimeLine">
+            UPDATE
+            <include refid="BASE_TABLE"/>
+            <trim prefix="SET (" suffix=")" suffixOverrides=",">
+                <if test="eventTitle != null">
+                    event_title = #{userTimeLine.eventTitle},
+                </if>
+                <if test="userId != null">
+                    user_id = #{userTimeLine.userId},
+                </if>
+                <if test="userName != null">
+                    use_name = #{userTimeLine.userName},
+                </if>
+                <if test="eventDetail != null">
+                    event_detail = #{userTimeLine.eventDetail},
+                </if>
+                <if test="eventState != null">
+                    event_state = #{userTimeLine.eventState},
+                </if>
+                <if test="eventHappenTime != null">
+                    event_happen_time = #{userTimeLine.eventHappenTime},
+                </if>
+            </trim>
+            WHERE event_id = #{eventId}
+        </foreach>
+    </update>
+    
+    <update id="updateUserTimeLine" parameterType="com.moon.ancientpoetry.common.po.UserTimeLine">
+        UPDATE
+        <include refid="BASE_TABLE"/>
+        <trim prefix="SET (" suffix=")" suffixOverrides=",">
+            <if test="eventTitle != null">
+                event_title = #{eventTitle},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId},
+            </if>
+            <if test="userName != null">
+                use_name = #{userName},
+            </if>
+            <if test="eventDetail != null">
+                event_detail = #{eventDetail},
+            </if>
+            <if test="eventState != null">
+                event_state = #{eventState},
+            </if>
+            <if test="eventHappenTime != null">
+                event_happen_time = #{eventHappenTime},
+            </if>
+        </trim>
+        WHERE event_id = #{eventId}
+    </update>
+
+    <insert id="insertBatchUserTimeLine" parameterType="com.moon.ancientpoetry.common.po.UserTimeLine">
+        insert into
+        <include refid="BASE_TABLE"/>
+        (
+        <include refid="BRIEF_INFO"/>
+        )
+        VALUE
+        <foreach collection="list" item="userTimeLine" separator=",">
+            <trim prefix="(" suffix=")" suffixOverrides=",">
+                null,
+                <if test="eventTitle != null" >
+                    #{userTimeLine.eventTitle },
+                </if>
+                <if test="userId != null">
+                    #{userTimeLine.userId },
+                </if>
+                <if test="userName != null">
+                    #{userTimeLine.userName },
+                </if>
+                <if test="eventDetail != null">
+                    #{userTimeLine.eventDetail },
+                </if>
+                <if test="eventState != null">
+                    #{userTimeLine.eventState },
+                </if>
+                <if test="eventHappenTime != null" >
+                    #{userTimeLine.eventHappenTime },
+                </if>
+            </trim>
+        </foreach>
+    </insert>
+
+    <insert id="insertUserTimeLine" parameterType="com.moon.ancientpoetry.common.po.UserTimeLine">
+        insert into
+        <include refid="BASE_TABLE"/>
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="eventTitle != null" >
+                event_title,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="userName != null">
+                user_name,
+            </if>
+            <if test="eventDetail != null">
+                event_detail,
+            </if>
+            <if test="eventState != null">
+                event_state,
+            </if>
+            <if test="eventHappenTime != null" >
+                event_happen_time,
+            </if>
+        </trim>
+        <trim prefix="VALUE (" suffix=")" suffixOverrides=",">
+            <if test="eventTitle != null" >
+                #{eventTitle },
+            </if>
+            <if test="userId != null">
+                #{userId },
+            </if>
+            <if test="userName != null">
+                #{userName },
+            </if>
+            <if test="eventDetail != null">
+                #{eventDetail },
+            </if>
+            <if test="eventState != null">
+                #{eventState },
+            </if>
+            <if test="eventHappenTime != null" >
+                #{eventHappenTime },
+            </if>
+        </trim>
+    </insert>
 </mapper>
+

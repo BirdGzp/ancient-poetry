@@ -8,6 +8,13 @@ import java.util.List;
 @Mapper
 public interface UserDetailMapper {
 
+    /**
+     * 根据用户 id  获得用户的全部详细信息
+     * @param userId
+     * @return
+     */
+    UserDetail getUserFullDetailByUserId(Integer userId);
+
 
     /**
      * 根据用户 id  获得用户的详细信息
@@ -21,7 +28,7 @@ public interface UserDetailMapper {
      * @param listUserDetail
      * @return
      */
-    int updateUserDetail(List<UserDetail> listUserDetail);
+    int updateBatchUserDetail(List<UserDetail> listUserDetail);
 
     /**
      * 更新用户详细信息

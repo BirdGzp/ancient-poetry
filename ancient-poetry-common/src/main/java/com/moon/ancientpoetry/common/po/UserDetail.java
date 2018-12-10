@@ -5,11 +5,6 @@ import java.time.LocalDateTime;
 public class UserDetail {
     private Integer userId;
 
-    private Integer writingCount;
-
-    private Integer followCount;
-
-    private Integer followerCount;
 
     private String userFame;
 
@@ -31,11 +26,8 @@ public class UserDetail {
 
     private Boolean dataIsDeleted;
 
-    public UserDetail(Integer userId, Integer writingCount, Integer followCount, Integer followerCount, String userFame, String userCall, String userAlternativeName, Integer favoriteAuthorId, String favoriteAuthorName, Integer favoriteArticleId, String favoriteArticleName, LocalDateTime dataCreateTime, LocalDateTime dataModifyTime, Boolean dataIsDeleted) {
+    public UserDetail(Integer userId, String userFame, String userCall, String userAlternativeName, Integer favoriteAuthorId, String favoriteAuthorName, Integer favoriteArticleId, String favoriteArticleName, LocalDateTime dataCreateTime, LocalDateTime dataModifyTime, Boolean dataIsDeleted) {
         this.userId = userId;
-        this.writingCount = writingCount;
-        this.followCount = followCount;
-        this.followerCount = followerCount;
         this.userFame = userFame;
         this.userCall = userCall;
         this.userAlternativeName = userAlternativeName;
@@ -58,30 +50,6 @@ public class UserDetail {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
-    }
-
-    public Integer getWritingCount() {
-        return writingCount;
-    }
-
-    public void setWritingCount(Integer writingCount) {
-        this.writingCount = writingCount;
-    }
-
-    public Integer getFollowCount() {
-        return followCount;
-    }
-
-    public void setFollowCount(Integer followCount) {
-        this.followCount = followCount;
-    }
-
-    public Integer getFollowerCount() {
-        return followerCount;
-    }
-
-    public void setFollowerCount(Integer followerCount) {
-        this.followerCount = followerCount;
     }
 
     public String getUserFame() {
@@ -168,9 +136,6 @@ public class UserDetail {
     public String toString() {
         return "UserDetail{" +
                 "userId=" + userId +
-                ", writingCount=" + writingCount +
-                ", followCount=" + followCount +
-                ", followerCount=" + followerCount +
                 ", userFame='" + userFame + '\'' +
                 ", userCall='" + userCall + '\'' +
                 ", userAlternativeName='" + userAlternativeName + '\'' +

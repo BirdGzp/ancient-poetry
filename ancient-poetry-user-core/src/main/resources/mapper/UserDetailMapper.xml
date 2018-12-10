@@ -1,5 +1,148 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.moon.ancientpoetry.user.core.mapper.UserDetailMapper" >
+    <sql id="BASE_TABLE">
+        user_detail
+    </sql>
 
+    <sql id="BRIEF_INFO">
+        user_id,  user_fame, user_call, user_alternative_name, favorite_author_id, favorite_author_name,favorite_article_id,
+       favorite_article_name
+    </sql>
+    <sql id="FULL_INFO">
+       user_id,  user_fame, user_call, user_alternative_name, favorite_author_id, favorite_author_name,favorite_article_id,
+       favorite_article_name, data_create_time, data_modify_time, data_is_deleted
+    </sql>
+
+    <select id="getUserFullDetailByUserId" resultType="com.moon.ancientpoetry.common.po.UserDetail">
+        SELECT
+        <include refid="FULL_INFO"/>
+        FROM
+        <include refid="BASE_TABLE"/>
+        WHERE user_id = #{user_id }
+    </select>
+
+    <select id="getUserDetailByUserId" resultType="com.moon.ancientpoetry.common.po.UserDetail">
+        SELECT
+        <include refid="BRIEF_INFO"/>
+        FROM
+        <include refid="BASE_TABLE"/>
+        WHERE user_id = #{user_id }
+    </select>
+
+    <update id="updateBatchUserDetail" parameterType="com.moon.ancientpoetry.common.po.UserDetail">
+        <foreach collection="list" item="userDetail">
+            UPDATE
+            <include refid="BASE_TABLE"/>
+            <trim prefix="SET (" suffix=")" suffixOverrides=",">
+                <if test="userFame != null">
+                    user_name = #{userDetail.userFame},
+                </if>
+                <if test="userCall != null">
+                    user_call = #{userDetail.userCall},
+                </if>
+                <if test="userAlternativeName != null">
+                    user_alternative_name = #{userDetail.userAlternativeName},
+                </if>
+                <if test="favoriteAuthorId != null">
+                    favorite_author_id = #{userDetail.favoriteAuthorId},
+                </if>
+                <if test="favoriteAuthorName != null">
+                    favorite_author_name = #{userDetail.favoriteAuthorName},
+                </if>
+                <if test="favoriteArticleId != null">
+                    favorite_article_id = #{userDetail.favoriteArticleId},
+                </if>
+                <if test="favoriteArticleName != null">
+                    favorite_article_name = #{userDetail.favoriteArticleName},
+                </if>
+            </trim>
+            WHERE user_id = #{userDetial.userId}
+        </foreach>
+    </update>
+
+    <update id="updateUserDetail" parameterType="com.moon.ancientpoetry.common.po.UserDetail">
+        UPDATE
+        <include refid="BASE_TABLE"/>
+        <trim prefix="SET (" suffix=")" suffixOverrides=",">
+            <if test="userFame != null">
+                user_fame = #{userDetial.userFame},
+            </if>
+            <if test="userCall != null">
+                user_call = #{userDetial.userCall},
+            </if>
+            <if test="userAlternative != null">
+                user_alternative = #{userDetial.userAlternative},
+            </if>
+            <if test="favoriteAuthorId != null">
+                favorite_author_id = #{userDetial.favoriteAuthorId},
+            </if>
+            <if test="favoriteAuthorName != null">
+                favorite_author_name = #{userDetial.favoriteAuthorName},
+            </if>
+            <if test="favoriteArticleId != null">
+                favorite_article_id = #{userDetial.favoriteArticleId},
+            </if>
+            <if test="favoriteArticleName != null">
+                favorite_article_name = #{userDetial.favoriteArticleName},
+            </if>
+        </trim>
+        WHERE user_id = #{userId}
+    </update>
+
+    <insert id="insertUserDetail" parameterType="com.moon.ancientpoetry.common.po.UserDetail">
+        insert into user_basic
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="userFame != null">
+                user_fame,
+            </if>
+            <if test="userCall != null">
+                user_call,
+            </if>
+            <if test="userAlternativeName != null">
+                user_alternative_name,
+            </if>
+            <if test="favoriteAuthorId != null">
+                favorite_author_id,
+            </if>
+            <if test="favoriteAuthorName != null">
+                favorite_author_name,
+            </if>
+            <if test="favoriteArticleId != null">
+                favorite_article_id,
+            </if>
+            <if test="favoriteArticleName != null">
+                favorite_article_name,
+            </if>
+        </trim>
+        <trim prefix="VALUE (" suffix=")" suffixOverrides=",">
+            <if test="userId != null">
+                #{userId },
+            </if>
+            <if test="userFame != null">
+                #{userFame },
+            </if>
+            <if test="userCall != null">
+                #{userCall },
+            </if>
+            <if test="userAlternativeName != null">
+                #{userAlternativeName },
+            </if>
+            <if test="favoriteAuthorId != null">
+                #{favoriteAuthorId },
+            </if>
+            <if test="favoriteAuthorName != null">
+                #{favoriteAuthorName },
+            </if>
+            <if test="favoriteArticleId != null">
+                #{favoriteArticleId },
+            </if>
+            <if test="favoriteArticleName != null">
+                #{favoriteArticleName },
+            </if>
+        </trim>
+    </insert>
 </mapper>

@@ -29,11 +29,19 @@ public class UserBasic {
 
     private Integer readCount;
 
+    private Integer writeCount;
+
+    private Integer followCount;
+
+    private Integer followerCount;
+
     private String briefIntroduce;
 
     private Integer addressId;
 
     private String detailAddress;
+
+    private LocalDateTime lastLoginTime;
 
     private LocalDateTime dataCreateTime;
 
@@ -41,7 +49,12 @@ public class UserBasic {
 
     private Boolean dataIsDeleted;
 
-    public UserBasic(Integer userId, String userName, String penName, String userCharacter, Boolean sex, LocalDateTime birthDate, String telephone, String email, String password, String ip, String userImage, Integer likes, Integer readCount, String briefIntroduce, Integer addressId, String detailAddress, LocalDateTime dataCreateTime, LocalDateTime dataModifyTime, Boolean dataIsDeleted) {
+    public UserBasic(Integer userId, String userName, String penName, String userCharacter, Boolean sex,
+                     LocalDateTime birthDate, String telephone, String email, String password,
+                     String ip, String userImage, Integer likes, Integer readCount, Integer writeCount,
+                     Integer followCount, Integer followerCount, String briefIntroduce,
+                     Integer addressId, String detailAddress, LocalDateTime lastLoginTime,
+                     LocalDateTime dataCreateTime, LocalDateTime dataModifyTime, Boolean dataIsDeleted) {
         this.userId = userId;
         this.userName = userName;
         this.penName = penName;
@@ -55,9 +68,13 @@ public class UserBasic {
         this.userImage = userImage;
         this.likes = likes;
         this.readCount = readCount;
+        this.writeCount = writeCount;
+        this.followCount = followCount;
+        this.followerCount = followerCount;
         this.briefIntroduce = briefIntroduce;
         this.addressId = addressId;
         this.detailAddress = detailAddress;
+        this.lastLoginTime = lastLoginTime;
         this.dataCreateTime = dataCreateTime;
         this.dataModifyTime = dataModifyTime;
         this.dataIsDeleted = dataIsDeleted;
@@ -171,6 +188,7 @@ public class UserBasic {
         this.readCount = readCount;
     }
 
+
     public String getBriefIntroduce() {
         return briefIntroduce;
     }
@@ -193,6 +211,14 @@ public class UserBasic {
 
     public void setDetailAddress(String detailAddress) {
         this.detailAddress = detailAddress == null ? null : detailAddress.trim();
+    }
+
+    public LocalDateTime getLastLoginTime() {
+        return lastLoginTime;
+    }
+
+    public void setLastLoginTime(LocalDateTime lastLoginTime) {
+        this.lastLoginTime = lastLoginTime;
     }
 
     public LocalDateTime getDataCreateTime() {
@@ -219,6 +245,18 @@ public class UserBasic {
         this.dataIsDeleted = dataIsDeleted;
     }
 
+    public Integer getWriteCount() {
+        return writeCount;
+    }
+
+    public Integer getFollowCount() {
+        return followCount;
+    }
+
+    public Integer getFollowerCount() {
+        return followerCount;
+    }
+
     @Override
     public String toString() {
         return "UserBasic{" +
@@ -235,9 +273,13 @@ public class UserBasic {
                 ", userImage='" + userImage + '\'' +
                 ", likes=" + likes +
                 ", readCount=" + readCount +
+                ", writeCount=" + writeCount +
+                ", followCount=" + followCount +
+                ", followerCount=" + followerCount +
                 ", briefIntroduce='" + briefIntroduce + '\'' +
                 ", addressId=" + addressId +
                 ", detailAddress='" + detailAddress + '\'' +
+                ", lastLoginTime=" + lastLoginTime +
                 ", dataCreateTime=" + dataCreateTime +
                 ", dataModifyTime=" + dataModifyTime +
                 ", dataIsDeleted=" + dataIsDeleted +

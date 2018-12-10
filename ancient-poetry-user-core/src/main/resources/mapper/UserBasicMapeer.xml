@@ -1,34 +1,251 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.moon.ancientpoetry.user.core.mapper.UserBasicMapper" >
-    <insert id="insertUserBasic" parameterType="com.moon.ancientpoetry.common.po.UserBasic" >
-        insert into user_basic
-        <trim prefix="(" suffix=")" suffixOverrides="," >
-            <if test="userId != null" >
-                user_id,
+    <sql id="BASE_TABLE">
+       user_basic
+    </sql>
+
+    <sql id="CHECK_INFO">
+        user_id, pen_name,  email, user_name,telephone, password, ip
+    </sql>
+
+    <sql id="BRIEF_INFO">
+        user_id, user_name, pen_name, user_character, sex, user_image, likes, read_count, writeCount, followCount,
+        followerCount, brief_introduce
+    </sql>
+    <sql id="FULL_INFO">
+       user_id, user_name, pen_name, user_character, sex, birth_date, telephone, email, password, ip, user_image, likes,read_count,
+       writeCount, followCount, followerCount, brief_introduce, address_id, detail_address, last_login_time, data_create_time,
+       data_modify_time, data_is_deleted
+    </sql>
+
+    <select id="listFullUserBasic" resultType="com.moon.ancientpoetry.common.po.UserBasic">
+        select
+        <include refid="FULL_INFO"/>
+        FROM
+        <include refid="BASE_TABLE"/>
+    </select>
+
+    <select id="getUserFullBasicByUserId" resultType="com.moon.ancientpoetry.common.po.UserBasic">
+        select
+        <include refid="FULL_INFO"/>
+        FROM
+        <include refid="BASE_TABLE"/>
+        WHERE user_id = #{userId }
+    </select>
+
+    <select id="getUserBriefBasicByUserId" resultType="com.moon.ancientpoetry.common.po.UserBasic">
+        select
+        <include refid="BRIEF_INFO"/>
+        FROM
+        <include refid="BASE_TABLE"/>
+        WHERE user_id = #{userId }
+    </select>
+
+    <select id="getUserBriefBasicByUserTelephone" resultType="com.moon.ancientpoetry.common.po.UserBasic">
+        select
+        <include refid="BRIEF_INFO"/>
+        FROM
+        <include refid="BASE_TABLE"/>
+        WHERE telephone = #{telephone }
+    </select>
+
+    <select id="getCheckInfoByUserEmail" resultType="com.moon.ancientpoetry.common.po.UserBasic">
+        select
+        <include refid="CHECK_INFO"/>
+        FROM
+        <include refid="BASE_TABLE"/>
+        WHERE email = #{email }
+    </select>
+
+    <select id="getCheckInfoByUserTelephone" resultType="com.moon.ancientpoetry.common.po.UserBasic">
+        select
+        <include refid="CHECK_INFO"/>
+        FROM
+        <include refid="BASE_TABLE"/>
+        WHERE telephone = #{telephone }
+    </select>
+
+
+    <update id="updateBatchUserBasic" parameterType="com.moon.ancientpoetry.common.po.UserBasic">
+        <foreach collection="list" item="userBasic">
+            UPDATE
+            <include refid="BASE_TABLE"/>
+            <trim prefix="SET (" suffix=")" suffixOverrides=",">
+                <if test="userName != null">
+                    user_name = #{userBasic.userName},
+                </if>
+                <if test="penName != null">
+                    pen_name = #{userBasic.penName},
+                </if>
+                <if test="userCharacter != null">
+                    user_character = #{userBasic.userCharacter},
+                </if>
+                <if test="sex != null">
+                    sex = #{userBasic.sex},
+                </if>
+                <if test="birthDate != null">
+                    birth_date = #{userBasic.birthDate},
+                </if>
+                <if test="telephone != null">
+                    telephone = #{userBasic.telephone},
+                </if>
+                <if test="email != null">
+                    email = #{userBasic.email},
+                </if>
+                <if test="password != null">
+                    password = #{userBasic.password},
+                </if>
+                <if test="ip != null">
+                    ip = #{userBasic.ip},
+                </if>
+                <if test="userImage != null">
+                    user_image = #{userBasic.userImage},
+                </if>
+                <if test="likes != null">
+                    likes = #{userBasic.likes},
+                </if>
+                <if test="readCount != null">
+                    read_count = #{userBasic.readCount},
+                </if>
+                <if test="writeCount != null">
+                    write_count = #{userBasic.writeCount },
+                </if>
+                <if test="followCount != null">
+                    follow_count = #{userBasic.followCount },
+                </if>
+                <if test="followerCount != null">
+                    follow_count = #{userBasic.followerCount },
+                </if>
+                <if test="briefIntroduce != null">
+                    brief_introduce = #{userBasic.briefIntroduce},
+                </if>
+                <if test="addressId != null">
+                    address_id = #{userBasic.addressId},
+                </if>
+                <if test="detailAddress != null">
+                    detail_address = #{userBasic.detailAddress },
+                </if>
+                <if test="lastLoginTime != null">
+                    last_login_time = #{userBasic.lastLoginTime},
+                </if>
+            </trim>
+            WHERE user_id = #{userBasic.userId}
+        </foreach>
+    </update>
+
+    <update id="updateUserBasic" parameterType="com.moon.ancientpoetry.common.po.UserBasic">
+        UPDATE
+        <include refid="BASE_TABLE"/>
+        <trim prefix="SET (" suffix=")" suffixOverrides=",">
+            <if test="userName != null">
+                user_name = #{userName},
             </if>
+            <if test="penName != null">
+                pen_name = #{penName},
+            </if>
+            <if test="userCharacter != null">
+                user_character = #{userCharacter},
+            </if>
+            <if test="sex != null">
+                sex = #{sex},
+            </if>
+            <if test="birthDate != null">
+                birth_date = #{birthDate},
+            </if>
+            <if test="telephone != null">
+                telephone = #{telephone},
+            </if>
+            <if test="email != null">
+                email = #{email},
+            </if>
+            <if test="password != null">
+                password = #{password},
+            </if>
+            <if test="ip != null">
+                ip = #{ip},
+            </if>
+            <if test="userImage != null">
+                user_image = #{userImage},
+            </if>
+            <if test="likes != null">
+                likes = #{likes},
+            </if>
+            <if test="readCount != null">
+                read_count = #{readCount},
+            </if>
+            <if test="writeCount != null">
+                write_count = #{writeCount },
+            </if>
+            <if test="followCount != null">
+                follow_count = #{followCount },
+            </if>
+            <if test="followerCount != null">
+                follow_count = #{followerCount },
+            </if>
+            <if test="briefIntroduce != null">
+                brief_introduce = #{briefIntroduce},
+            </if>
+            <if test="addressId != null">
+                address_id = #{addressId},
+            </if>
+            <if test="detailAddress != null">
+                detail_address = #{detailAddress },
+            </if>
+            <if test="lastLoginTime != null">
+                last_login_time = #{lastLoginTime},
+            </if>
+        </trim>
+        WHERE user_id = #{userId}
+    </update>
+
+    <insert id="insertUserBasic" parameterType="com.moon.ancientpoetry.common.po.UserBasic" >
+        insert into
+        <include refid="BASE_TABLE"/>
+        <trim prefix="(" suffix=")" suffixOverrides="," >
             <if test="userName != null" >
                 user_name,
+            </if>
+            <if test="penName != null">
+                pen_name,
+            </if>
+            <if test="userCharacter != null">
+                user_character,
+            </if>
+            <if test="telephone != null">
+                telephone,
+            </if>
+            <if test="email != null">
+                email,
             </if>
             <if test="password != null" >
                 password,
             </if>
-            <if test="phone != null" >
-                phone,
-          </if>
-        </trim>
-        <trim prefix="values (" suffix=")" suffixOverrides="," >
-            <if test="userId != null" >
-                #{userId,jdbcType=INTEGER},
+            <if test="ip != null">
+                ip,
             </if>
-            <if test="userName != null" >
-                #{userName,jdbcType=VARCHAR},
+        </trim>
+        <trim prefix="VALUE (" suffix=")" suffixOverrides=",">
+            <if test="userName != null">
+                #{userName },
+            </if>
+            <if test="penName != null">
+                #{penName },
+            </if>
+            <if test="userCharacter != null">
+                #{userCharacter },
+            </if>
+            <if test="telephone != null">
+                #{telephone },
+            </if>
+            <if test="email != null">
+                #{email },
             </if>
             <if test="password != null" >
-                #{password,jdbcType=VARCHAR},
+                #{password },
             </if>
-            <if test="phone != null" >
-                #{phone,jdbcType=VARCHAR},
+            <if test="ip != null">
+                #{ip },
             </if>
         </trim>
     </insert>

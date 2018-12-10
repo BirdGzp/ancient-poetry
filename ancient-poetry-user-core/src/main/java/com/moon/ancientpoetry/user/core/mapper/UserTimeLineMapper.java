@@ -9,19 +9,33 @@ import java.util.List;
 public interface UserTimeLineMapper {
 
     /**
-     * 查询用户时间线信息，并通过时间排序
+     * 根据用户id 和 时间状态查询用户时间线信息，并通过时间排序(状态限定)
      * @param userId
      * @return
      */
-    List<UserTimeLine> listUserTimeLineOrderByTime(Integer userId);
+    List<UserTimeLine> listUserTimeLineByUserIdAndEventStateOrderByTime(Integer userId);
 
+    /**
+     * 根据用户id查询用户时间线信息，并通过时间排序
+     * @param userId
+     * @return
+     */
+    List<UserTimeLine> listUserTimeLineByUserIdOrderByTime(Integer userId);
+
+
+    /**
+     * 根据时间id 查询时间详细信息
+     * @param evnetId
+     * @return
+     */
+    UserTimeLine getUserTimeLineByEventId(Integer evnetId);
 
     /**
      * 批量 更新时间线信息
      * @param listUserTimeLines
      * @return
      */
-    int updateBatchTimeLine(List<UserTimeLine> listUserTimeLines);
+    int updateBatchUserTimeLine(List<UserTimeLine> listUserTimeLines);
 
     /**
      * 更新时间线信息

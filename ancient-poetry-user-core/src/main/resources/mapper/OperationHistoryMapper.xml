@@ -2,14 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.moon.ancientpoetry.user.core.mapper.OperationHistoryMapper" >
     <sql id="BASE_TABLE">
-      operation_history
+       operation_history
     </sql>
     <sql id="BRIEF_INFO">
-       operation_id, operatopn_user_id, article_id, operation_type
+         operation_id, operatopn_user_id, article_id, operation_type
     </sql>
 
     <sql id="FULL_INFO">
-      operation_id, operatopn_user_id, article_id, operation_type,data_create_time, data_modify_time, data_is_deleted
+       operation_id, operatopn_user_id, article_id, operation_type,data_create_time, data_modify_time, data_is_deleted
     </sql>
 
     <select id="listOperationHistoryByUserIdAndOperationType" >
