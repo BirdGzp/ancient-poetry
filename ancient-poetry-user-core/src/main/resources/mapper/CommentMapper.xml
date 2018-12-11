@@ -12,14 +12,12 @@
       data_create_time, data_modify_time, data_is_deleted
     </sql>
 
-    <select id="selectCommentByUserIdOrderByTime" resultType="com.moon.ancientpoetry.common.po.Comment"
+    <select id="selectFullComment" resultType="com.moon.ancientpoetry.common.po.Comment"
             parameterType="java.lang.Integer">
         SELECT
         <include refid="FULL_INFO"/>
         FROM
         <include refid="BASE_TABLE"/>
-        WHERE user_id = #{userId}
-        AND data_is_deleted = 0
     </select>
 
     <select id="selectCommentByParentCommentId" resultType="com.moon.ancientpoetry.common.po.Comment"
@@ -29,6 +27,17 @@
         FROM
         <include refid="BASE_TABLE"/>
         WHERE parent_comment_id = #{parentCommentId}
+        AND data_is_deleted = 0
+        ORDER BY likes
+    </select>
+
+    <select id="selectCommentByUserIdOrderByLikes" resultType="com.moon.ancientpoetry.common.po.Comment"
+            parameterType="java.lang.Integer">
+        SELECT
+        <include refid="FULL_INFO"/>
+        FROM
+        <include refid="BASE_TABLE"/>
+        WHERE user_id = #{userId}
         AND data_is_deleted = 0
         ORDER BY likes
     </select>

@@ -21,13 +21,17 @@ public class HistoryTimeLine {
 
     private String eventContent;
 
+    private Boolean eventState;
+
     private LocalDateTime dataCreateTime;
 
     private LocalDateTime dataModifyTime;
 
     private Boolean dataIsDeleted;
 
-    public HistoryTimeLine(Integer eventId, String eventTitle, Byte eventOfType, Integer eventOfId, String eventOfName, Boolean showName, Integer uploadUserId, String uploadUserName, String eventContent, LocalDateTime dataCreateTime, LocalDateTime dataModifyTime, Boolean dataIsDeleted) {
+    public HistoryTimeLine(Integer eventId, String eventTitle, Byte eventOfType, Integer eventOfId, String eventOfName,
+                           Boolean showName, Integer uploadUserId, String uploadUserName, String eventContent,
+                           Boolean eventState, LocalDateTime dataCreateTime, LocalDateTime dataModifyTime, Boolean dataIsDeleted) {
         this.eventId = eventId;
         this.eventTitle = eventTitle;
         this.eventOfType = eventOfType;
@@ -37,6 +41,7 @@ public class HistoryTimeLine {
         this.uploadUserId = uploadUserId;
         this.uploadUserName = uploadUserName;
         this.eventContent = eventContent;
+        this.eventState = eventState;
         this.dataCreateTime = dataCreateTime;
         this.dataModifyTime = dataModifyTime;
         this.dataIsDeleted = dataIsDeleted;
@@ -118,6 +123,14 @@ public class HistoryTimeLine {
         this.eventContent = eventContent == null ? null : eventContent.trim();
     }
 
+    public Boolean getEventState() {
+        return eventState;
+    }
+
+    public void setEventState(Boolean eventState) {
+        this.eventState = eventState;
+    }
+
     public LocalDateTime getDataCreateTime() {
         return dataCreateTime;
     }
@@ -154,6 +167,7 @@ public class HistoryTimeLine {
                 ", uploadUserId=" + uploadUserId +
                 ", uploadUserName='" + uploadUserName + '\'' +
                 ", eventContent='" + eventContent + '\'' +
+                ", eventState=" + eventState +
                 ", dataCreateTime=" + dataCreateTime +
                 ", dataModifyTime=" + dataModifyTime +
                 ", dataIsDeleted=" + dataIsDeleted +

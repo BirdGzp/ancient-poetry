@@ -11,9 +11,9 @@ public class Article {
 
     private Byte articleState;
 
-    private Integer floderId;
+    private Integer folderId;
 
-    private String floderName;
+    private String folderName;
 
     private Integer authorId;
 
@@ -37,13 +37,16 @@ public class Article {
 
     private Boolean dataIsDeleted;
 
-    public Article(Integer articleId, String articleName, String articlePath, Byte articleState, Integer floderId, String floderName, Integer authorId, String authorName, Integer articleTypeId, String articleTypeName, String articleTagIds, String articleTags, Integer likes, Integer visitCount, LocalDateTime dataCreateTime, LocalDateTime dataModifyTime, Boolean dataIsDeleted) {
+    public Article(Integer articleId, String articleName, String articlePath, Byte articleState, Integer folderId,
+                   String folderName, Integer authorId, String authorName, Integer articleTypeId, String articleTypeName,
+                   String articleTagIds, String articleTags, Integer likes, Integer visitCount, LocalDateTime dataCreateTime,
+                   LocalDateTime dataModifyTime, Boolean dataIsDeleted) {
         this.articleId = articleId;
         this.articleName = articleName;
         this.articlePath = articlePath;
         this.articleState = articleState;
-        this.floderId = floderId;
-        this.floderName = floderName;
+        this.folderId = folderId;
+        this.folderName = folderName;
         this.authorId = authorId;
         this.authorName = authorName;
         this.articleTypeId = articleTypeId;
@@ -55,10 +58,6 @@ public class Article {
         this.dataCreateTime = dataCreateTime;
         this.dataModifyTime = dataModifyTime;
         this.dataIsDeleted = dataIsDeleted;
-    }
-
-    public Article() {
-        super();
     }
 
     public Integer getArticleId() {
@@ -74,7 +73,7 @@ public class Article {
     }
 
     public void setArticleName(String articleName) {
-        this.articleName = articleName == null ? null : articleName.trim();
+        this.articleName = articleName;
     }
 
     public String getArticlePath() {
@@ -82,7 +81,7 @@ public class Article {
     }
 
     public void setArticlePath(String articlePath) {
-        this.articlePath = articlePath == null ? null : articlePath.trim();
+        this.articlePath = articlePath;
     }
 
     public Byte getArticleState() {
@@ -93,20 +92,20 @@ public class Article {
         this.articleState = articleState;
     }
 
-    public Integer getFloderId() {
-        return floderId;
+    public Integer getFolderId() {
+        return folderId;
     }
 
-    public void setFloderId(Integer floderId) {
-        this.floderId = floderId;
+    public void setFolderId(Integer folderId) {
+        this.folderId = folderId;
     }
 
-    public String getFloderName() {
-        return floderName;
+    public String getFolderName() {
+        return folderName;
     }
 
-    public void setFloderName(String floderName) {
-        this.floderName = floderName == null ? null : floderName.trim();
+    public void setFolderName(String folderName) {
+        this.folderName = folderName;
     }
 
     public Integer getAuthorId() {
@@ -122,7 +121,7 @@ public class Article {
     }
 
     public void setAuthorName(String authorName) {
-        this.authorName = authorName == null ? null : authorName.trim();
+        this.authorName = authorName;
     }
 
     public Integer getArticleTypeId() {
@@ -138,7 +137,7 @@ public class Article {
     }
 
     public void setArticleTypeName(String articleTypeName) {
-        this.articleTypeName = articleTypeName == null ? null : articleTypeName.trim();
+        this.articleTypeName = articleTypeName;
     }
 
     public String getArticleTagIds() {
@@ -146,7 +145,7 @@ public class Article {
     }
 
     public void setArticleTagIds(String articleTagIds) {
-        this.articleTagIds = articleTagIds == null ? null : articleTagIds.trim();
+        this.articleTagIds = articleTagIds;
     }
 
     public String getArticleTags() {
@@ -154,7 +153,7 @@ public class Article {
     }
 
     public void setArticleTags(String articleTags) {
-        this.articleTags = articleTags == null ? null : articleTags.trim();
+        this.articleTags = articleTags;
     }
 
     public Integer getLikes() {
@@ -204,8 +203,8 @@ public class Article {
                 ", articleName='" + articleName + '\'' +
                 ", articlePath='" + articlePath + '\'' +
                 ", articleState=" + articleState +
-                ", floderId=" + floderId +
-                ", floderName='" + floderName + '\'' +
+                ", folderId=" + folderId +
+                ", folderName='" + folderName + '\'' +
                 ", authorId=" + authorId +
                 ", authorName='" + authorName + '\'' +
                 ", articleTypeId=" + articleTypeId +

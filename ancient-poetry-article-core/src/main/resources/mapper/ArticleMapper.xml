@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.moon.ancientpoetry.article.core.mapper.ArticleMapper">
+    <sql id="BASE_TABLE">
+      article
+    </sql>
+
+    <sql id="LESS_INFO">
+        article_id, article_name, article_path, article_state, author_id, author_name, likes, visit_count
+    </sql>
+    <sql id="BRIEF_INFO">
+       article_id, article_name, article_path, article_state, folder_id, folder_name, author_id, author_name, article_type_id,
+       article_type_name, article_tag_ids, article_tags, likes, visit_count
+    </sql>
+    <sql id="FULL_INFO">
+       article_id, article_name, article_path, article_state, folder_id, folder_name, author_id, author_name, article_type_id,
+       article_type_name, article_tag_ids, article_tags, likes, visit_count, data_create_time, data_modify_time, data_is_deleted
+    </sql>
+
+
+    <select id="listArticleByFolderId" parameterType="java.lang.Integer">
+        SELECT <include refid="LESS_INFO"/>
+        FROM <include refid="BASE_TABLE"/>
+        WHERE folder_id = #{folderId}
+    </select>
+
+    <select id="listArticleByUserId" parameterType="java.lang.Integer">
+        SELECT <include refid="LESS_INFO"/>
+        FROM <include refid="BASE_TABLE"/>
+        WHERE user_id = #{userId}
+    </select>
+
+    <select id="getArticleByArticleId" parameterType="java.lang.Integer">
+        SELECT <include refid="FULL_INFO"/>
+        FROM <include refid="BASE_TABLE"/>
+        WHERE article_id = #{articleId}
+    </select>
+
+    <update id="updateArticleByArticleId" parameterType="com.moon.ancientpoetry.common.po.Article">
+        UPDATE <include refid="BASE_TABLE"/>
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="articleName != null">
+                article_name = #{articleName },
+            </if>
+            <if test="articleState != null">
+                article_state = #{articleState },
+            </if>
+            <if test="folderId != null">
+                folder_id = #{folderId },
+            </if>
+            <if test="folderName != null">
+                folder_name = #{folderName },
+            </if>
+            <if test="likes != null">
+                likes = #{likes },
+            </if>
+            <if test="visitCount != null">
+                visit_count = #{visitCount },
+            </if>
+            <if test="dataIsDeleted != null">
+                data_is_deleted = #{dataIsDeleted },
+            </if>
+        </trim>
+        WHERE article_id = #{articleId }
+    </update>
+
+    <insert id="insertBatchArticle" parameterType="com.moon.ancientpoetry.common.po.Article">
+        INSERT INTO
+        <include refid="BASE_TABLE"/>
+        (
+        <include refid="BRIEF_INFO"/>
+        )
+        VALUE
+        (
+        <foreach collection="list" item="article" separator=",">
+            #{article.articleId }, #{article.articleName }, #{article.articlePath }, #{article.articleState },
+            #{article.folderId },
+            #{article.folderName }, #{article.authorId },#{article.authorName }, #{article.article_type_id },
+            #{article.article_type_name},
+            #{article.article_tag_ids}, #{article.article_tags }, #{article.likes }, #{article.visit_count }
+        </foreach>
+        )
+    </insert>
+
+    <insert id="insertArticle" parameterType="com.moon.ancientpoetry.common.po.Article">
+        INSERT INTO
+        <include refid="BASE_TABLE"/>
+        (
+        <include refid="BRIEF_INFO"/>
+        )
+        VALUE
+        (
+        #{articleId }, #{articleName }, #{articlePath }, #{articleState }, #{folderId }, #{folderName }, #{authorId },
+        #{authorName }, #{article_type_id }, #{article_type_name}, #{article_tag_ids}, #{article_tags }, #{likes },
+        #{visit_count }
+        )
+    </insert>
+</mapper>

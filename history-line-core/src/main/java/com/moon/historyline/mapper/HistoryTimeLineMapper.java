@@ -2,16 +2,51 @@ package com.moon.historyline.mapper;
 
 import com.moon.ancientpoetry.common.po.HistoryTimeLine;
 
+import java.util.List;
+
 public interface HistoryTimeLineMapper {
-    int deleteByPrimaryKey(Integer eventId);
 
-    int insert(HistoryTimeLine record);
 
-    int insertSelective(HistoryTimeLine record);
+    /**
+     * 根据上传用户查询用户上传的事件
+     * @param eventId
+     * @return
+     */
+    List<HistoryTimeLine> listHistoryTimeLineByUploadUserId(Integer eventId);
 
-    HistoryTimeLine selectByPrimaryKey(Integer eventId);
+    /**
+     * 根据事件有关的id 进行查找
+     * @param eventOfType
+     * @param eventOfId
+     * @return
+     */
+    List<HistoryTimeLine> listHistoryTimeLineByEventOfId(Integer eventOfType,Integer eventOfId);
 
-    int updateByPrimaryKeySelective(HistoryTimeLine record);
+    /**
+     * 通过事件id 获取事件详细信息
+     * @param eventId
+     * @return
+     */
+    HistoryTimeLine getHistoryTimeLineByEventId(Integer eventId);
 
-    int updateByPrimaryKey(HistoryTimeLine record);
+    /**
+     * 更新一条历史时间线记录
+     * @param historyTimeLine
+     * @return
+     */
+    int updateHistoryTimeLineByEventId(HistoryTimeLine historyTimeLine);
+
+    /**
+     * 插入一批历史时间记录
+     * @param historyTimeLineList
+     * @return
+     */
+    int insertBatchHistoryTimeLine(List<HistoryTimeLine> historyTimeLineList);
+
+    /**
+     * 插入一条历史的时间线
+     * @param historyTimeLine  时间线记录
+     * @return
+     */
+    int insertHistoryTimeLine(HistoryTimeLine historyTimeLine);
 }

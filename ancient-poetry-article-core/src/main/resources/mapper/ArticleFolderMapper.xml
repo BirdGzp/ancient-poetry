@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.moon.ancientpoetry.article.core.mapper.ArticleFolderMapper" >
+    <sql id="BASE_TABLE">
+        article_folder
+    </sql>
+    <sql id="BRIEF_INFO">
+        folder_id, folder_name, user_id, user_name, article_count, likes,read_count
+    </sql>
+    <sql id="FULL_INFO">
+        folder_id, folder_name, user_id, user_name, brief_introduce, parent_folder_id, parent_folder_name, article_count, likes,
+        read_count, data_create_time, data_modify_time, data_is_deleted
+    </sql>
+
+    <select id="listDeleteFolderByUserId" >
+        SELECT <include refid="BRIEF_INFO"/>
+        FROM <include refid="BASE_TABLE"/>
+        WHERE user_id = #{userId}
+        AND data_modify_time > #{dataModifyTime}
+        AND data_is_deleted = 1;
+    </select>
+
+    <select id="listArticleFolderByParentFolderId" parameterType="java.lang.Integer">
+        SELECT <include refid="BRIEF_INFO"/>
+        FROM <include refid="BASE_TABLE"/>
+        WHERE parent_folder_id = #{parentFolderId}
+        AND data_is_deleted = 0;
+    </select>
+
+    <select id="listArticleFolderByUserId" parameterType="java.lang.Integer">
+        SELECT <include refid="BRIEF_INFO"/>
+        FROM <include refid="BASE_TABLE"/>
+        WHERE user_id = #{userId}
+        AND data_is_deleted = 0;
+    </select>
+
+    <select id="getArticleFolderByFolderId" parameterType="java.lang.Integer">
+        SELECT <include refid="FULL_INFO"/>
+        FROM <include refid="BASE_TABLE"/>
+        WHERE floder_id = #{floderId}
+    </select>
+
+    <update id="updateArticleFolderByArticleFloderId" parameterType="com.moon.ancientpoetry.common.po.ArticleFolder">
+        UPDATE <include refid="BASE_TABLE"/>
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="folderName != null">
+                folder_name = #{folderName },
+            </if>
+            <if test="briefIntroduce != null">
+                brief_introduce = #{briefIntroduce },
+            </if>
+            <if test="articleCount != null">
+                article_count = #{articleCount },
+            </if>
+            <if test="likes != null">
+                likes = #{likes },
+            </if>
+            <if test="readCount != null">
+                read_count = #{readCount },
+            </if>
+            <if test="dataIsDeleted != null">
+                data_is_deleted = #{dataIsDeleted },
+            </if>
+        </trim>
+        WHERE article_floder_id = #{articleFolderId}
+    </update>
+
+    <insert id="insertBatchArticleFolder" parameterType="com.moon.ancientpoetry.common.po.ArticleFolder">
+        INSERT INTO <include refid="BASE_TABLE"/>
+        (
+        folder_name, user_id, user_name, brief_introduce, parent_folder_id, parent_folder_name, article_count, likes,read_count
+        )
+        VALUE
+        (
+        <foreach collection="list" item="articleFolder" separator=",">
+            #{articleFolder.folderName }, #{articleFolder.userId }, #{articleFolder.userName },
+            #{articleFolder.briefIntroduce },#{articleFolderparentFolderId },
+            #{articleFolder.parentFolderName },#{articleFolder.articleCount },
+            #{articleFolder.likes }, #{articleFolder.readCount }
+        </foreach>
+        )
+    </insert>
+
+    <insert id="insertArticleFolder" parameterType="com.moon.ancientpoetry.common.po.ArticleFolder">
+        INSERT INTO <include refid="BASE_TABLE"/>
+        (
+        folder_name, user_id, user_name, brief_introduce, parent_folder_id, parent_folder_name, article_count,
+        likes,read_count
+        )
+        VALUE
+        (
+        #{folderName }, #{userId }, #{userName }, #{briefIntroduce }, #{parentFolderId }, #{parentFolderName },
+        #{articleCount }, #{likes }, #{readCount }
+        )
+    </insert>
+</mapper>

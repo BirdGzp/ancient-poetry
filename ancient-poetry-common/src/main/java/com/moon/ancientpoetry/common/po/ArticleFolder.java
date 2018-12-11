@@ -3,10 +3,10 @@ package com.moon.ancientpoetry.common.po;
 
 import java.time.LocalDateTime;
 
-public class ArticleFloder {
-    private Integer floderId;
+public class ArticleFolder {
+    private Integer folderId;
 
-    private String floderName;
+    private String folderName;
 
     private Integer userId;
 
@@ -14,9 +14,9 @@ public class ArticleFloder {
 
     private String briefIntroduce;
 
-    private Integer parentFloaderId;
+    private Integer parentFolderId;
 
-    private String parentFloderName;
+    private String parentFolderName;
 
     private String articleCount;
 
@@ -30,14 +30,16 @@ public class ArticleFloder {
 
     private Boolean dataIsDeleted;
 
-    public ArticleFloder(Integer floderId, String floderName, Integer userId, String userName, String briefIntroduce, Integer parentFloaderId, String parentFloderName, String articleCount, Integer likes, Integer readCount, LocalDateTime dataCreateTime, LocalDateTime dataModifyTime, Boolean dataIsDeleted) {
-        this.floderId = floderId;
-        this.floderName = floderName;
+    public ArticleFolder(Integer folderId, String folderName, Integer userId, String userName, String briefIntroduce,
+                         Integer parentFolderId, String parentFolderName, String articleCount, Integer likes, Integer readCount,
+                         LocalDateTime dataCreateTime, LocalDateTime dataModifyTime, Boolean dataIsDeleted) {
+        this.folderId = folderId;
+        this.folderName = folderName;
         this.userId = userId;
         this.userName = userName;
         this.briefIntroduce = briefIntroduce;
-        this.parentFloaderId = parentFloaderId;
-        this.parentFloderName = parentFloderName;
+        this.parentFolderId = parentFolderId;
+        this.parentFolderName = parentFolderName;
         this.articleCount = articleCount;
         this.likes = likes;
         this.readCount = readCount;
@@ -46,24 +48,20 @@ public class ArticleFloder {
         this.dataIsDeleted = dataIsDeleted;
     }
 
-    public ArticleFloder() {
-        super();
+    public Integer getFolderId() {
+        return folderId;
     }
 
-    public Integer getFloderId() {
-        return floderId;
+    public void setFolderId(Integer folderId) {
+        this.folderId = folderId;
     }
 
-    public void setFloderId(Integer floderId) {
-        this.floderId = floderId;
+    public String getFolderName() {
+        return folderName;
     }
 
-    public String getFloderName() {
-        return floderName;
-    }
-
-    public void setFloderName(String floderName) {
-        this.floderName = floderName == null ? null : floderName.trim();
+    public void setFolderName(String folderName) {
+        this.folderName = folderName;
     }
 
     public Integer getUserId() {
@@ -79,7 +77,7 @@ public class ArticleFloder {
     }
 
     public void setUserName(String userName) {
-        this.userName = userName == null ? null : userName.trim();
+        this.userName = userName;
     }
 
     public String getBriefIntroduce() {
@@ -87,23 +85,23 @@ public class ArticleFloder {
     }
 
     public void setBriefIntroduce(String briefIntroduce) {
-        this.briefIntroduce = briefIntroduce == null ? null : briefIntroduce.trim();
+        this.briefIntroduce = briefIntroduce;
     }
 
-    public Integer getParentFloaderId() {
-        return parentFloaderId;
+    public Integer getParentFolderId() {
+        return parentFolderId;
     }
 
-    public void setParentFloaderId(Integer parentFloaderId) {
-        this.parentFloaderId = parentFloaderId;
+    public void setParentFolderId(Integer parentFolderId) {
+        this.parentFolderId = parentFolderId;
     }
 
-    public String getParentFloderName() {
-        return parentFloderName;
+    public String getParentFolderName() {
+        return parentFolderName;
     }
 
-    public void setParentFloderName(String parentFloderName) {
-        this.parentFloderName = parentFloderName == null ? null : parentFloderName.trim();
+    public void setParentFolderName(String parentFolderName) {
+        this.parentFolderName = parentFolderName;
     }
 
     public String getArticleCount() {
@@ -111,7 +109,7 @@ public class ArticleFloder {
     }
 
     public void setArticleCount(String articleCount) {
-        this.articleCount = articleCount == null ? null : articleCount.trim();
+        this.articleCount = articleCount;
     }
 
     public Integer getLikes() {
@@ -156,14 +154,14 @@ public class ArticleFloder {
 
     @Override
     public String toString() {
-        return "ArticleFloder{" +
-                "floderId=" + floderId +
-                ", floderName='" + floderName + '\'' +
+        return "ArticleFolder{" +
+                "folderId=" + folderId +
+                ", folderName='" + folderName + '\'' +
                 ", userId=" + userId +
                 ", userName='" + userName + '\'' +
                 ", briefIntroduce='" + briefIntroduce + '\'' +
-                ", parentFloaderId=" + parentFloaderId +
-                ", parentFloderName='" + parentFloderName + '\'' +
+                ", parentFolderId=" + parentFolderId +
+                ", parentFolderName='" + parentFolderName + '\'' +
                 ", articleCount='" + articleCount + '\'' +
                 ", likes=" + likes +
                 ", readCount=" + readCount +

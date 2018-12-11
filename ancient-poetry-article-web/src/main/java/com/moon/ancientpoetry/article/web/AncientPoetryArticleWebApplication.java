@@ -1,4 +1,4 @@
-package com.moon.ancientpoetryarticle.web;
+package com.moon.ancientpoetry.article.web;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

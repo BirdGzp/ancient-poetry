@@ -14,12 +14,36 @@
     <parent>
         <groupId>com.moon</groupId>
         <artifactId>ancient-poetry</artifactId>
-        <version>1.0.0</version>
+        <version>0.0.1.SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.moon</groupId>
+            <artifactId>ancient-poetry-common</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
