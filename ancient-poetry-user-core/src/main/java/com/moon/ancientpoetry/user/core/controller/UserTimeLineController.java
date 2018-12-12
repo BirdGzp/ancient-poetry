@@ -16,7 +16,7 @@ import java.util.List;
  * @Description:
  */
 @RestController
-@RequestMapping("/user/detail")
+@RequestMapping("/user-time-line")
 public class UserTimeLineController {
     @Autowired
     UserTimeLineService userTimeLineService;
@@ -62,7 +62,7 @@ public class UserTimeLineController {
     }
 
     @ResponseBody
-    @GetMapping("/update/batch/{listUserTimeLine}")
+    @GetMapping("/insert/batch/{listUserTimeLine}")
     public int insertBatchUserTimeLine(
             @PathVariable(name = "listUserTimeLine", required = false) String listUserTimeLine){
         return userTimeLineService.insertBatchUserTimeLine(JSON.parseObject(listUserTimeLine, new TypeReference<List<UserTimeLine>>(){}));
