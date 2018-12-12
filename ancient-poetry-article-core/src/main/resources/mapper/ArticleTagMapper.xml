@@ -37,10 +37,11 @@
             <if test="articleParentTagName != null">
                 article_parent_tag_name = #{articleParentTagName },
             </if>
+        </trim>
         WHERE article_tag_id = #{articleTagId }
     </update>
 
-    <insert id="insertArticleTag" parameterType="om.moon.ancientpoetry.common.po.ArticleTag">
+    <insert id="insertArticleTag" parameterType="com.moon.ancientpoetry.common.po.ArticleTag">
         INSERT INTO <include refid="BASE_TABLE"/>
         (
         <include refid="BRIEF_INFO"/>

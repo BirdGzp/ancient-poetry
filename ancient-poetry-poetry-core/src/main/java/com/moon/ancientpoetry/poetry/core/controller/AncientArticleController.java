@@ -28,7 +28,7 @@ public class AncientArticleController {
 
     @ResponseBody
     @GetMapping("/list/{authorId}/{pageNum}/{pageSize}")
-    public PageInfo listFullAllAncientAuthor(
+    public PageInfo listAncientArticleByAuthorId(
             @PathVariable(name = "authorId", required = false) Integer authorId,
             @PathVariable(name = "pageNum", required = false) Integer pageNum,
             @PathVariable(name = "pageSize", required = false) Integer pageSize){

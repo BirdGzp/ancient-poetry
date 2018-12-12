@@ -30,24 +30,24 @@ public interface UserBasicMapper {
 
     /**
      * 根据用户手机号码 来查询用户
-     * @param userTelephone
+     * @param telephone
      * @return
      */
-    UserBasic getUserBriefBasicByUserTelephone(String userTelephone);
+    UserBasic getUserBriefBasicByTelephone(String telephone);
 
     /**
      * 根据用户邮箱 获得用户密码等信息，用来校验
-     * @param userEmail
+     * @param email
      * @return
      */
-    UserBasic getCheckInfoByUserEmail(String userEmail);
+    UserBasic getCheckInfoByEmail(String email);
 
     /**
      * 根据用户手机号码 获得用户密码等信息，用来校验
-     * @param userTelephone
+     * @param telephone
      * @return
      */
-    UserBasic getCheckInfoByUserTelephone(String userTelephone);
+    UserBasic getCheckInfoByTelephone(String telephone);
 
 
     /**

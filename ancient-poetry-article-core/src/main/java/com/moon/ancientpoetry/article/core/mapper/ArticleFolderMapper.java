@@ -2,10 +2,12 @@ package com.moon.ancientpoetry.article.core.mapper;
 
 
 import com.moon.ancientpoetry.common.po.ArticleFolder;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Mapper
 public interface ArticleFolderMapper {
     /**
      * 显示已删除的文件(根据userId 和 一个月前的时间)

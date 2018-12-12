@@ -1,12 +1,16 @@
-package com.moon.ancientpoetry.user.core.mapper;
+package com.moon.ancientpoetry.user.core.service;
 
+import com.github.pagehelper.PageInfo;
 import com.moon.ancientpoetry.common.po.Like;
-import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
-@Mapper
-public interface LikeMapper {
+/**
+ * @Author: zhipeng gong
+ * @Date: 2018/12/12 10:14
+ * @Description:
+ */
+public interface LikeService {
     /**
      * 根据类型 和id 得到点赞总数
      * @param fromId
@@ -20,7 +24,7 @@ public interface LikeMapper {
      * @param userId
      * @return
      */
-    List<Like> listLikeByUserIdOrderByTime(Integer userId);
+    PageInfo listLikeByUserIdOrderByTime(Integer userId, Integer pageNum, Integer pageSize);
 
     /**
      * 更新一条记录为删除状态
@@ -31,10 +35,10 @@ public interface LikeMapper {
 
     /**
      * 批量插入一批点赞记录
-     * @param like
+     * @param likes
      * @return
      */
-    int insertBatchLikes(List like);
+    int insertBatchLikes(List likes);
 
     /**
      * 插入点赞记录

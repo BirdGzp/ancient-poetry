@@ -1,25 +1,28 @@
-package com.moon.ancientpoetry.user.core.mapper;
+package com.moon.ancientpoetry.user.core.service;
 
+import com.github.pagehelper.PageInfo;
 import com.moon.ancientpoetry.common.po.Relation;
-import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
-@Mapper
-public interface RelationMapper {
-
+/**
+ * @Author: zhipeng gong
+ * @Date: 2018/12/12 10:15
+ * @Description:
+ */
+public interface RelationService {
     /**
      * 查询对象被谁关注过
      * @param followId 关注的对象id
      * @return
      */
-    List<Relation> listRelationByFollowId(Integer followId);
+    PageInfo<Relation> listRelationByFollowId(Integer followId, Integer pageNum, Integer pageSize);
     /**
      * 根据与用户 id 查询关注的对象
      * @param userId 用户id
      * @return
      */
-    List<Relation> listRelationByUserId(Integer userId);
+    PageInfo<Relation> listRelationByUserId(Integer userId, Integer pageNum, Integer pageSize);
 
 
     /**
@@ -47,5 +50,5 @@ public interface RelationMapper {
      * @return
      */
     int insertRelation(Relation relation);
-
 }
+

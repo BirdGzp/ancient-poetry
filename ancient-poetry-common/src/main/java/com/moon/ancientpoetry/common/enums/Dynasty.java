@@ -84,7 +84,4 @@ public enum Dynasty{
         }
     }
 
-    public static void main(String[] args) {
-        System.out.println(Dynasty.getDynasty("元代"));
-    }
 }

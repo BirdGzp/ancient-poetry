@@ -1,50 +1,55 @@
-package com.moon.ancientpoetry.user.core.mapper;
+package com.moon.ancientpoetry.user.core.service;
 
+import com.github.pagehelper.PageInfo;
 import com.moon.ancientpoetry.common.po.Comment;
-import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
-@Mapper
-public interface CommentMapper {
 
+/**
+ * @Author: zhipeng gong
+ * @Date: 2018/12/12 10:14
+ * @Description:
+ */
+public interface CommentService {
     /**
      * 获得全部评论
      * @return
      */
-    List<Comment> listFullComment();
+    PageInfo<Comment> listFullComment(Integer pageNum, Integer pageSize);
 
     /**
      * 根据评论 id 查找评论下的评论
      * @param parentCommentId
      * @return
      */
-    List<Comment> listCommentByParentCommentId(Integer parentCommentId);
+    PageInfo<Comment> listCommentByParentCommentId(Integer parentCommentId, Integer pageNum, Integer pageSize);
 
     /**
      * 根据用户 id 查询评论(点赞排序)
      * @param userId
      * @return
      */
-    List<Comment> listCommentByUserIdOrderByLikes(Integer userId);
+    PageInfo<Comment> listCommentByUserIdOrderByLikes(Integer userId, Integer pageNum, Integer pageSize);
 
     /**
      * 根据用户 id 查询评论(时间排序)
      * @param userId
      * @return
      */
-    List<Comment> listCommentByUserIdOrderByTime(Integer userId);
+    PageInfo<Comment> listCommentByUserIdOrderByTime(Integer userId, Integer pageNum, Integer pageSize);
 
     /**
      * 根据文章id 查询评论
      * @param articleId
      * @return
      */
-    List<Comment> listCommentsByArticleIdAndArticleType(Integer articleId, Integer articleType);
+    PageInfo<Comment> listCommentsByArticleIdAndArticleType(Integer articleId, Integer articleType, Integer pageNum, Integer pageSize);
 
     /**
      * 更新评论为删除状态
      * @param comment
+     * @param
      * @return
      */
     int updateCommentsDeleteState(Comment comment);

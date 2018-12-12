@@ -1,9 +1,11 @@
 package com.moon.ancientpoetry.article.core.mapper;
 
 import com.moon.ancientpoetry.common.po.ArticleTag;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
+@Mapper
 public interface ArticleTagMapper {
     /**
      * 获得全部标签，article_tag_id为null

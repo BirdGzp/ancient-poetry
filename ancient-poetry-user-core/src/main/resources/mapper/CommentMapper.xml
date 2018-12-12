@@ -5,14 +5,14 @@
       comment
     </sql>
     <sql id="BRIEF_INFO">
-        comment_id, comment_content, author_id, user_id, user_name, likes, parent_comment_id
+        comment_id, comment_content, article_type, article_id, user_id, user_name, likes, parent_comment_id
     </sql>
     <sql id="FULL_INFO">
-      comment_id, comment_content, author_id, user_id, user_name, likes, parent_comment_id,
+      comment_id, comment_content, article_type, article_id, user_id, user_name, likes, parent_comment_id,
       data_create_time, data_modify_time, data_is_deleted
     </sql>
 
-    <select id="selectFullComment" resultType="com.moon.ancientpoetry.common.po.Comment"
+    <select id="listFullComment" resultType="com.moon.ancientpoetry.common.po.Comment"
             parameterType="java.lang.Integer">
         SELECT
         <include refid="FULL_INFO"/>
@@ -20,7 +20,7 @@
         <include refid="BASE_TABLE"/>
     </select>
 
-    <select id="selectCommentByParentCommentId" resultType="com.moon.ancientpoetry.common.po.Comment"
+    <select id="listCommentByParentCommentId" resultType="com.moon.ancientpoetry.common.po.Comment"
             parameterType="java.lang.Integer">
         SELECT
         <include refid="FULL_INFO"/>
@@ -31,7 +31,7 @@
         ORDER BY likes
     </select>
 
-    <select id="selectCommentByUserIdOrderByLikes" resultType="com.moon.ancientpoetry.common.po.Comment"
+    <select id="listCommentByUserIdOrderByLikes" resultType="com.moon.ancientpoetry.common.po.Comment"
             parameterType="java.lang.Integer">
         SELECT
         <include refid="FULL_INFO"/>
@@ -42,24 +42,25 @@
         ORDER BY likes
     </select>
 
-    <select id="selectCommentByUserIdOrderByTime" resultType="com.moon.ancientpoetry.common.po.Comment"
+    <select id="listCommentByUserIdOrderByTime" resultType="com.moon.ancientpoetry.common.po.Comment"
             parameterType="java.lang.Integer">
         SELECT
         <include refid="FULL_INFO"/>
         FROM
         <include refid="BASE_TABLE"/>
-        WHERE user_id = #{userId}
+        WHERE user_id = #{userId }
         AND data_is_deleted = 0
         ORDER BY data_create_time
     </select>
 
-    <select id="selectCommentsByArticleId" resultType="com.moon.ancientpoetry.common.po.Comment"
+    <select id="listCommentsByArticleIdAndArticleType" resultType="com.moon.ancientpoetry.common.po.Comment"
             parameterType="java.lang.Integer">
         SELECT
         <include refid="FULL_INFO"/>
         FROM
         <include refid="BASE_TABLE"/>
-        WHERE article_id = #{articleId}
+        WHERE article_id = #{articleId }
+        AND article_type = #{article_type }
         AND data_is_deleted = 0
     </select>
 
@@ -84,7 +85,7 @@
         <include refid="BRIEF_INFO"/>
         )
         VALUE
-        (null, #{commentContent}, #{articleId}, #{userId}, #{userName}, #{likes}, #{parentCommentId})
+        (null, #{commentContent}, #{article_type}, #{articleId}, #{userId}, #{userName}, #{likes}, #{parentCommentId})
     </insert>
 
     <insert id="insertBatchComments" parameterType="com.moon.ancientpoetry.common.po.Comment">
@@ -95,9 +96,8 @@
         )
         VALUE
         <foreach collection="list" item="comment" separator=",">
-            (null, #{comment.commentContent}, #{comment.articleId}, #{comment.userId}, #{comment.userName},
-            #{comment.likes},
-            #{comment.parentCommentId})
+            (null, #{comment.commentContent },  #{comment.article_type }, #{comment.articleI d}, #{comment.userId},
+            #{comment.userName}, #{comment.likes},  #{comment.parentCommentId})
         </foreach>
     </insert>
 

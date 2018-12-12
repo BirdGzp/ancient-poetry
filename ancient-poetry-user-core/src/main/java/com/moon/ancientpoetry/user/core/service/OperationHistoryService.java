@@ -1,20 +1,23 @@
-package com.moon.ancientpoetry.user.core.mapper;
+package com.moon.ancientpoetry.user.core.service;
 
-import com.moon.ancientpoetry.common.po.HistoryTimeLine;
+import com.github.pagehelper.PageInfo;
 import com.moon.ancientpoetry.common.po.OperationHistory;
-import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
-@Mapper
-public interface OperationHistoryMapper {
-
+/**
+ * @Author: zhipeng gong
+ * @Date: 2018/12/12 10:15
+ * @Description:
+ */
+public interface OperationHistoryService {
     /**
      * 根据文章 id 和操作类型 查询操作记录
      * @param articleId
      * @return
      */
-    List<OperationHistory> listOperationHistoryByUserIdAndOperationTypeOrderByTime(Integer articleId, Integer operatorType);
+    PageInfo<OperationHistory> listOperationHistoryByUserIdAndOperationTypeOrderByTime(Integer articleId, Integer operatorType,
+                                                                                       Integer pageNum,Integer pageSize);
 
 
     /**
@@ -22,7 +25,7 @@ public interface OperationHistoryMapper {
      * @param userId
      * @return
      */
-    List<OperationHistory> listOperationHistoryByUserIdOrderByTime(Integer userId);
+    PageInfo<OperationHistory> listOperationHistoryByUserIdOrderByTime(Integer userId, Integer pageNum, Integer pageSize);
 
     /**
      * 批量修改一批记录的删除状态
@@ -51,7 +54,4 @@ public interface OperationHistoryMapper {
      * @return
      */
     int insertOperationHistory(OperationHistory operationHistory);
-
-
-
 }

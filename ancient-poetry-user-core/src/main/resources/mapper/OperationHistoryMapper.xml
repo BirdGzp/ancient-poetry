@@ -12,7 +12,7 @@
        operation_id, operatopn_user_id, article_id, operation_type,data_create_time, data_modify_time, data_is_deleted
     </sql>
 
-    <select id="listOperationHistoryByUserIdAndOperationType" >
+    <select id="listOperationHistoryByUserIdAndOperationTypeOrderByTime" >
         SELECT <include refid="BRIEF_INFO"/>
         FROM  <include refid="BASE_TABLE"/>
         WHERE user_id = #{user_id}

@@ -8,6 +8,8 @@ public class Comment {
 
     private String commentContent;
 
+    private Byte articleType;
+
     private Integer articleId;
 
     private Integer userId;
@@ -24,9 +26,12 @@ public class Comment {
 
     private Boolean dataIsDeleted;
 
-    public Comment(Integer commentId, String commentContent, Integer articleId, Integer userId, String userName, Integer likes, Integer parentCommentId, LocalDateTime dataCreateTime, LocalDateTime dataModifyTime, Boolean dataIsDeleted) {
+    public Comment(Integer commentId, String commentContent, Byte articleType, Integer articleId,
+                   Integer userId, String userName, Integer likes, Integer parentCommentId,
+                   LocalDateTime dataCreateTime, LocalDateTime dataModifyTime, Boolean dataIsDeleted) {
         this.commentId = commentId;
         this.commentContent = commentContent;
+        this.articleType = articleType;
         this.articleId = articleId;
         this.userId = userId;
         this.userName = userName;
@@ -55,6 +60,14 @@ public class Comment {
 
     public void setCommentContent(String commentContent) {
         this.commentContent = commentContent == null ? null : commentContent.trim();
+    }
+
+    public Byte getArticleType() {
+        return articleType;
+    }
+
+    public void setArticleType(Byte articleType) {
+        this.articleType = articleType;
     }
 
     public Integer getArticleId() {
@@ -126,6 +139,7 @@ public class Comment {
         return "Comment{" +
                 "commentId=" + commentId +
                 ", commentContent='" + commentContent + '\'' +
+                ", articleType=" + articleType +
                 ", articleId=" + articleId +
                 ", userId=" + userId +
                 ", userName='" + userName + '\'' +

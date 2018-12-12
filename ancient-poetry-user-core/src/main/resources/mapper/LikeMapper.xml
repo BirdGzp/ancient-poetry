@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.moon.ancientpoetry.user.core.mapper.LikeMapper">
     <sql id="BASE_TABLE">
-      like
+      `like`
     </sql>
     <sql id="BRIEF_INFO">
         like_id, user_id, user_name, from_type, from_id
@@ -11,7 +11,7 @@
       like_id, user_id, user_name, from_type, from_id,data_create_time, data_modify_time, data_is_deleted
     </sql>
 
-    <select id="selectCountByFromIdAndFromType" resultType="com.moon.ancientpoetry.common.po.Like">
+    <select id="getCountByFromIdAndFromType" resultType="com.moon.ancientpoetry.common.po.Like">
         SELECT COUNT(*)
         FROM
         <include refid="BASE_TABLE"/>
@@ -20,7 +20,7 @@
         AND data_is_deleted = 0
     </select>
 
-    <select id="selectLikeByUserIdOrderByTime" resultType="com.moon.ancientpoetry.common.po.Like">
+    <select id="listLikeByUserIdOrderByTime" resultType="com.moon.ancientpoetry.common.po.Like">
         SELECT
         <include refid="BRIEF_INFO"/>
         FROM
@@ -30,7 +30,7 @@
         ORDER BY data_modify_time
     </select>
 
-    <update id="updataLikeDeleteState" parameterType="com.moon.ancientpoetry.common.po.Like">
+    <update id="updateLikeDeleteState" parameterType="com.moon.ancientpoetry.common.po.Like">
         UPDATE
         <include refid="BASE_TABLE"/>
         SET data_is_deleted = #{dataIsDeleted }

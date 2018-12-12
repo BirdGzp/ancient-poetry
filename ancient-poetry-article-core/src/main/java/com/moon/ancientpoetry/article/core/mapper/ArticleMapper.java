@@ -1,9 +1,11 @@
 package com.moon.ancientpoetry.article.core.mapper;
 
 import com.moon.ancientpoetry.common.po.Article;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
+@Mapper
 public interface ArticleMapper {
     /**
      * 根据文件夹id 获取文件夹下的文章

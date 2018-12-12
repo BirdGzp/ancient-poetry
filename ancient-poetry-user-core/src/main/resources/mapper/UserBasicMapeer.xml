@@ -42,7 +42,7 @@
         WHERE user_id = #{userId }
     </select>
 
-    <select id="getUserBriefBasicByUserTelephone" resultType="com.moon.ancientpoetry.common.po.UserBasic">
+    <select id="getUserBriefBasicByTelephone" resultType="com.moon.ancientpoetry.common.po.UserBasic">
         select
         <include refid="BRIEF_INFO"/>
         FROM
@@ -50,7 +50,7 @@
         WHERE telephone = #{telephone }
     </select>
 
-    <select id="getCheckInfoByUserEmail" resultType="com.moon.ancientpoetry.common.po.UserBasic">
+    <select id="getCheckInfoByEmail" resultType="com.moon.ancientpoetry.common.po.UserBasic">
         select
         <include refid="CHECK_INFO"/>
         FROM
@@ -58,7 +58,7 @@
         WHERE email = #{email }
     </select>
 
-    <select id="getCheckInfoByUserTelephone" resultType="com.moon.ancientpoetry.common.po.UserBasic">
+    <select id="getCheckInfoByTelephone" resultType="com.moon.ancientpoetry.common.po.UserBasic">
         select
         <include refid="CHECK_INFO"/>
         FROM
