@@ -44,7 +44,7 @@
         <fastjson.version>1.2.53</fastjson.version>
         <jsoup.version>1.10.2</jsoup.version>
         <commons.lang.version>2.6</commons.lang.version>
-
+        <caffeine.version>2.6.0</caffeine.version>
 
         <java.encoding>UTF-8</java.encoding>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -103,6 +103,11 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.ben-manes.caffeine</groupId>
+                <artifactId>caffeine</artifactId>
+                <version>${caffeine.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
