@@ -2,7 +2,7 @@ package com.moon.ancientpoetry.user.web.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.moon.ancientpoetry.user.web.cache.CaffeineCacheUtils;
-import com.moon.ancientpoetry.user.web.cache.RedisService;
+import com.moon.ancientpoetry.user.web.cache.RedisCacheUtil;
 import com.moon.ancientpoetry.user.web.dto.User;
 import com.moon.ancientpoetry.user.web.service.UserService;
 import io.netty.util.internal.StringUtil;
@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private CaffeineCacheUtils caffeineCacheUtils;
     @Autowired
-    private RedisService redisService;
+    private RedisCacheUtil redisService;
 
     private String cachename ="userCache";
 

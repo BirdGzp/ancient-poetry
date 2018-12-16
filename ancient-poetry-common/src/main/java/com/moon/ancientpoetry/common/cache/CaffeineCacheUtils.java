@@ -1,9 +1,8 @@
-package com.moon.ancientpoetry.user.web.cache;
+package com.moon.ancientpoetry.common.cache;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.Cache;
 import org.springframework.cache.caffeine.CaffeineCacheManager;
-import org.springframework.cache.ehcache.EhCacheCacheManager;
 import org.springframework.cache.support.SimpleValueWrapper;
 import org.springframework.stereotype.Component;
 

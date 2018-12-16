@@ -1,11 +1,14 @@
-package com.moon.ancientpoetry.user.web.cache;
+package com.moon.ancientpoetry.common.cache;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @Author: zhipeng gong
@@ -13,10 +16,22 @@ import java.util.concurrent.TimeUnit;
  * @Description:
  */
 @Component
-public class RedisService {
+public class RedisCacheUtil {
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
+
+    /**
+     * 默认过期时长，单位：秒
+     */
+    public static final long DEFAULT_EXPIRE = 60 * 60 * 24;
+
+    /**
+     * 不设置过期时长
+     */
+    public static final long NOT_EXPIRE = -1;
+
+
     //这样该方法支持多种数据类型
     public void set(String key , Object object, Long time){
         //开启事务权限
@@ -53,6 +68,7 @@ public class RedisService {
         }
 
     }
+
     //做个封装
     public void setString(String key, Object object){
         String argString =(String)object;  //强转下
@@ -70,5 +86,49 @@ public class RedisService {
         return    stringRedisTemplate.opsForValue().get(key);
     }
 
+
+    public boolean existsKey(String key) {
+        return stringRedisTemplate.hasKey(key);
+    }
+
+    /**
+     * 删除key
+     *
+     * @param key
+     */
+    public void remove(String key) {
+        stringRedisTemplate.delete(key);
+    }
+
+
+    /**
+     * 删除多个key
+     *
+     * @param keys
+     */
+    public void remove(String... keys) {
+        Set<String> kSet = Stream.of(keys).map(k -> k).collect(Collectors.toSet());
+        stringRedisTemplate.delete(kSet);
+    }
+
+
+    /**
+     * 将key设置为永久有效
+     *
+     * @param key
+     */
+    public void persistKey(String key) {
+        stringRedisTemplate.persist(key);
+    }
+
+    /**
+     * 指定key在指定的日期过期
+     *
+     * @param key
+     * @param date
+     */
+    public void expireKeyAt(String key, Date date) {
+        stringRedisTemplate.expireAt(key, date);
+    }
 
 }
