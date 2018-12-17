@@ -28,9 +28,10 @@ public class UserServiceImpl implements UserService {
         String key = this.getClass().getName() + "-" + Thread.currentThread().getStackTrace()[1].getMethodName()
                 + "-id:" + id;
         //查询一级缓存数据有对应值的存在 如果有 返回
-        User user = (User) caffeineCacheUtils.get(cachename, key);
-        System.out.println(key + ": " +user);
+        String result = caffeineCacheUtils.get(cachename, key);
+        System.out.println(key + ": " + result);
         JSONObject jsonObject = new JSONObject();//用的fastjson
+        User user = jsonObject.parseObject(result, User.class);
         User resultUser = null;
         if(user != null) {
             System.out.println(user.getUserId());
@@ -46,7 +47,7 @@ public class UserServiceImpl implements UserService {
         //如果rdis缓存中有这个对应的值，修改一级缓存    最下面的会有的 相同会覆盖的
         if (!StringUtil.isNullOrEmpty(userJson)) {  //有 转成json
             resultUser = jsonObject.parseObject(userJson,User.class);
-            caffeineCacheUtils.put(cachename, key, resultUser);
+            caffeineCacheUtils.set(cachename, key, resultUser);
             return resultUser;
         }
         //都没有 查询DB
@@ -58,7 +59,7 @@ public class UserServiceImpl implements UserService {
         //存放到二级缓存 redis中
         redisService.setString(key, new JSONObject().toJSONString(user1));
         //存放到一级缓存 Ehchache
-        caffeineCacheUtils.put(cachename, key, user1);
+        caffeineCacheUtils.set(cachename, key, user1);
         return user1;
     }
 

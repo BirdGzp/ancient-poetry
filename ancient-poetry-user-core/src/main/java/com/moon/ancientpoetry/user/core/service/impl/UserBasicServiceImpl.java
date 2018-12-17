@@ -1,20 +1,28 @@
 package com.moon.ancientpoetry.user.core.service.impl;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.moon.ancientpoetry.common.cache.RedisService;
+import com.moon.ancientpoetry.common.cache.RedisSet;
 import com.moon.ancientpoetry.common.po.UserBasic;
 import com.moon.ancientpoetry.user.core.mapper.UserBasicMapper;
 import com.moon.ancientpoetry.user.core.service.UserBasicService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service("userBasicService")
-public class UserBasicSeriveImpl implements UserBasicService {
+public class UserBasicServiceImpl implements UserBasicService {
 
     @Autowired
     UserBasicMapper userBasicMapper;
+    @Autowired
+    RedisService redisService;
+
 
     /**
      * 获取全部的用户信息
@@ -32,6 +40,8 @@ public class UserBasicSeriveImpl implements UserBasicService {
      * @return
      */
     @Override
+    @RedisSet
+    @Cacheable( value = "UserBasic" , key = "#userId", sync = true)
     public UserBasic getUserFullBasicByUserId(Integer userId){
         return userBasicMapper.getUserFullBasicByUserId(userId);
     }
@@ -43,7 +53,9 @@ public class UserBasicSeriveImpl implements UserBasicService {
      */
     @Override
     public UserBasic getUserBriefBasicByUserId(Integer userId){
-        return userBasicMapper.getUserBriefBasicByUserId(userId);
+        UserBasic userBasic =  userBasicMapper.getUserBriefBasicByUserId(userId);
+
+        return userBasic;
     }
 
     /**

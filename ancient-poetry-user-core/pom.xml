@@ -6,15 +6,13 @@
     <groupId>com.moon</groupId>
     <artifactId>ancient-poetry-user-core</artifactId>
     <version>${ancient-poetry-user-core.version}</version>
-    <packaging>jar</packaging>
 
     <name>ancient-poetry-user-core</name>
 
     <parent>
         <groupId>com.moon</groupId>
         <artifactId>ancient-poetry</artifactId>
-        <version>0.0.1.SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
+        <version>${ancient-poetry.version}</version>
     </parent>
 
 
@@ -42,6 +40,22 @@
         <dependency>
             <groupId>com.moon</groupId>
             <artifactId>ancient-poetry-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
     </dependencies>
 

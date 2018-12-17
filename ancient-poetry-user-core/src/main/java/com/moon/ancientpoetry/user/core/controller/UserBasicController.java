@@ -29,7 +29,10 @@ public class UserBasicController {
     @GetMapping("/get/full/{userId}")
     public UserBasic getUserFullBasicByUserId(
             @PathVariable(name = "userId", required = false) Integer userId){
-        return userBasicService.getUserFullBasicByUserId(userId);
+        long time  = System.currentTimeMillis();
+        UserBasic ub = userBasicService.getUserFullBasicByUserId(userId);
+        System.out.println(System.currentTimeMillis() - time);
+        return ub;
     }
 
     @ResponseBody

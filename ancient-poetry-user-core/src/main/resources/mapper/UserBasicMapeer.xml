@@ -10,12 +10,12 @@
     </sql>
 
     <sql id="BRIEF_INFO">
-        user_id, user_name, pen_name, user_character, sex, user_image, likes, read_count, writeCount, followCount,
-        followerCount, brief_introduce
+        user_id, user_name, pen_name, user_character, sex, user_image, likes, read_count, writeCount, follow_ount,
+        follower_count, brief_introduce
     </sql>
     <sql id="FULL_INFO">
        user_id, user_name, pen_name, user_character, sex, birth_date, telephone, email, password, ip, user_image, likes,read_count,
-       writeCount, followCount, followerCount, brief_introduce, address_id, detail_address, last_login_time, data_create_time,
+       write_count, follow_count, follower_count, brief_introduce, address_id, detail_address, last_login_time, data_create_time,
        data_modify_time, data_is_deleted
     </sql>
 

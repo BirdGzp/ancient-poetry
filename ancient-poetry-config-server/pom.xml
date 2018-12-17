@@ -6,14 +6,14 @@
     <groupId>com.moon</groupId>
     <artifactId>ancient-poetry-config-server</artifactId>
     <version>${ancient-poetry-server-config.version}</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <name>ancient-poetry-config-server</name>
 
     <parent>
         <groupId>com.moon</groupId>
         <artifactId>ancient-poetry</artifactId>
-        <version>1.0.0</version>
+        <version>${ancient-poetry.version}</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 

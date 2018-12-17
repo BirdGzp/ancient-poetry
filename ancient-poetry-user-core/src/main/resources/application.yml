@@ -1,5 +1,5 @@
 server:
-  port: 7100
+  port: 7101
 
 spring:
   datasource:
@@ -21,6 +21,24 @@ spring:
     testOnReturn: false
     poolPreparedStatements: true
     maxOpenPreparedStatements: 20
+  #Redis配置
+  redis:
+    host: 192.168.111.133
+    port: 6379
+    database: 0
+    timeout: 2000ms
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: 800ms
+        max-idle: 8
+        min-idle: 2
+  cache:
+    #缓存名称
+    cache-names: test
+    type: Caffeine
+    caffeine:
+      spec: maximumSize=500,expireAfterAccess=600s
 
 mybatis:
   type-aliases-package: com.moon.ancientpoetry.common.po

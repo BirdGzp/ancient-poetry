@@ -17,8 +17,8 @@
         <ancient-poetry.version>0.0.1.SNAPSHOT</ancient-poetry.version>
         <ancient-poetry-article-core.version>1.0.0</ancient-poetry-article-core.version>
         <ancient-poetry-article-web.version>1..0.0</ancient-poetry-article-web.version>
-        <ancient-poetry-common.version>1.1.0</ancient-poetry-common.version>
-        <ancient-poetry-config-server>1.1.0></ancient-poetry-config-server>
+        <ancient-poetry-common.version>1.0.0</ancient-poetry-common.version>
+        <ancient-poetry-config-server>1.0.0></ancient-poetry-config-server>
         <ancient-poetry-user-core.version>1.0.0</ancient-poetry-user-core.version>
         <ancient-poetry-poetry-core.version>1.0.0</ancient-poetry-poetry-core.version>
         <ancient-poetry-gateway.version>1.0.0</ancient-poetry-gateway.version>
@@ -34,17 +34,13 @@
         <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
         <springboot.version>2.0.3.RELEASE</springboot.version>
 
-        <kafka.version></kafka.version>
-        <zookeeper.version></zookeeper.version>
-        <slf4j.version></slf4j.version>
-        <log4j2.version></log4j2.version>
-        <redis.version></redis.version>
         <pagehelper.version>1.2.5</pagehelper.version>
         <druid.version>1.1.9</druid.version>
         <fastjson.version>1.2.53</fastjson.version>
         <jsoup.version>1.10.2</jsoup.version>
         <commons.lang.version>2.6</commons.lang.version>
         <caffeine.version>2.6.0</caffeine.version>
+        <aspect.version>1.9.2</aspect.version>
 
         <java.encoding>UTF-8</java.encoding>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -89,6 +85,11 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjrt</artifactId>
+                <version>${aspect.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.moon</groupId>
                 <artifactId>ancient-poetry-common</artifactId>
@@ -147,39 +148,4 @@
     </dependencyManagement>
 
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                    <encoding>UTF-8</encoding>
-                    <showDeprecation>true</showDeprecation>
-                    <showWarnings>true</showWarnings>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <configuration>
-                    <attach>true</attach>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-
-    </build>
 </project>

@@ -13,7 +13,7 @@
     <parent>
         <groupId>com.moon</groupId>
         <artifactId>ancient-poetry</artifactId>
-        <version>0.0.1.SNAPSHOT</version>
+        <version>${ancient-poetry.version}</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
