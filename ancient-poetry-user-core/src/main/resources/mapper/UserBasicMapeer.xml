@@ -10,7 +10,7 @@
     </sql>
 
     <sql id="BRIEF_INFO">
-        user_id, user_name, pen_name, user_character, sex, user_image, likes, read_count, writeCount, follow_ount,
+        user_id, user_name, pen_name, user_character, sex, user_image, likes, read_count, write_count, follow_count,
         follower_count, brief_introduce
     </sql>
     <sql id="FULL_INFO">

@@ -16,7 +16,9 @@ spring:
     type: Caffeine
     caffeine:
       spec: maximumSize=500,expireAfterAccess=600s
-
+  devtools:
+    restart:
+      enabled: true
 
 server:
   port: 6900

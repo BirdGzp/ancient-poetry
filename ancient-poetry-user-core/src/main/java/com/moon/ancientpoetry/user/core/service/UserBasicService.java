@@ -48,12 +48,6 @@ public interface UserBasicService {
     UserBasic getCheckInfoByTelephone(String userTelephone);
 
 
-    /**
-     * 批量更新 用户基本信息
-     * @param listUserBasic
-     * @return
-     */
-    int updateBatchUserBasic(List<UserBasic> listUserBasic);
 
     /**
      * 更新用户基本信息

@@ -25,7 +25,7 @@ public class RedisGetAop {
     Logger log = LoggerFactory.getLogger(RedisGetAop.class);
 
     /** redis中保存的时间 */
-    public static final long EXPIRE = 1000 * 60 * 60;
+    public static final long EXPIRE = 1000 * 60;
 
     @Autowired
     RedisService redisService;

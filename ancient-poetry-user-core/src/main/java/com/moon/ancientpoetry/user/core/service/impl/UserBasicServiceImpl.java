@@ -1,7 +1,6 @@
 package com.moon.ancientpoetry.user.core.service.impl;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
+
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.moon.ancientpoetry.common.cache.RedisService;
@@ -10,10 +9,10 @@ import com.moon.ancientpoetry.common.po.UserBasic;
 import com.moon.ancientpoetry.user.core.mapper.UserBasicMapper;
 import com.moon.ancientpoetry.user.core.service.UserBasicService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 
 @Service("userBasicService")
 public class UserBasicServiceImpl implements UserBasicService {
@@ -41,9 +40,16 @@ public class UserBasicServiceImpl implements UserBasicService {
      */
     @Override
     @RedisSet
-    @Cacheable( value = "UserBasic" , key = "#userId", sync = true)
+    @Cacheable( value = "UserBasic" , sync = true)
     public UserBasic getUserFullBasicByUserId(Integer userId){
-        return userBasicMapper.getUserFullBasicByUserId(userId);
+        UserBasic userBasic =  userBasicMapper.getUserFullBasicByUserId(userId);
+        if(userBasic == null){
+            userBasic = new UserBasic();
+            userBasic.setPenName(123 + "123");
+        }
+
+        return userBasic;
+
     }
 
     /**
@@ -52,9 +58,14 @@ public class UserBasicServiceImpl implements UserBasicService {
      * @return
      */
     @Override
+    @RedisSet
+    @Cacheable( value = "UserBasic" , sync = true)
     public UserBasic getUserBriefBasicByUserId(Integer userId){
         UserBasic userBasic =  userBasicMapper.getUserBriefBasicByUserId(userId);
-
+        if(userBasic == null){
+            userBasic = new UserBasic();
+            userBasic.setPenName(123 + "1");
+        }
         return userBasic;
     }
 
@@ -89,15 +100,6 @@ public class UserBasicServiceImpl implements UserBasicService {
     }
 
 
-    /**
-     * 批量更新 用户基本信息
-     * @param listUserBasic
-     * @return
-     */
-    @Override
-    public int updateBatchUserBasic(List<UserBasic> listUserBasic){
-        return userBasicMapper.updateBatchUserBasic(listUserBasic);
-    }
 
     /**
      * 更新用户基本信息
@@ -105,6 +107,7 @@ public class UserBasicServiceImpl implements UserBasicService {
      * @return
      */
     @Override
+    @CacheEvict(value = "UserBasic")
     public int updateUserBasic(UserBasic userBasic){
         return userBasicMapper.updateUserBasic(userBasic);
     }

@@ -1,11 +1,9 @@
 package com.moon.ancientpoetry.user.web.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.moon.ancientpoetry.user.web.cache.CaffeineCacheUtils;
-import com.moon.ancientpoetry.user.web.cache.RedisCacheUtil;
+
 import com.moon.ancientpoetry.user.web.dto.User;
 import com.moon.ancientpoetry.user.web.service.UserService;
-import io.netty.util.internal.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,19 +14,19 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class UserServiceImpl implements UserService {
-    @Autowired
-    private CaffeineCacheUtils caffeineCacheUtils;
-    @Autowired
-    private RedisCacheUtil redisService;
+
+    //private CaffeineCacheUtils caffeineCacheUtils;
+
+    //private RedisCacheUtil redisService;
 
     private String cachename ="userCache";
 
     public User getUser(Long id){
-        //先查询一级缓存  key以当前的类名+方法名+id+参数值
+      /*  //先查询一级缓存  key以当前的类名+方法名+id+参数值
         String key = this.getClass().getName() + "-" + Thread.currentThread().getStackTrace()[1].getMethodName()
                 + "-id:" + id;
         //查询一级缓存数据有对应值的存在 如果有 返回
-        String result = caffeineCacheUtils.get(cachename, key);
+        //String result = caffeineCacheUtils.get(cachename, key);
         System.out.println(key + ": " + result);
         JSONObject jsonObject = new JSONObject();//用的fastjson
         User user = jsonObject.parseObject(result, User.class);
@@ -60,7 +58,8 @@ public class UserServiceImpl implements UserService {
         redisService.setString(key, new JSONObject().toJSONString(user1));
         //存放到一级缓存 Ehchache
         caffeineCacheUtils.set(cachename, key, user1);
-        return user1;
+        return user1;*/
+        return null;
     }
 
 
