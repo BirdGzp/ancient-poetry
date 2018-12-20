@@ -1,8 +1,9 @@
 package com.moon.ancientpoetry.user.web.controller;
 
 import com.moon.ancientpoetry.user.web.dto.User;
-import com.moon.ancientpoetry.user.web.service.UserService;
+import com.moon.ancientpoetry.user.web.feign.service.UserBasicFeignService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,13 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
  * @Description:
  */
 @RestController
-public class IndexController {
+@RequestMapping("/user")
+public class UserController {
     @Autowired
-    private UserService userService;
+    UserBasicFeignService userBasicFeignService;
 
-    @RequestMapping("/userId")
-    public User getUserId(Long id){
-        return userService.getUser(id);
+    @RequestMapping("/id/{id}")
+    public String getUserId(@PathVariable(name = "id")Integer id){
+        return userBasicFeignService.getUserBasic(id);
     }
 
 

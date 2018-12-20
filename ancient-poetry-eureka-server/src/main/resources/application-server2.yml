@@ -1,0 +1,13 @@
+server:
+  port: 9001
+
+eureka:
+  instance:
+    hostname: ancient-poetry-eureka-server
+  client:
+    #是否注册自身到服务器
+    registerWithEureka: false
+    #是否从 eureka 上获取注册信息
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:9000/eureka/

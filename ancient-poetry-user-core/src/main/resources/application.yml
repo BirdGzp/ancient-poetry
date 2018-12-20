@@ -1,7 +1,14 @@
 server:
-  port: 7101
+  port: 9020
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://ancient-poetry-eureka-server:9000/eureka/,http://ancient-poetry-eureka-server:9001/eureka/
 
 spring:
+  application:
+    name: ancient-poetry-user-core
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/ancient_article?useUnicode=true&characterEncoding=utf8
