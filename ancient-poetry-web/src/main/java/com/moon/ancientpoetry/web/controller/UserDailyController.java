@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/user")
 @RestController
 public class UserDailyController {
+
+
     /**
      *
      * @param accountId 账号 id  ，目前可以自动判别手机号登录或者邮箱号登录

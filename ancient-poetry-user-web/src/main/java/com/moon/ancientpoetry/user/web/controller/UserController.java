@@ -1,11 +1,7 @@
 package com.moon.ancientpoetry.user.web.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import com.moon.ancientpoetry.common.dto.BaseDto;
-import com.moon.ancientpoetry.common.po.UserBasic;
-import com.moon.ancientpoetry.common.util.ParseToObject;
-import com.moon.ancientpoetry.user.web.feign.service.UserBasicFeignService;
+import com.moon.ancientpoetry.user.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,21 +15,24 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/user")
 public class UserController {
+
     @Autowired
-    UserBasicFeignService userBasicFeignService;
+    UserService userService;
 
     @RequestMapping("/id/{id}")
     public String getUserId(@PathVariable(name = "id")Integer id){
-        String result =  userBasicFeignService.getUserBasic(id);
-        BaseDto baseDto = ParseToObject.parseToDto(result);
-        return result;
+        return JSON.toJSONString(userService.getFullUserByUserId(id));
+
     }
 
-    @RequestMapping("/check-pass/{telephone}")
-    public String checkPass(@PathVariable(name = "telephone")String telephone){
-        String result =  userBasicFeignService.getCheckInfoByTelephone(telephone);
-        BaseDto baseDto = ParseToObject.parseToDto(result);
-        return result;
+    @RequestMapping("/get/check-info/telephone/{telephone}")
+    public String getCheckInfoByTelephone(@PathVariable(name = "telephone")String telephone){
+        return JSON.toJSONString(userService.getUserCheckInfoByTelephone(telephone));
+    }
+
+    @RequestMapping("/get/check-info/email/{email}")
+    public String getCheckInfoByEmail(@PathVariable(name = "email")String email){
+        return JSON.toJSONString(userService.getUserCheckInfoByEmail(email));
     }
 
 }

@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
 public class UserBasicFeignServiceFallback implements UserBasicFeignService {
 
     @Override
-    public String getUserBasic(Integer name) {
+    public String getUserBasicByUserId(Integer name) {
         System.out.println("in method");
         return JSON.toJSONString(new BaseDto(ObjectType.ERROR, "null"));
     }

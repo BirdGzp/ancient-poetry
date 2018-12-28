@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @FeignClient(value = "ANCIENT-POETRY-USER-CORE", fallback = UserBasicFeignServiceFallback.class)
 public interface UserBasicFeignService {
     @RequestMapping(value = "/user/basic/get/full/{id}", method = RequestMethod.POST)
-    String getUserBasic(@PathVariable(value = "id") Integer name);
+    String getUserBasicByUserId(@PathVariable(value = "id") Integer id);
 
     @RequestMapping(value = "/user/basic/list/full/{pageNum}/{pageSize}", method = RequestMethod.POST)
     String listFullUserBasic(

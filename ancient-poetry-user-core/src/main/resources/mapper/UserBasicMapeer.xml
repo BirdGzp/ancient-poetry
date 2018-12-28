@@ -6,7 +6,7 @@
     </sql>
 
     <sql id="CHECK_INFO">
-        user_id, pen_name,  email, user_name,telephone, password, ip
+        user_id,  email, telephone, password, ip
     </sql>
 
     <sql id="BRIEF_INFO">

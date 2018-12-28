@@ -1,5 +1,7 @@
 package com.moon.ancientpoetry.common.dto;
 
+import com.alibaba.fastjson.JSON;
+
 /**
  * @Author: zhipeng gong
  * @Date: 2018/12/27 20:02
@@ -66,5 +68,19 @@ public class BaseDto<T> {
                 ", className='" + className + '\'' +
                 ", object=" + object +
                 '}';
+    }
+
+    public T parseObject(){
+        Class clazz = null;
+        try {
+            clazz = Class.forName(className);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        if(clazz == null){
+            return null;
+        }
+        System.out.println(object.toString());
+        return (T) JSON.parseObject(object.toString(), clazz);
     }
 }
