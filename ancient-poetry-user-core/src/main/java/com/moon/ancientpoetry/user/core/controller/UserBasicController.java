@@ -3,76 +3,85 @@ package com.moon.ancientpoetry.user.core.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
+import com.moon.ancientpoetry.common.constant.ObjectType;
+import com.moon.ancientpoetry.common.dto.BaseDto;
 import com.moon.ancientpoetry.common.po.UserBasic;
 import com.moon.ancientpoetry.user.core.service.UserBasicService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/user/basic")
 public class UserBasicController {
+
+    @Value("${server.port}")
+    private int port;
+
     @Autowired
     UserBasicService userBasicService;
 
     @ResponseBody
-    @GetMapping("/list/full/{pageNum}/{pageSize}")
-    public PageInfo listFullUserBasic(
+    @PostMapping("/list/full/{pageNum}/{pageSize}")
+    public BaseDto listFullUserBasic(
             @PathVariable(name = "pageNum", required = false) Integer pageNum,
             @PathVariable(name = "pageSize", required = false) Integer pageSize){
-        return userBasicService.listFullUserBasic(pageNum, pageSize);
+        return new BaseDto(ObjectType.OBJECT, userBasicService.listFullUserBasic(pageNum, pageSize));
     }
 
     @ResponseBody
-    @GetMapping("/get/full/{userId}")
-    public UserBasic getUserFullBasicByUserId(
+    @PostMapping("/get/full/{userId}")
+    public BaseDto getUserFullBasicByUserId(
             @PathVariable(name = "userId", required = false) Integer userId){
         long time  = System.currentTimeMillis();
         UserBasic ub = userBasicService.getUserFullBasicByUserId(userId);
-        System.out.println(System.currentTimeMillis() - time);
-        return ub;
+        ub.setPenName("浪子");
+        System.out.println("port: " + port +" --->" + (System.currentTimeMillis() - time));
+        return new BaseDto(ObjectType.OBJECT, ub);
     }
 
+
     @ResponseBody
-    @GetMapping("/get/brief/id/{userId}")
-    public UserBasic getUserBriefBasicByUserId(
+    @PostMapping("/get/brief/id/{userId}")
+    public BaseDto getUserBriefBasicByUserId(
             @PathVariable(name = "userId", required = false) Integer userId){
-        return userBasicService.getUserBriefBasicByUserId(userId);
+        return new BaseDto(ObjectType.OBJECT, userBasicService.getUserBriefBasicByUserId(userId));
     }
 
     @ResponseBody
-    @GetMapping("/get/brief/telephone/{telephone}")
-    public UserBasic getUserBriefBasicByTelephone(
+    @PostMapping("/get/brief/telephone/{telephone}")
+    public BaseDto getUserBriefBasicByTelephone(
             @PathVariable(name = "telephone", required = false) String telephone){
-        return userBasicService.getUserBriefBasicByTelephone(telephone);
+        return new BaseDto(ObjectType.OBJECT, userBasicService.getUserBriefBasicByTelephone(telephone));
     }
 
     @ResponseBody
-    @GetMapping("/get/check-info/telephone/{telephone}")
-    public UserBasic getCheckInfoByTelephone(
+    @PostMapping("/get/check-info/telephone/{telephone}")
+    public BaseDto getCheckInfoByTelephone(
             @PathVariable(name = "telephone", required = false) String telephone){
-        return userBasicService.getCheckInfoByTelephone(telephone);
+        return new BaseDto(ObjectType.OBJECT, userBasicService.getCheckInfoByTelephone(telephone));
     }
 
     @ResponseBody
-    @GetMapping("/get/check-info/email/{email}")
-    public UserBasic getCheckInfoByEmail(
+    @PostMapping("/get/check-info/email/{email}")
+    public BaseDto getCheckInfoByEmail(
             @PathVariable(name = "email", required = false) String email){
-        return userBasicService.getCheckInfoByEmail(email);
+        return new BaseDto(ObjectType.OBJECT, userBasicService.getCheckInfoByEmail(email));
     }
 
 
     @ResponseBody
-    @GetMapping("/update/{userBasic}")
-    public int updateUserBasic(
+    @PostMapping("/update/{userBasic}")
+    public BaseDto updateUserBasic(
             @PathVariable(name = "userBasic", required = false) String userBasic){
-        return userBasicService.updateUserBasic(JSON.parseObject(userBasic, UserBasic.class));
+        return new BaseDto(ObjectType.OBJECT, userBasicService.updateUserBasic(JSON.parseObject(userBasic, UserBasic.class)));
     }
 
 
     @ResponseBody
-    @GetMapping("/insert/{userBasic}")
-    public int insertUserBasic(
+    @PostMapping("/insert/{userBasic}")
+    public BaseDto insertUserBasic(
             @PathVariable(name = "userBasic", required = false) String userBasic){
-        return userBasicService.insertUserBasic(JSON.parseObject(userBasic, UserBasic.class));
+        return new BaseDto(ObjectType.OBJECT, userBasicService.insertUserBasic(JSON.parseObject(userBasic, UserBasic.class)));
     }
 }

@@ -15,6 +15,42 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Component
 @FeignClient(value = "ANCIENT-POETRY-USER-CORE", fallback = UserBasicFeignServiceFallback.class)
 public interface UserBasicFeignService {
-    @RequestMapping(value = "/user/basic/get/full/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/user/basic/get/full/{id}", method = RequestMethod.POST)
     String getUserBasic(@PathVariable(value = "id") Integer name);
+
+    @RequestMapping(value = "/user/basic/list/full/{pageNum}/{pageSize}", method = RequestMethod.POST)
+    String listFullUserBasic(
+            @PathVariable(name = "pageNum", required = false) Integer pageNum,
+            @PathVariable(name = "pageSize", required = false) Integer pageSize);
+
+    
+    @RequestMapping(value = "/user/basic/get/full/{userId}", method = RequestMethod.POST)
+    String getUserFullBasicByUserId(@PathVariable(name = "userId", required = false) Integer userId);
+
+    
+    @RequestMapping(value = "/user/basic/get/brief/id/{userId}", method = RequestMethod.POST)
+    String getUserBriefBasicByUserId(
+            @PathVariable(name = "userId", required = false) Integer userId);
+
+    
+    @RequestMapping(value = "/user/basic/get/brief/telephone/{telephone}", method = RequestMethod.POST)
+    String getUserBriefBasicByTelephone(
+            @PathVariable(name = "telephone", required = false) String telephone);
+
+    
+    @RequestMapping(value = "/user/basic/get/check-info/telephone/{telephone}", method = RequestMethod.POST)
+    String getCheckInfoByTelephone(
+            @PathVariable(name = "telephone", required = false) String telephone);
+
+    
+    @RequestMapping(value = "/user/basic/get/check-info/email/{email}", method = RequestMethod.POST)
+    String getCheckInfoByEmail(@PathVariable(name = "email", required = false) String email);
+
+
+    @RequestMapping(value = "/user/basic/update/{userBasic}", method = RequestMethod.POST)
+    String updateUserBasic (@PathVariable(name = "userBasic", required = false) String userBasic);
+
+
+    @RequestMapping(value = "/user/basic/insert/{userBasic}", method = RequestMethod.POST)
+    String insertUserBasic(@PathVariable(name = "userBasic", required = false) String userBasic);
 }

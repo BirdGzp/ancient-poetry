@@ -10,6 +10,15 @@ spring:
   application:
     name: ancient-poetry-user-web
 
+
 feign:
   hystrix:
     enabled: true
+    command:
+      default:
+        execution:
+          timeout:
+            enabled: true
+          isolation:
+            thread:
+              timeoutInMilliseconds: 2000

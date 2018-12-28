@@ -3,6 +3,8 @@ package com.moon.ancientpoetry.user.core.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
 import com.github.pagehelper.PageInfo;
+import com.moon.ancientpoetry.common.constant.ObjectType;
+import com.moon.ancientpoetry.common.dto.BaseDto;
 import com.moon.ancientpoetry.common.po.OperationHistory;
 import com.moon.ancientpoetry.user.core.service.OperationHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,45 +24,49 @@ public class OperationHistoryController {
     OperationHistoryService operationHistoryService;
 
     @ResponseBody
-    @GetMapping("/list/user/{userId}/{pageNum}/{pageSize}")
-    public PageInfo listOperationHistoryByUserIdOrderByTime(
+    @PostMapping("/list/user/{userId}/{pageNum}/{pageSize}")
+    public BaseDto listOperationHistoryByUserIdOrderByTime(
             @PathVariable(name = "userId", required = false) Integer userId,
             @PathVariable(name = "pageNum", required = false) Integer pageNum,
             @PathVariable(name = "pageSize", required = false) Integer pageSize){
-        return operationHistoryService.listOperationHistoryByUserIdOrderByTime(userId, pageNum, pageSize);
+        return new BaseDto(ObjectType.OBJECT, operationHistoryService.listOperationHistoryByUserIdOrderByTime(userId, pageNum, pageSize));
     }
 
     @ResponseBody
-    @GetMapping("/list/user/{userId}/operation-type/{operationType}/{pageNum}/{pageSize}")
-    public PageInfo listOperationHistoryByUserIdAndOperationTypeOrderByTime(
+    @PostMapping("/list/user/{userId}/operation-type/{operationType}/{pageNum}/{pageSize}")
+    public BaseDto listOperationHistoryByUserIdAndOperationTypeOrderByTime(
             @PathVariable(name = "userId", required = false) Integer userId,
             @PathVariable(name = "operationType", required = false) Integer operationType,
             @PathVariable(name = "pageNum", required = false) Integer pageNum,
             @PathVariable(name = "pageSize", required = false) Integer pageSize){
-        return operationHistoryService.listOperationHistoryByUserIdAndOperationTypeOrderByTime(userId, operationType, pageNum, pageSize);
+        return new BaseDto(ObjectType.OBJECT, operationHistoryService.listOperationHistoryByUserIdAndOperationTypeOrderByTime(userId, operationType, pageNum, pageSize));
     }
 
     @ResponseBody
-    @GetMapping("/update/batch/{operationHistoryList}")
-    public int updateBatchOperationHistoryDeleteState(@PathVariable(name = "operationHistoryList", required = false) String operationHistoryList){
-        return operationHistoryService.updateBatchOperationHistoryDeleteState(JSON.parseObject(operationHistoryList, new TypeReference<List<OperationHistory>>(){}));
+    @PostMapping("/update/batch/{operationHistoryList}")
+    public BaseDto updateBatchOperationHistoryDeleteState(@PathVariable(name = "operationHistoryList", required = false) String operationHistoryList){
+        return new BaseDto(ObjectType.OBJECT, operationHistoryService.updateBatchOperationHistoryDeleteState(
+                JSON.parseObject(operationHistoryList, new TypeReference<List<OperationHistory>>(){})));
     }
 
     @ResponseBody
-    @GetMapping("/update/{operationHistory}")
-    public int updateOperationHistoryDeleteState(@PathVariable(name = "operationHistory", required = false) String  operationHistory){
-        return operationHistoryService.updateOperationHistoryDeleteState(JSON.parseObject(operationHistory, OperationHistory.class));
+    @PostMapping("/update/{operationHistory}")
+    public BaseDto updateOperationHistoryDeleteState(@PathVariable(name = "operationHistory", required = false) String  operationHistory){
+        return new BaseDto(ObjectType.OBJECT, operationHistoryService.updateOperationHistoryDeleteState(
+                JSON.parseObject(operationHistory, OperationHistory.class)));
     }
 
     @ResponseBody
-    @GetMapping("/insert/batch/{operationHistoryList}")
-    public int insertBatchOperationHistory(@PathVariable(name = "operationHistoryList", required = false) String  operationHistoryList){
-        return operationHistoryService.insertBatchOperationHistory(JSON.parseObject(operationHistoryList, new TypeReference<List<OperationHistory>>(){}));
+    @PostMapping("/insert/batch/{operationHistoryList}")
+    public BaseDto insertBatchOperationHistory(@PathVariable(name = "operationHistoryList", required = false) String  operationHistoryList){
+        return new BaseDto(ObjectType.OBJECT, operationHistoryService.insertBatchOperationHistory(
+                JSON.parseObject(operationHistoryList, new TypeReference<List<OperationHistory>>(){})));
     }
 
     @ResponseBody
-    @GetMapping("/insert/batch/{operationHistory}")
-    public int insertOperationHistory(@PathVariable(name = "operationHistory", required = false) String  operationHistory){
-        return operationHistoryService.insertOperationHistory(JSON.parseObject(operationHistory, OperationHistory.class));
+    @PostMapping("/insert/batch/{operationHistory}")
+    public BaseDto insertOperationHistory(@PathVariable(name = "operationHistory", required = false) String  operationHistory){
+        return new BaseDto(ObjectType.OBJECT, operationHistoryService.insertOperationHistory(
+                JSON.parseObject(operationHistory, OperationHistory.class)));
     }
 }

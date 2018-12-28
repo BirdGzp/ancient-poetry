@@ -19,7 +19,7 @@ public class AncientArticleController {
     AncientArticleService ancientArticleService;
 
     @ResponseBody
-    @GetMapping("/list/full/{pageNum}/{pageSize}")
+    @PostMapping("/list/full/{pageNum}/{pageSize}")
     public PageInfo listFullAllAncientAuthor(
             @PathVariable(name = "pageNum", required = false) Integer pageNum,
             @PathVariable(name = "pageSize", required = false) Integer pageSize){
@@ -27,7 +27,7 @@ public class AncientArticleController {
     }
 
     @ResponseBody
-    @GetMapping("/list/{authorId}/{pageNum}/{pageSize}")
+    @PostMapping("/list/{authorId}/{pageNum}/{pageSize}")
     public PageInfo listAncientArticleByAuthorId(
             @PathVariable(name = "authorId", required = false) Integer authorId,
             @PathVariable(name = "pageNum", required = false) Integer pageNum,
@@ -36,7 +36,7 @@ public class AncientArticleController {
     }
 
     @ResponseBody
-    @GetMapping("get/brief/id/{articleId}")
+    @PostMapping("get/brief/id/{articleId}")
     public AncientArticle getBriefAncientAuthorByAuthorName(
             @PathVariable("articleId")Integer articleId){
         return ancientArticleService.getAncientArticleByArticleId(articleId);

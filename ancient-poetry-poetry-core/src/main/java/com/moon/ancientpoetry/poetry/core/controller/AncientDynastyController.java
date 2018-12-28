@@ -14,13 +14,13 @@ public class AncientDynastyController {
     private AncientDynastyService ancientDynastyService;
 
     @ResponseBody
-    @GetMapping("/list/full")
+    @PostMapping("/list/full")
     public List<AncientDynasty> listAllAncientDynasty(){
         return ancientDynastyService.listAllAncientDynasty();
     }
 
     @ResponseBody
-    @GetMapping("/list")
+    @PostMapping("/list")
     public List<AncientDynasty> listAllBriefAncientDynasty(){
         return ancientDynastyService.listAllBriefAncientDynasty();
     }

@@ -14,7 +14,7 @@ public class AncientWordTranslateController {
     private AncientWordTranslateService ancientWordTranslateService;
 
     @ResponseBody
-    @GetMapping("/list/full/{pageNum}/{pageSize}")
+    @PostMapping("/list/full/{pageNum}/{pageSize}")
     public PageInfo listFullAllAncientAuthor(
             @PathVariable(name = "pageNum", required = false) Integer pageNum,
             @PathVariable(name = "pageSize", required = false) Integer pageSize){
@@ -22,7 +22,7 @@ public class AncientWordTranslateController {
     }
 
     @ResponseBody
-    @GetMapping("/list/article_id/{articleId}/{pageNum}/{pageSize}")
+    @PostMapping("/list/article_id/{articleId}/{pageNum}/{pageSize}")
     public PageInfo listAncientWordTranslateByWordFromArticleId(
             @PathVariable(name = "articleId", required = false) Integer articleId,
             @PathVariable(name = "pageNum", required = false) Integer pageNum,
@@ -31,7 +31,7 @@ public class AncientWordTranslateController {
     }
 
     @ResponseBody
-    @GetMapping("/list/sentence/{sentenceId}/{pageNum}/{pageSize}")
+    @PostMapping("/list/sentence/{sentenceId}/{pageNum}/{pageSize}")
     public PageInfo listAncientWordTranslateByWordFromSentenceId(
             @PathVariable(name = "sentenceId", required = false) Integer sentenceId,
             @PathVariable(name = "pageNum", required = false) Integer pageNum,
@@ -40,7 +40,7 @@ public class AncientWordTranslateController {
     }
 
     @ResponseBody
-    @GetMapping("/list/word/{wordId}/{pageNum}/{pageSize}")
+    @PostMapping("/list/word/{wordId}/{pageNum}/{pageSize}")
     public PageInfo listAncientWordTranslateByWordId(
             @PathVariable(name = "wordId", required = false) Integer wordId,
             @PathVariable(name = "pageNum", required = false) Integer pageNum,
@@ -49,7 +49,7 @@ public class AncientWordTranslateController {
     }
 
     @ResponseBody
-    @GetMapping("/get/{translateByWordId}")
+    @PostMapping("/get/{translateByWordId}")
     public AncientWordTranslate listAncientWordTranslateByWordId(
             @PathVariable(name = "translateByWordId", required = false) Integer translateByWordId){
         return ancientWordTranslateService.getAncientWordTranslateByAncientWordId(translateByWordId);

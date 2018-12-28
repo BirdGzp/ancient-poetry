@@ -15,7 +15,7 @@ public class AncientAuthorController {
     private AncientAuthorService ancientAuthorService;
 
     @ResponseBody
-    @GetMapping("/list/full/{pageNum}/{pageSize}")
+    @PostMapping("/list/full/{pageNum}/{pageSize}")
     public PageInfo listFullAllAncientAuthor(
             @PathVariable(name = "pageNum", required = false) Integer pageNum,
             @PathVariable(name = "pageSize", required = false) Integer pageSize){
@@ -23,7 +23,7 @@ public class AncientAuthorController {
     }
 
     @ResponseBody
-    @GetMapping("/list/{pageNum}/{pageSize}")
+    @PostMapping("/list/{pageNum}/{pageSize}")
     public List listBriefAncientAuthor(
             @PathVariable(name = "pageNum") Integer pageNum,
             @PathVariable(name = "pageSize") Integer pageSize){
@@ -31,28 +31,28 @@ public class AncientAuthorController {
     }
 
     @ResponseBody
-    @GetMapping("/get/id/{id}")
+    @PostMapping("/get/id/{id}")
     public AncientAuthor getAncientAuthorByAuthorId(
             @PathVariable("id") int id){
         return ancientAuthorService.getAncientAuthorByAuthorId(id);
     }
 
     @ResponseBody
-    @GetMapping("/get/brief/id/{id}")
+    @PostMapping("/get/brief/id/{id}")
     public AncientAuthor getBriefAncientAuthorByAuthorId(
             @PathVariable("id") int id){
         return ancientAuthorService.getBriefAncientAuthorByAuthorId(id);
     }
 
     @ResponseBody
-    @GetMapping("get/name/{name}")
+    @PostMapping("get/name/{name}")
     public AncientAuthor getAncientAuthorByAuthorName(
             @PathVariable("name")String authorName){
         return ancientAuthorService.getAncientAuthorByAuthorName(authorName);
     }
 
     @ResponseBody
-    @GetMapping("get/brief/name/{name}")
+    @PostMapping("get/brief/name/{name}")
     public AncientAuthor getBriefAncientAuthorByAuthorName(
             @PathVariable("name")String authorName){
         return ancientAuthorService.getBriefAncientAuthorByAuthorName(authorName);
@@ -71,7 +71,7 @@ public class AncientAuthorController {
     }
 
     @ResponseBody
-    @GetMapping("/update/id/{id}/likes/{likes}/visit_count/{visitCount}")
+    @PostMapping("/update/id/{id}/likes/{likes}/visit_count/{visitCount}")
     public int updateAncientAuthorLikesAndVisitCount(
             @PathVariable("id")Integer authorId,
             @PathVariable("likes") Integer likes,

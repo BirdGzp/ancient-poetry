@@ -2,6 +2,8 @@ package com.moon.ancientpoetry.user.core.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
+import com.moon.ancientpoetry.common.constant.ObjectType;
+import com.moon.ancientpoetry.common.dto.BaseDto;
 import com.moon.ancientpoetry.common.po.UserDetail;
 import com.moon.ancientpoetry.user.core.service.UserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,38 +23,41 @@ public class UserDetailController {
     UserDetailService userDetailService;
 
     @ResponseBody
-    @GetMapping("/get/full/{userId}")
-    public UserDetail getUserFullDetailByUserId(
+    @PostMapping("/get/full/{userId}")
+    public BaseDto getUserFullDetailByUserId(
             @PathVariable(name = "userId", required = false) Integer userId){
-        return userDetailService.getUserFullDetailByUserId(userId);
+        return new BaseDto(ObjectType.OBJECT, userDetailService.getUserFullDetailByUserId(userId));
     }
 
     @ResponseBody
-    @GetMapping("/get/{userId}")
-    public UserDetail getUserDetailByUserId(
+    @PostMapping("/get/{userId}")
+    public BaseDto getUserDetailByUserId(
             @PathVariable(name = "userId", required = false) Integer userId){
-        return userDetailService.getUserDetailByUserId(userId);
+        return new BaseDto(ObjectType.OBJECT, userDetailService.getUserDetailByUserId(userId));
     }
 
     @ResponseBody
-    @GetMapping("/update/batch/{listUserDetail}")
-    public int updateBatchUserDetail(
+    @PostMapping("/update/batch/{listUserDetail}")
+    public BaseDto updateBatchUserDetail(
             @PathVariable(name = "listUserDetail", required = false) String listUserDetail){
-        return userDetailService.updateBatchUserDetail(JSON.parseObject(listUserDetail, new TypeReference<List<UserDetail>>(){}));
+        return new BaseDto(ObjectType.OBJECT, userDetailService.updateBatchUserDetail(
+                JSON.parseObject(listUserDetail, new TypeReference<List<UserDetail>>(){})));
     }
 
     @ResponseBody
-    @GetMapping("/update/{userDetail}")
-    public int updateUserDetail(
+    @PostMapping("/update/{userDetail}")
+    public BaseDto updateUserDetail(
             @PathVariable(name = "userDetail", required = false) String userDetail){
-        return userDetailService.updateUserDetail(JSON.parseObject(userDetail, UserDetail.class));
+        return new BaseDto(ObjectType.OBJECT, userDetailService.updateUserDetail(
+                JSON.parseObject(userDetail, UserDetail.class)));
     }
 
     @ResponseBody
-    @GetMapping("/insert/{userDetail}")
-    public int insertUserDetail(
+    @PostMapping("/insert/{userDetail}")
+    public BaseDto insertUserDetail(
             @PathVariable(name = "userDetail", required = false) String userDetail){
-        return userDetailService.insertUserDetail(JSON.parseObject(userDetail, UserDetail.class));
+        return new BaseDto(ObjectType.OBJECT, userDetailService.insertUserDetail(
+                JSON.parseObject(userDetail, UserDetail.class)));
     }
 
 }

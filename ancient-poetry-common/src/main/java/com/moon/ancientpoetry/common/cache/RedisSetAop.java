@@ -21,8 +21,8 @@ import org.springframework.stereotype.Component;
  */
 @Aspect
 @Component
-public class RedisGetAop {
-    Logger log = LoggerFactory.getLogger(RedisGetAop.class);
+public class RedisSetAop {
+    Logger log = LoggerFactory.getLogger(RedisSetAop.class);
 
     /** redis中保存的时间 */
     public static final long EXPIRE = 1000 * 60;

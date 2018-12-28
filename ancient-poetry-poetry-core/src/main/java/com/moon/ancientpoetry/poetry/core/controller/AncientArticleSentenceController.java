@@ -18,7 +18,7 @@ public class AncientArticleSentenceController {
     AncientArticleSentenceService ancientArticleSentenceService;
 
     @ResponseBody
-    @GetMapping("/list/full/{pageNum}/{pageSize}")
+    @PostMapping("/list/full/{pageNum}/{pageSize}")
     public PageInfo listFullAncientArticleSentence(
             @PathVariable(name = "pageNum", required = false) Integer pageNum,
             @PathVariable(name = "pageSize", required = false) Integer pageSize){
@@ -26,7 +26,7 @@ public class AncientArticleSentenceController {
     }
 
     @ResponseBody
-    @GetMapping("/list/{articleId}/{pageNum}/{pageSize}")
+    @PostMapping("/list/{articleId}/{pageNum}/{pageSize}")
     public PageInfo listAncientArticleSentenceByAncientArticleId(
             @PathVariable(name = "articleId", required = false) Integer articleId,
             @PathVariable(name = "pageNum", required = false) Integer pageNum,
@@ -35,7 +35,7 @@ public class AncientArticleSentenceController {
     }
 
     @ResponseBody
-    @GetMapping("/list/{authorId}/{pageNum}/{pageSize}")
+    @PostMapping("/list/{authorId}/{pageNum}/{pageSize}")
     public PageInfo listAncientArticleSentenceByAuthorId(
             @PathVariable(name = "authorId", required = false) Integer authorId,
             @PathVariable(name = "pageNum", required = false) Integer pageNum,

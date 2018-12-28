@@ -13,14 +13,14 @@ public class AncientWordController {
     AncientWordService ancientWordService;
 
     @ResponseBody
-    @GetMapping("/get/id/{ancientWordId}")
+    @PostMapping("/get/id/{ancientWordId}")
     public AncientWord getAncientWordByAncientWordId(
             @PathVariable(name = "ancientWordId") Integer ancientWordId){
         return ancientWordService.getAncientWordByAncientWordId(ancientWordId);
     }
 
     @ResponseBody
-    @GetMapping("/get/word/{ancientWord}")
+    @PostMapping("/get/word/{ancientWord}")
     public AncientWord getAncientWordByAncientWord(
             @PathVariable(name = "ancientWord") String ancientWord){
         return ancientWordService.getAncientWordByAncientWord(ancientWord);
