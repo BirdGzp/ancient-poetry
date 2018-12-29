@@ -8,11 +8,17 @@ spring:
       content-type: text/html
     mode: HTML5
     enabled: true
-
+  redis:
+    host: 192.168.111.133
+    port: 6379
   devtools:
     restart:
       enabled: true
 
-
 server:
-  port: 9999
+  port: 9998
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://ancient-poetry-eureka-server:9000/eureka/,http://ancient-poetry-eureka-server:9001/eureka/

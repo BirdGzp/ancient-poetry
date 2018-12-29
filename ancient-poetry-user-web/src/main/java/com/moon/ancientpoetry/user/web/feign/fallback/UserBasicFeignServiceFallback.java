@@ -1,10 +1,10 @@
 package com.moon.ancientpoetry.user.web.feign.fallback;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.moon.ancientpoetry.common.constant.ObjectType;
 import com.moon.ancientpoetry.common.dto.BaseDto;
-import com.moon.ancientpoetry.common.fallback.DefaultFallback;
+import com.moon.ancientpoetry.common.aop.fallback.DefaultFallback;
+import com.moon.ancientpoetry.common.po.UserBasic;
 import com.moon.ancientpoetry.user.web.feign.service.UserBasicFeignService;
 import org.springframework.stereotype.Component;
 
@@ -55,12 +55,12 @@ public class UserBasicFeignServiceFallback implements UserBasicFeignService {
     }
 
     @Override
-    public String updateUserBasic(String userBasic) {
+    public String updateUserBasic(UserBasic userBasic) {
         return null;
     }
 
     @Override
-    public String insertUserBasic(String userBasic) {
+    public String insertUserBasic(UserBasic userBasic) {
         return null;
     }
 }

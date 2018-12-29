@@ -50,6 +50,10 @@
             <groupId>com.moon</groupId>
             <artifactId>ancient-poetry-common</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-data-redis</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

@@ -1,6 +1,5 @@
 package com.moon.ancientpoetry.user.web.service.impl;
 
-import com.alibaba.fastjson.JSON;
 import com.moon.ancientpoetry.common.constant.ObjectType;
 import com.moon.ancientpoetry.common.dto.BaseDto;
 import com.moon.ancientpoetry.common.po.UserBasic;
@@ -10,8 +9,12 @@ import com.moon.ancientpoetry.user.web.dto.UserDto;
 import com.moon.ancientpoetry.user.web.feign.service.UserBasicFeignService;
 import com.moon.ancientpoetry.user.web.feign.service.UserDetailFeignService;
 import com.moon.ancientpoetry.user.web.service.UserService;
+import com.moon.ancientpoetry.user.web.util.RegularPattern;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @Author: zhipeng gong
@@ -20,6 +23,8 @@ import org.springframework.stereotype.Service;
  */
 @Service("userService")
 public class UserServiceImpl implements UserService {
+
+    Logger log = LoggerFactory.getLogger(UserService.class);
 
     @Autowired
     private UserBasicFeignService userBasicFeignService;
@@ -47,6 +52,8 @@ public class UserServiceImpl implements UserService {
         userDto.setUserDetail((UserDetail) baseDto.parseObject());
         return userDto;
     }
+
+
 
 
     /**
@@ -79,4 +86,70 @@ public class UserServiceImpl implements UserService {
     public UserBasic getUserBaiscByUserId(Integer userId){
         return null;
     }
+
+    /**
+     *
+     * @param accountId 账户 id
+     * @param password  密码
+     * @return
+     */
+    @Override
+    public UserBasic getPasswordCheckResult(String accountId, String password){
+
+        BaseDto baseDto = null;
+        if(accountId.contains("@")){
+            if(!RegularPattern.emailCheck(accountId)){
+                return null;
+            }
+            baseDto = ParseToObject.parseToDto(userBasicFeignService.getCheckInfoByEmail(accountId));
+
+        }else {
+            if(!RegularPattern.telephoneCheck(accountId)){
+                return null;
+            }
+            baseDto = ParseToObject.parseToDto(userBasicFeignService.getCheckInfoByTelephone(accountId));
+        }
+
+
+        if(baseDto == null || baseDto.getObjectType() != ObjectType.OBJECT){
+            log.info("查询失败，请检查 com/moon/ancientpoetry/user/web/service/impl/UserServiceImpl.java:116");
+            return null;
+        }
+        UserBasic userBasic = (UserBasic) baseDto.parseObject();
+        if(password.equals(userBasic.getPassword())){
+            userBasic.setPassword(null);
+            return userBasic;
+        }
+        return null;
+    }
+
+    /**
+     * 插入一个新的用户基本信息
+     * @param userDto
+     * @return
+     */
+    @Override
+    @Transactional
+    public Integer insertUser(UserDto userDto){
+        BaseDto baseDto = null;
+        if(userDto == null){
+            return 0;
+        }
+        if(userDto.getUserBasic().getPassword() != null &&
+                (userDto.getUserBasic().getTelephone() != null || userDto.getUserBasic().getEmail() != null)){
+            baseDto = ParseToObject.parseToDto(userBasicFeignService.insertUserBasic(userDto.getUserBasic()));
+            if((Integer)baseDto.parseObject() == 1){
+                return 0;
+            }
+            baseDto = ParseToObject.parseToDto(userDetailFeignService.insertUserDetail(userDto.getUserDetail()));
+            if((Integer)baseDto.parseObject() == 0){
+                return 0;
+            }
+            return 1;
+        }else {
+            return 0;
+        }
+    }
+
 }
+

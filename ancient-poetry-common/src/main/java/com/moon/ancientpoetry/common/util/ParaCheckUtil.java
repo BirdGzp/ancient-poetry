@@ -1,8 +1,9 @@
 package com.moon.ancientpoetry.common.util;
 
+import org.springframework.util.StringUtils;
+
 import java.util.Collection;
 import java.util.Map;
-import org.apache.commons.lang.StringUtils;
 
 public class ParaCheckUtil {
 
@@ -31,7 +32,7 @@ public class ParaCheckUtil {
      * @return 如果此map为null或空，则返回 true
      */
     public static boolean isNullOrEmpty(String s) {
-        return StringUtils.isBlank(s);
+        return StringUtils.isEmpty(s);
     }
 
     /**

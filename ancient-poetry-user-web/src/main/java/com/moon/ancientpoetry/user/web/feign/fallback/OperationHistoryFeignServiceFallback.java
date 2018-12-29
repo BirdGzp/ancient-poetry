@@ -1,6 +1,6 @@
 package com.moon.ancientpoetry.user.web.feign.fallback;
 
-import com.moon.ancientpoetry.common.fallback.DefaultFallback;
+import com.moon.ancientpoetry.common.aop.fallback.DefaultFallback;
 import com.moon.ancientpoetry.user.web.feign.service.OperationHistoryFeignService;
 import org.springframework.stereotype.Component;
 

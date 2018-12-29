@@ -46,18 +46,14 @@ public class UserDetailController {
 
     @ResponseBody
     @PostMapping("/update/{userDetail}")
-    public BaseDto updateUserDetail(
-            @PathVariable(name = "userDetail", required = false) String userDetail){
-        return new BaseDto(ObjectType.OBJECT, userDetailService.updateUserDetail(
-                JSON.parseObject(userDetail, UserDetail.class)));
+    public BaseDto updateUserDetail(@RequestBody UserDetail userDetail){
+        return new BaseDto(ObjectType.OBJECT, userDetailService.updateUserDetail(userDetail));
     }
 
     @ResponseBody
     @PostMapping("/insert/{userDetail}")
-    public BaseDto insertUserDetail(
-            @PathVariable(name = "userDetail", required = false) String userDetail){
-        return new BaseDto(ObjectType.OBJECT, userDetailService.insertUserDetail(
-                JSON.parseObject(userDetail, UserDetail.class)));
+    public BaseDto insertUserDetail(@RequestBody UserDetail userDetail){
+        return new BaseDto(ObjectType.OBJECT, userDetailService.insertUserDetail(userDetail));
     }
 
 }

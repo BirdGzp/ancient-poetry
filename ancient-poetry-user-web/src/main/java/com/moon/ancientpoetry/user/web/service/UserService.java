@@ -36,4 +36,19 @@ public interface UserService {
      * @return
      */
     UserBasic getUserBaiscByUserId(Integer userId);
+
+    /**
+     *
+     * @param accountId 账户 id
+     * @param password  加密后的密码
+     * @return
+     */
+    UserBasic getPasswordCheckResult(String accountId, String password);
+
+    /**
+     * 插入一个新的用户基本信息
+     * @param userDto
+     * @return
+     */
+    Integer insertUser(UserDto userDto);
 }

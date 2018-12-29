@@ -71,17 +71,15 @@ public class UserBasicController {
 
 
     @ResponseBody
-    @PostMapping("/update/{userBasic}")
-    public BaseDto updateUserBasic(
-            @PathVariable(name = "userBasic", required = false) String userBasic){
-        return new BaseDto(ObjectType.OBJECT, userBasicService.updateUserBasic(JSON.parseObject(userBasic, UserBasic.class)));
+    @PostMapping("/update")
+    public BaseDto updateUserBasic(@RequestBody UserBasic userBasic){
+        return new BaseDto(ObjectType.OBJECT, userBasicService.updateUserBasic(userBasic));
     }
 
 
     @ResponseBody
-    @PostMapping("/insert/{userBasic}")
-    public BaseDto insertUserBasic(
-            @PathVariable(name = "userBasic", required = false) String userBasic){
-        return new BaseDto(ObjectType.OBJECT, userBasicService.insertUserBasic(JSON.parseObject(userBasic, UserBasic.class)));
+    @PostMapping("/insert")
+    public BaseDto insertUserBasic(@RequestBody UserBasic userBasic){
+        return new BaseDto(ObjectType.OBJECT, userBasicService.insertUserBasic(userBasic));
     }
 }

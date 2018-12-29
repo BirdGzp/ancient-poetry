@@ -1,9 +1,11 @@
 package com.moon.ancientpoetry.user.web.feign.service;
 
+import com.moon.ancientpoetry.common.po.UserBasic;
 import com.moon.ancientpoetry.user.web.feign.fallback.UserBasicFeignServiceFallback;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -41,16 +43,15 @@ public interface UserBasicFeignService {
     @RequestMapping(value = "/user/basic/get/check-info/telephone/{telephone}", method = RequestMethod.POST)
     String getCheckInfoByTelephone(
             @PathVariable(name = "telephone", required = false) String telephone);
-
     
     @RequestMapping(value = "/user/basic/get/check-info/email/{email}", method = RequestMethod.POST)
     String getCheckInfoByEmail(@PathVariable(name = "email", required = false) String email);
 
 
-    @RequestMapping(value = "/user/basic/update/{userBasic}", method = RequestMethod.POST)
-    String updateUserBasic (@PathVariable(name = "userBasic", required = false) String userBasic);
+    @RequestMapping(value = "/user/basic/update", method = RequestMethod.POST)
+    String updateUserBasic (@RequestBody UserBasic userBasic);
 
 
-    @RequestMapping(value = "/user/basic/insert/{userBasic}", method = RequestMethod.POST)
-    String insertUserBasic(@PathVariable(name = "userBasic", required = false) String userBasic);
+    @RequestMapping(value = "/user/basic/insert/", method = RequestMethod.POST)
+    String insertUserBasic(@RequestBody UserBasic userBasic);
 }

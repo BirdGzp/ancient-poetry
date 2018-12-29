@@ -1,11 +1,13 @@
 package com.moon.ancientpoetry.user.web.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.moon.ancientpoetry.common.constant.ObjectType;
+import com.moon.ancientpoetry.common.dto.BaseDto;
+import com.moon.ancientpoetry.common.po.UserBasic;
+import com.moon.ancientpoetry.user.web.dto.UserDto;
 import com.moon.ancientpoetry.user.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Author: zhipeng gong
@@ -19,20 +21,30 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @RequestMapping("/id/{id}")
+    @PostMapping("/id/{id}")
     public String getUserId(@PathVariable(name = "id")Integer id){
         return JSON.toJSONString(userService.getFullUserByUserId(id));
 
     }
 
-    @RequestMapping("/get/check-info/telephone/{telephone}")
-    public String getCheckInfoByTelephone(@PathVariable(name = "telephone")String telephone){
-        return JSON.toJSONString(userService.getUserCheckInfoByTelephone(telephone));
+    @PostMapping("/get/check-result/{accountId}/{password}")
+    public String getPasswordCheckResult(@PathVariable(name = "accountId")String accountId, @PathVariable(name = "password")String password, String ip){
+        UserBasic userBasic = userService.getPasswordCheckResult(accountId, password);
+        if(userBasic != null){
+            return JSON.toJSONString(new BaseDto(ObjectType.OBJECT, userBasic));
+        }else {
+            return JSON.toJSONString(new BaseDto(ObjectType.NULL));
+        }
     }
 
     @RequestMapping("/get/check-info/email/{email}")
     public String getCheckInfoByEmail(@PathVariable(name = "email")String email){
         return JSON.toJSONString(userService.getUserCheckInfoByEmail(email));
+    }
+
+    @RequestMapping(value = "/insert", method = RequestMethod.POST)
+    public Integer insertUser(@RequestBody UserDto userDto){
+        return userService.insertUser(userDto);
     }
 
 }

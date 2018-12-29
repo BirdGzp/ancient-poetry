@@ -1,11 +1,9 @@
 package com.moon.ancientpoetry.user.web.feign.service;
 
+import com.moon.ancientpoetry.common.po.UserDetail;
 import com.moon.ancientpoetry.user.web.feign.fallback.UserDetailFeignServiceFallback;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Author: zhipeng gong
@@ -29,12 +27,10 @@ public interface UserDetailFeignService {
     String updateBatchUserDetail(
             @PathVariable(name = "listUserDetail", required = false) String listUserDetail);
     
-    @RequestMapping(value = "/user/detail/update/{userDetail}", method = RequestMethod.POST)
-    String updateUserDetail(
-            @PathVariable(name = "userDetail", required = false) String userDetail);
+    @RequestMapping(value = "/user/detail/update", method = RequestMethod.POST)
+    String updateUserDetail(@RequestBody UserDetail userDetail);
 
 
-    @RequestMapping(value = "/user/detail/insert/{userDetail}", method = RequestMethod.POST)
-    String insertUserDetail(
-            @PathVariable(name = "userDetail", required = false) String userDetail);
+    @RequestMapping(value = "/user/detail/insert", method = RequestMethod.POST)
+    String insertUserDetail(@RequestBody UserDetail userDetail);
 }

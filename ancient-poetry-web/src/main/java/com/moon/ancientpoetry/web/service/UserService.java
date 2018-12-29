@@ -10,7 +10,8 @@ public interface UserService {
      * 账号登录
      * @param accountId 账号 id  可以使邮箱，也可以是手机号码
      * @param password
+     * @param ip 用户 ip 地址
      * @return
      */
-    boolean login(String accountId, String password);
+    boolean login(String accountId, String password, String ip);
 }

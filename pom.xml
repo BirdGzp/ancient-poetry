@@ -38,7 +38,6 @@
         <druid.version>1.1.9</druid.version>
         <fastjson.version>1.2.53</fastjson.version>
         <jsoup.version>1.10.2</jsoup.version>
-        <commons.lang.version>2.6</commons.lang.version>
         <caffeine.version>2.6.0</caffeine.version>
         <aspect.version>1.9.2</aspect.version>
 
@@ -140,11 +139,6 @@
                 <version>${jsoup.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>commons-lang</groupId>
-                <artifactId>commons-lang</artifactId>
-                <version>${commons.lang.version}</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 

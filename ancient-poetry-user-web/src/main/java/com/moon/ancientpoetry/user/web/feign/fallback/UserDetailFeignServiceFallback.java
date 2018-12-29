@@ -1,6 +1,7 @@
 package com.moon.ancientpoetry.user.web.feign.fallback;
 
-import com.moon.ancientpoetry.common.fallback.DefaultFallback;
+import com.moon.ancientpoetry.common.aop.fallback.DefaultFallback;
+import com.moon.ancientpoetry.common.po.UserDetail;
 import com.moon.ancientpoetry.user.web.feign.service.UserDetailFeignService;
 import org.springframework.stereotype.Component;
 
@@ -29,12 +30,12 @@ public class UserDetailFeignServiceFallback implements UserDetailFeignService {
     }
 
     @Override
-    public String updateUserDetail(String userDetail) {
+    public String updateUserDetail(UserDetail  userDetail) {
         return null;
     }
 
     @Override
-    public String insertUserDetail(String userDetail) {
+    public String insertUserDetail(UserDetail userDetail) {
         return null;
     }
 }

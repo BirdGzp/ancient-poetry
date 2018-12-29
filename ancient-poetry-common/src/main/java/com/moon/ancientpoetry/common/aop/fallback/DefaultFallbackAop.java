@@ -1,4 +1,4 @@
-package com.moon.ancientpoetry.common.fallback;
+package com.moon.ancientpoetry.common.aop.fallback;
 
 import com.alibaba.fastjson.JSON;
 import com.moon.ancientpoetry.common.constant.ObjectType;

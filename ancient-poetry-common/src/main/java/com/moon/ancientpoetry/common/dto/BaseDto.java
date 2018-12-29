@@ -25,6 +25,12 @@ public class BaseDto<T> {
      */
     private T object;
 
+    public BaseDto(Byte objectType) {
+        this.objectType = objectType;
+        objectType = null;
+        className = null;
+    }
+
     public BaseDto(Byte objectType, String className, T object) {
         this.objectType = objectType;
         this.className = className;
@@ -70,7 +76,14 @@ public class BaseDto<T> {
                 '}';
     }
 
+    /**
+     * 通过classType 解析后的对象
+     * @return
+     */
     public T parseObject(){
+        if(className == null){
+            return null;
+        }
         Class clazz = null;
         try {
             clazz = Class.forName(className);
