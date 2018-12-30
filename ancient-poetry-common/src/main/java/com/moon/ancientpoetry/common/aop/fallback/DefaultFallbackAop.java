@@ -35,16 +35,15 @@ public class DefaultFallbackAop {
             return result;
         }
         Object[] args = proceedingJoinPoint.getArgs();
-        System.out.println(args.length);
         StringBuilder stringBuilder = null;
         if (args != null && args.length > 0 ) {
             //拿到service 名字的前缀——POJO对象名
             stringBuilder = new StringBuilder(signature.getDeclaringTypeName() + "#" + signature.getName() + " : ");
             for(Object object:args) {
-                System.out.println(object);
                 stringBuilder.append(" ").append(object);
             }
         }
+        log.debug(stringBuilder.toString() + " 远程调用接口执行失败");
         return  JSON.toJSONString(new BaseDto(ObjectType.ERROR, stringBuilder.toString()));
     }
 }

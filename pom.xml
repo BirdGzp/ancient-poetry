@@ -49,18 +49,15 @@
 
     <modules>
         <module>ancient-poetry-article-core</module>
-        <module>ancient-poetry-article-web</module>
         <module>ancient-poetry-common</module>
         <module>ancient-poetry-eureka-server</module>
         <module>ancient-poetry-config-server</module>
         <module>ancient-poetry-gateway</module>
         <module>ancient-poetry-user-core</module>
         <module>ancient-poetry-poetry-core</module>
-        <module>ancient-poetry-user-web</module>
-        <module>ancient-poetry-poetry-web</module>
         <module>history-line-core</module>
-        <module>history-line-web</module>
         <module>ancient-poetry-web</module>
+        <module>histroy-line-core</module>
     </modules>
 
 

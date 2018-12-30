@@ -93,7 +93,6 @@ public class BaseDto<T> {
         if(clazz == null){
             return null;
         }
-        System.out.println(object.toString());
         return (T) JSON.parseObject(object.toString(), clazz);
     }
 }

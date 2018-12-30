@@ -1,8 +1,6 @@
 package com.moon.ancientpoetry.user.core.controller;
 
 
-import com.alibaba.fastjson.JSON;
-import com.github.pagehelper.PageInfo;
 import com.moon.ancientpoetry.common.constant.ObjectType;
 import com.moon.ancientpoetry.common.dto.BaseDto;
 import com.moon.ancientpoetry.common.po.UserBasic;
@@ -33,11 +31,7 @@ public class UserBasicController {
     @PostMapping("/get/full/{userId}")
     public BaseDto getUserFullBasicByUserId(
             @PathVariable(name = "userId", required = false) Integer userId){
-        long time  = System.currentTimeMillis();
-        UserBasic ub = userBasicService.getUserFullBasicByUserId(userId);
-        ub.setPenName("浪子");
-        System.out.println("port: " + port +" --->" + (System.currentTimeMillis() - time));
-        return new BaseDto(ObjectType.OBJECT, ub);
+        return new BaseDto(ObjectType.OBJECT, userBasicService.getUserFullBasicByUserId(userId));
     }
 
 
@@ -82,4 +76,17 @@ public class UserBasicController {
     public BaseDto insertUserBasic(@RequestBody UserBasic userBasic){
         return new BaseDto(ObjectType.OBJECT, userBasicService.insertUserBasic(userBasic));
     }
+
+    @PostMapping("/get/check-result/{accountId}/{ip}")
+    public BaseDto getPasswordCheckResult(@PathVariable(name = "accountId")String accountId, @RequestBody String password, @PathVariable(name = "ip") String ip){
+        System.out.println(password);
+        Integer userId = userBasicService.getPasswordCheckResult(accountId, password);
+        if(userId != null){
+            return new BaseDto(ObjectType.OBJECT, userId);
+        }else {
+            return new BaseDto(ObjectType.NULL);
+        }
+    }
+
+
 }

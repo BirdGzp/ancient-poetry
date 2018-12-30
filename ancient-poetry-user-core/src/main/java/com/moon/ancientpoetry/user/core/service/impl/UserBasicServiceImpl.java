@@ -5,9 +5,15 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.moon.ancientpoetry.common.cache.RedisService;
 import com.moon.ancientpoetry.common.cache.RedisSet;
+import com.moon.ancientpoetry.common.constant.ObjectType;
+import com.moon.ancientpoetry.common.dto.BaseDto;
 import com.moon.ancientpoetry.common.po.UserBasic;
+import com.moon.ancientpoetry.common.util.ParseToObject;
 import com.moon.ancientpoetry.user.core.mapper.UserBasicMapper;
 import com.moon.ancientpoetry.user.core.service.UserBasicService;
+import com.moon.ancientpoetry.user.core.util.RegularPattern;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -16,6 +22,8 @@ import org.springframework.stereotype.Service;
 
 @Service("userBasicService")
 public class UserBasicServiceImpl implements UserBasicService {
+
+    Logger log = LoggerFactory.getLogger(UserBasic.class);
 
     @Autowired
     UserBasicMapper userBasicMapper;
@@ -43,11 +51,6 @@ public class UserBasicServiceImpl implements UserBasicService {
     @Cacheable( value = "UserBasic" , sync = true)
     public UserBasic getUserFullBasicByUserId(Integer userId){
         UserBasic userBasic =  userBasicMapper.getUserFullBasicByUserId(userId);
-        if(userBasic == null){
-            userBasic = new UserBasic();
-            userBasic.setPenName(123 + "123");
-        }
-
         return userBasic;
 
     }
@@ -86,6 +89,7 @@ public class UserBasicServiceImpl implements UserBasicService {
      */
     @Override
     public UserBasic getCheckInfoByEmail(String email){
+        log.info(email);
         return userBasicMapper.getCheckInfoByEmail(email);
     }
 
@@ -96,6 +100,7 @@ public class UserBasicServiceImpl implements UserBasicService {
      */
     @Override
     public UserBasic getCheckInfoByTelephone(String telephone){
+        log.info(telephone);
         return userBasicMapper.getCheckInfoByTelephone(telephone);
     }
 
@@ -120,5 +125,43 @@ public class UserBasicServiceImpl implements UserBasicService {
     @Override
     public int insertUserBasic(UserBasic userBasic){
         return userBasicMapper.insertUserBasic(userBasic);
+    }
+
+    /**
+     * 校验密码是否正确
+     * @param accountId  账号
+     * @param password   密码
+     * @return
+     */
+    @Override
+    public Integer getPasswordCheckResult(String accountId, String password){
+
+        UserBasic userBasic = null;
+        if(accountId.contains("@")){
+            if(!RegularPattern.emailCheck(accountId)){
+                return null;
+            }
+            userBasic = getCheckInfoByEmail(accountId);
+
+        }else {
+            if(!RegularPattern.telephoneCheck(accountId)){
+                return null;
+            }
+            System.out.println();
+            userBasic = getCheckInfoByTelephone(accountId);
+        }
+
+
+        if(userBasic == null ){
+            log.info("查询失败，请检查 com/moon/ancientpoetry/user/web/service/impl/UserServiceImpl.java:116");
+            return null;
+        }
+        System.out.println(password);
+        System.out.println(userBasic.getPassword());
+        if(password.equals(userBasic.getPassword())){
+            userBasic.setPassword(null);
+            return userBasic.getUserId();
+        }
+        return null;
     }
 }

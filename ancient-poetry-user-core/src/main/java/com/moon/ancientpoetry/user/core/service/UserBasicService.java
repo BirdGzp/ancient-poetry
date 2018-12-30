@@ -62,4 +62,12 @@ public interface UserBasicService {
      * @return
      */
     int insertUserBasic(UserBasic userBasic);
+
+    /**
+     * 校验密码是否正确
+     * @param accountId  账号
+     * @param password   密码
+     * @return
+     */
+    Integer getPasswordCheckResult(String accountId, String password);
 }

@@ -1,5 +1,8 @@
 package com.moon.ancientpoetry.web.service;
 
+import com.moon.ancientpoetry.common.po.UserBasic;
+import com.moon.ancientpoetry.web.dto.UserDto;
+
 /**
  * @Author: zhipeng gong
  * @Date: 2018/12/28 17:20
@@ -13,5 +16,28 @@ public interface UserService {
      * @param ip 用户 ip 地址
      * @return
      */
-    boolean login(String accountId, String password, String ip);
+    Integer login(String accountId, String password, String ip);
+
+
+    /**
+     * 根据 用户 id  获得基本信息
+     * @param userId
+     * @return
+     */
+    UserBasic getUserBriefBasicByUserId(Integer userId);
+
+    /**
+     * 根据用户 id  获得全部的用户基本信息
+     * @param userId
+     * @return
+     */
+    UserBasic getUserFullBasicByUserId(Integer userId);
+
+    /**
+     * 根据用户 id  获得用户全部信息+详细信息
+     * @param userId
+     * @return
+     */
+    UserDto getUserFullByUserId(Integer userId);
+
 }

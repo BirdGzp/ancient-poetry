@@ -4,7 +4,8 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://ancient-poetry-eureka-server:9000/eureka/,http://ancient-poetry-eureka-server:9001/eureka/
+      defaultZone: http://ancient-poetry-eureka-server:9000/eureka/
+
 
 spring:
   application:
