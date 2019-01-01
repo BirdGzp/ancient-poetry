@@ -53,14 +53,14 @@ public interface AncientAuthorService {
      * @param ancientAuthor
      * @return
      */
-    int insertAncientAuthor(AncientAuthor ancientAuthor);
+    Integer insertAncientAuthor(AncientAuthor ancientAuthor);
 
     /**
      * 更新作者信息
      * @param ancientAuthor
      * @return
      */
-    int updateAncientAuthor(AncientAuthor ancientAuthor);
+    Integer updateAncientAuthor(AncientAuthor ancientAuthor);
 
     /**
      * 更新作者信息中的 likes 字段和 visitCount 字段
@@ -69,5 +69,5 @@ public interface AncientAuthorService {
      * @param visitCount  访问量
      * @return
      */
-    int updateAncientAuthorLikesAndVisitCount(Integer authorId, Integer likes, Integer visitCount);
+    Integer updateAncientAuthorLikesAndVisitCount(Integer authorId, Integer likes, Integer visitCount);
 }

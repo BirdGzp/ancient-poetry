@@ -1,4 +1,4 @@
-package com.moon.ancientpoetry.web.service.impl;
+package com.moon.ancientpoetry.web.service.user.impl;
 
 import com.moon.ancientpoetry.common.constant.ObjectType;
 import com.moon.ancientpoetry.common.dto.BaseDto;
@@ -6,8 +6,9 @@ import com.moon.ancientpoetry.common.po.UserBasic;
 import com.moon.ancientpoetry.common.util.ParseToObject;
 import com.moon.ancientpoetry.web.dto.UserDto;
 import com.moon.ancientpoetry.web.feign.user.service.UserBasicFeignService;
-import com.moon.ancientpoetry.web.service.UserService;
+import com.moon.ancientpoetry.web.service.user.UserService;
 import com.moon.ancientpoetry.web.util.PrivacyEncrypt;
+import com.moon.ancientpoetry.web.vo.IndexVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,10 +39,6 @@ public class UserServiceImpl implements UserService {
         if(baseDto.getObjectType() == ObjectType.NULL){
             log.debug("查询对象为null");
             return null;
-        }
-        if(baseDto.getObjectType() == ObjectType.ERROR){
-            log.info("远程调用失败 com.moon.ancientpoetry.web.service.impl.UserServiceImpl.login ");
-
         }
         System.out.println(baseDto.parseObject());
         return (Integer) baseDto.parseObject();
@@ -78,6 +75,18 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto getUserFullByUserId(Integer userId){
         return null;
+    }
+
+
+    /**
+     * 根据用户id  返回首页信息
+     * @param userId
+     * @return
+     */
+    public IndexVo index(String userId){
+        IndexVo indexVo = new IndexVo();
+
+        return indexVo;
     }
 
 }

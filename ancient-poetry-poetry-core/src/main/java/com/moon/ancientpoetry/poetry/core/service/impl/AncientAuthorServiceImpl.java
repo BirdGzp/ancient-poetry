@@ -96,7 +96,7 @@ public class AncientAuthorServiceImpl implements AncientAuthorService {
      * @return
      */
     @Override
-    public int insertAncientAuthor(AncientAuthor ancientAuthor) {
+    public Integer insertAncientAuthor(AncientAuthor ancientAuthor) {
         ancientAuthor.setAuthorName("龚志鹏");
         ancientAuthor.setAuthorArticleCount(0);
 
@@ -109,7 +109,7 @@ public class AncientAuthorServiceImpl implements AncientAuthorService {
      * @return
      */
     @Override
-    public int updateAncientAuthor(AncientAuthor ancientAuthor) {
+    public Integer updateAncientAuthor(AncientAuthor ancientAuthor) {
         return ancientAuthorMapper.updateAncientAuthorByAuthorId(ancientAuthor);
     }
 
@@ -121,7 +121,7 @@ public class AncientAuthorServiceImpl implements AncientAuthorService {
      * @return
      */
     @Override
-    public int updateAncientAuthorLikesAndVisitCount(Integer authorId, Integer likes, Integer visitCount) {
+    public Integer updateAncientAuthorLikesAndVisitCount(Integer authorId, Integer likes, Integer visitCount) {
         AncientAuthor ancientAuthor = new AncientAuthor();
         ancientAuthor.setAuthorId(authorId);
         ancientAuthor.setLikes(likes);

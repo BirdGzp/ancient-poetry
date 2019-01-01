@@ -1,6 +1,6 @@
 package com.moon.ancientpoetry.web.controller;
 
-import com.moon.ancientpoetry.web.service.UserService;
+import com.moon.ancientpoetry.web.service.user.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

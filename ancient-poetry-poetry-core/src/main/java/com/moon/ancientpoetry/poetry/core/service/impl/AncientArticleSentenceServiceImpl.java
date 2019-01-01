@@ -63,7 +63,7 @@ public class AncientArticleSentenceServiceImpl implements AncientArticleSentence
      * @return
      */
     @Override
-    public int updateAncientArticleSentence(AncientArticleSentence ancientArticleSentence){
+    public Integer updateAncientArticleSentence(AncientArticleSentence ancientArticleSentence){
         return ancientArticleSentenceMapper.updateAncientArticleSentenceByAncientArticleSentenceId(ancientArticleSentence);
     }
 
@@ -73,7 +73,7 @@ public class AncientArticleSentenceServiceImpl implements AncientArticleSentence
      * @return
      */
     @Override
-    public int insertAncientArticleSentence(AncientArticleSentence ancientArticleSentence){
+    public Integer insertAncientArticleSentence(AncientArticleSentence ancientArticleSentence){
         return ancientArticleSentenceMapper.insertAncientArticleSentence(ancientArticleSentence);
     }
 }

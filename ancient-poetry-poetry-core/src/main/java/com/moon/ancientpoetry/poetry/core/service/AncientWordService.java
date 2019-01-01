@@ -23,5 +23,5 @@ public interface AncientWordService {
      * @param ancientWord
      * @return
      */
-    int insertAuthorWord(AncientWord ancientWord);
+    Integer insertAuthorWord(AncientWord ancientWord);
 }

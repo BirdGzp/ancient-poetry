@@ -5,7 +5,7 @@
     </h1>
     <div class="am-collapse am-topbar-collapse" id="blog-collapse">
         <ul class="am-nav am-nav-pills am-topbar-nav">
-            <li class="am-active"><a href="/index">首页</a></li>
+            <li class="am-active"><a href="/index.html">首页</a></li>
             <li class="am-dropdown" data-am-dropdown>
                 <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
                     古诗 <span class="am-icon-caret-down"></span>
@@ -24,7 +24,7 @@
         </ul>
         <div class="am-topbar-right">
             <h1 class="am-topbar-brand">
-                <a href="/login" class="am-icon-user am-form-inline am-topbar-nav" th:unless="${userId }">&nbsp;登录</a>
+                <a href="/login.html" class="am-icon-user am-form-inline am-topbar-nav" th:unless="${userId }">&nbsp;登录</a>
                 <a href = "#" class=" am-icon-user am-form-inline am-topbar-nav" th:if="${userId }" th:text="'&nbsp;' + ${userId }"></a>
             </h1>
         </div>

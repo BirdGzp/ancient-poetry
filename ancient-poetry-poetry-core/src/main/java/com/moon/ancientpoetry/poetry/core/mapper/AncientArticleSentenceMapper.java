@@ -40,14 +40,14 @@ public interface AncientArticleSentenceMapper {
      * @param ancientArticleSentence  封装修改的数据
      * @return
      */
-    int updateAncientArticleSentenceByAncientArticleSentenceId(AncientArticleSentence ancientArticleSentence);
+    Integer updateAncientArticleSentenceByAncientArticleSentenceId(AncientArticleSentence ancientArticleSentence);
 
     /**
      * 插入新的名句
      * @param ancientArticleSentence
      * @return
      */
-    int insertAncientArticleSentence(AncientArticleSentence ancientArticleSentence);
+    Integer insertAncientArticleSentence(AncientArticleSentence ancientArticleSentence);
 
 
 }

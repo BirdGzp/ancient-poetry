@@ -1,4 +1,4 @@
-package com.moon.ancientpoetry.web.service;
+package com.moon.ancientpoetry.web.service.user;
 
 import com.moon.ancientpoetry.common.po.UserBasic;
 import com.moon.ancientpoetry.web.dto.UserDto;

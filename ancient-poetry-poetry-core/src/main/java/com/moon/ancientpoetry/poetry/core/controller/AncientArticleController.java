@@ -1,6 +1,8 @@
 package com.moon.ancientpoetry.poetry.core.controller;
 
 import com.github.pagehelper.PageInfo;
+import com.moon.ancientpoetry.common.constant.ObjectType;
+import com.moon.ancientpoetry.common.dto.BaseDto;
 import com.moon.ancientpoetry.common.po.AncientArticle;
 import com.moon.ancientpoetry.poetry.core.service.AncientArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,37 +22,37 @@ public class AncientArticleController {
 
     @ResponseBody
     @PostMapping("/list/full/{pageNum}/{pageSize}")
-    public PageInfo listFullAllAncientAuthor(
+    public BaseDto listFullAllAncientAuthor(
             @PathVariable(name = "pageNum", required = false) Integer pageNum,
             @PathVariable(name = "pageSize", required = false) Integer pageSize){
-        return ancientArticleService.listFullAncientArticle(pageNum, pageSize);
+        return new BaseDto(ObjectType.OBJECT, ancientArticleService.listFullAncientArticle(pageNum, pageSize));
     }
 
     @ResponseBody
     @PostMapping("/list/{authorId}/{pageNum}/{pageSize}")
-    public PageInfo listAncientArticleByAuthorId(
+    public BaseDto listAncientArticleByAuthorId(
             @PathVariable(name = "authorId", required = false) Integer authorId,
             @PathVariable(name = "pageNum", required = false) Integer pageNum,
             @PathVariable(name = "pageSize", required = false) Integer pageSize){
-        return ancientArticleService.listAncientArticleByAuthorId(authorId, pageNum, pageSize);
+        return new BaseDto(ObjectType.OBJECT, ancientArticleService.listAncientArticleByAuthorId(authorId, pageNum, pageSize));
     }
 
     @ResponseBody
     @PostMapping("get/brief/id/{articleId}")
-    public AncientArticle getBriefAncientAuthorByAuthorName(
+    public BaseDto getBriefAncientAuthorByAuthorName(
             @PathVariable("articleId")Integer articleId){
-        return ancientArticleService.getAncientArticleByArticleId(articleId);
+        return new BaseDto(ObjectType.OBJECT, ancientArticleService.getAncientArticleByArticleId(articleId));
     }
 
     @ResponseBody
     @PostMapping("/insert")
-    public int insertAncientArticle(AncientArticle ancientArticle){
-        return ancientArticleService.insertAncientArticle(ancientArticle);
+    public BaseDto insertAncientArticle(AncientArticle ancientArticle){
+        return new BaseDto(ObjectType.OBJECT, ancientArticleService.insertAncientArticle(ancientArticle));
     }
 
     @ResponseBody
     @PostMapping("/update")
-    public int updateAncientArticle(AncientArticle ancientArticle){
-        return ancientArticleService.updateAncientArticle(ancientArticle);
+    public BaseDto updateAncientArticle(AncientArticle ancientArticle){
+        return new BaseDto(ObjectType.OBJECT, ancientArticleService.updateAncientArticle(ancientArticle));
     }
 }

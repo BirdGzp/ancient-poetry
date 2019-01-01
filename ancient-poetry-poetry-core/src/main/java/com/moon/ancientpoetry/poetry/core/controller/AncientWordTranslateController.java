@@ -1,6 +1,8 @@
 package com.moon.ancientpoetry.poetry.core.controller;
 
 import com.github.pagehelper.PageInfo;
+import com.moon.ancientpoetry.common.constant.ObjectType;
+import com.moon.ancientpoetry.common.dto.BaseDto;
 import com.moon.ancientpoetry.common.po.AncientWordTranslate;
 import com.moon.ancientpoetry.poetry.core.service.AncientWordTranslateService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,56 +17,56 @@ public class AncientWordTranslateController {
 
     @ResponseBody
     @PostMapping("/list/full/{pageNum}/{pageSize}")
-    public PageInfo listFullAllAncientAuthor(
+    public BaseDto listFullAllAncientAuthor(
             @PathVariable(name = "pageNum", required = false) Integer pageNum,
             @PathVariable(name = "pageSize", required = false) Integer pageSize){
-        return ancientWordTranslateService.listFullAncientWordTranslate(pageNum,pageSize);
+        return new BaseDto(ObjectType.OBJECT, ancientWordTranslateService.listFullAncientWordTranslate(pageNum,pageSize));
     }
 
     @ResponseBody
     @PostMapping("/list/article_id/{articleId}/{pageNum}/{pageSize}")
-    public PageInfo listAncientWordTranslateByWordFromArticleId(
+    public BaseDto listAncientWordTranslateByWordFromArticleId(
             @PathVariable(name = "articleId", required = false) Integer articleId,
             @PathVariable(name = "pageNum", required = false) Integer pageNum,
             @PathVariable(name = "pageSize", required = false) Integer pageSize){
-        return ancientWordTranslateService.listAncientWordTranslateByWordFromArticleId(articleId, pageNum, pageSize);
+        return new BaseDto(ObjectType.OBJECT, ancientWordTranslateService.listAncientWordTranslateByWordFromArticleId(articleId, pageNum, pageSize));
     }
 
     @ResponseBody
     @PostMapping("/list/sentence/{sentenceId}/{pageNum}/{pageSize}")
-    public PageInfo listAncientWordTranslateByWordFromSentenceId(
+    public BaseDto listAncientWordTranslateByWordFromSentenceId(
             @PathVariable(name = "sentenceId", required = false) Integer sentenceId,
             @PathVariable(name = "pageNum", required = false) Integer pageNum,
             @PathVariable(name = "pageSize", required = false) Integer pageSize){
-        return ancientWordTranslateService.listAncientWordTranslateByWordFromSentenceId(sentenceId, pageNum, pageSize);
+        return new BaseDto(ObjectType.OBJECT, ancientWordTranslateService.listAncientWordTranslateByWordFromSentenceId(sentenceId, pageNum, pageSize));
     }
 
     @ResponseBody
     @PostMapping("/list/word/{wordId}/{pageNum}/{pageSize}")
-    public PageInfo listAncientWordTranslateByWordId(
+    public BaseDto listAncientWordTranslateByWordId(
             @PathVariable(name = "wordId", required = false) Integer wordId,
             @PathVariable(name = "pageNum", required = false) Integer pageNum,
             @PathVariable(name = "pageSize", required = false) Integer pageSize){
-        return ancientWordTranslateService.listAncientWordTranslateByWordId(wordId, pageNum, pageSize);
+        return new BaseDto(ObjectType.OBJECT, ancientWordTranslateService.listAncientWordTranslateByWordId(wordId, pageNum, pageSize));
     }
 
     @ResponseBody
     @PostMapping("/get/{translateByWordId}")
-    public AncientWordTranslate listAncientWordTranslateByWordId(
+    public BaseDto listAncientWordTranslateByWordId(
             @PathVariable(name = "translateByWordId", required = false) Integer translateByWordId){
-        return ancientWordTranslateService.getAncientWordTranslateByAncientWordId(translateByWordId);
+        return new BaseDto(ObjectType.OBJECT, ancientWordTranslateService.getAncientWordTranslateByAncientWordId(translateByWordId));
     }
 
     @ResponseBody
     @PostMapping("/update")
-    public int updateAncientWordTranslate(AncientWordTranslate ancientWordTranslate){
-        return ancientWordTranslateService.updateAncientWordTranslate(ancientWordTranslate);
+    public BaseDto updateAncientWordTranslate(AncientWordTranslate ancientWordTranslate){
+        return new BaseDto(ObjectType.OBJECT, ancientWordTranslateService.updateAncientWordTranslate(ancientWordTranslate));
     }
 
     @ResponseBody
     @PostMapping("/insert")
-    public int insertAncientWordTranslate(AncientWordTranslate ancientWordTranslate){
-        return ancientWordTranslateService.insertAncientWordTranslate(ancientWordTranslate);
+    public BaseDto insertAncientWordTranslate(AncientWordTranslate ancientWordTranslate){
+        return new BaseDto(ObjectType.OBJECT, ancientWordTranslateService.insertAncientWordTranslate(ancientWordTranslate));
     }
 
 }

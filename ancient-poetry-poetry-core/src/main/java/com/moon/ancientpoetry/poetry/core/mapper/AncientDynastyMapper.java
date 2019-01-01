@@ -25,5 +25,5 @@ public interface AncientDynastyMapper {
      * @param ancientDynasty
      * @return
      */
-    int insertAncientDynasty(AncientDynasty ancientDynasty);
+    Integer insertAncientDynasty(AncientDynasty ancientDynasty);
 }

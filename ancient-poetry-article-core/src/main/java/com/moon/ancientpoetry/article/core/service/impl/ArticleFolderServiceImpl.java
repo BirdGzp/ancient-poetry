@@ -5,5 +5,5 @@ package com.moon.ancientpoetry.article.core.service.impl;
  * @Date: 2018/12/30 18:31
  * @Description:
  */
-public class ArticleFloderServiceImpl {
+public class ArticleFolderServiceImpl {
 }

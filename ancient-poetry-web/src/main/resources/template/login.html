@@ -9,7 +9,7 @@
 
     <div class="am-u-md-4 am-u-sm-12 blog-sidebar ">
         <div class="am-u-sm-12 am-u-md-12 am-u-lg-12 blog-sidebar blog-sidebar-widget blog-bor">
-            <form action="/user/login" class="am-form" id="doc-vld-msg" method="post">
+            <form action="/user/login.html" class="am-form" id="doc-vld-msg" method="post">
                 <fieldset>
                     <h2 class="blog-text-center blog-title"><span>登录</span></h2>
                     <div class="am-form-group">
@@ -19,7 +19,7 @@
                         <input type="password" id="doc-vld-email-2-1" name="password"  placeholder="密码" required/>
                     </div>
                     <div>
-                        <a href="#" class="am-text-primary am-text-left" style="float: left">点我注册</a>
+                        <a href="/register.html" class="am-text-primary am-text-left" style="float: left">点我注册</a>
                         <a href="#" class="am-text-primary am-text-right" style="float: right">找回密码?</a>
                     </div>
                     <button class="am-radius am-btn-block am-btn am-btn-secondary" type="submit">提交</button>
@@ -31,7 +31,7 @@
         <div class="blog-sidebar-widget blog-bor">
             <h2 class="blog-text-center blog-title"><span>About ME</span></h2>
             <img th:src="@{/images/login.jpg}" alt="about us" class="blog-entry-img" >
-            <p>晓诗</p>
+            <h3>晓诗</h3>
             <p>博古、通今、晓诗</p>
         </div>
     </div>

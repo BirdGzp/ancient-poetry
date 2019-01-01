@@ -1,6 +1,8 @@
 package com.moon.ancientpoetry.poetry.core.controller;
 
 import com.github.pagehelper.PageInfo;
+import com.moon.ancientpoetry.common.constant.ObjectType;
+import com.moon.ancientpoetry.common.dto.BaseDto;
 import com.moon.ancientpoetry.common.po.AncientAuthor;
 import com.moon.ancientpoetry.poetry.core.service.AncientAuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,67 +18,67 @@ public class AncientAuthorController {
 
     @ResponseBody
     @PostMapping("/list/full/{pageNum}/{pageSize}")
-    public PageInfo listFullAllAncientAuthor(
+    public BaseDto listFullAllAncientAuthor(
             @PathVariable(name = "pageNum", required = false) Integer pageNum,
             @PathVariable(name = "pageSize", required = false) Integer pageSize){
-        return ancientAuthorService.listAllAncientAuthor(pageNum,pageSize);
+        return new BaseDto(ObjectType.OBJECT, ancientAuthorService.listAllAncientAuthor(pageNum,pageSize));
     }
 
     @ResponseBody
     @PostMapping("/list/{pageNum}/{pageSize}")
-    public List listBriefAncientAuthor(
+    public BaseDto listBriefAncientAuthor(
             @PathVariable(name = "pageNum") Integer pageNum,
             @PathVariable(name = "pageSize") Integer pageSize){
-        return ancientAuthorService.listAllBriefAncientAuthor(pageNum,pageSize).getList();
+        return new BaseDto(ObjectType.OBJECT, ancientAuthorService.listAllBriefAncientAuthor(pageNum,pageSize).getList());
     }
 
     @ResponseBody
     @PostMapping("/get/id/{id}")
-    public AncientAuthor getAncientAuthorByAuthorId(
+    public BaseDto getAncientAuthorByAuthorId(
             @PathVariable("id") int id){
-        return ancientAuthorService.getAncientAuthorByAuthorId(id);
+        return new BaseDto(ObjectType.OBJECT, ancientAuthorService.getAncientAuthorByAuthorId(id));
     }
 
     @ResponseBody
     @PostMapping("/get/brief/id/{id}")
-    public AncientAuthor getBriefAncientAuthorByAuthorId(
+    public BaseDto getBriefAncientAuthorByAuthorId(
             @PathVariable("id") int id){
-        return ancientAuthorService.getBriefAncientAuthorByAuthorId(id);
+        return new BaseDto(ObjectType.OBJECT, ancientAuthorService.getBriefAncientAuthorByAuthorId(id));
     }
 
     @ResponseBody
     @PostMapping("get/name/{name}")
-    public AncientAuthor getAncientAuthorByAuthorName(
+    public BaseDto getAncientAuthorByAuthorName(
             @PathVariable("name")String authorName){
-        return ancientAuthorService.getAncientAuthorByAuthorName(authorName);
+        return new BaseDto(ObjectType.OBJECT, ancientAuthorService.getAncientAuthorByAuthorName(authorName));
     }
 
     @ResponseBody
     @PostMapping("get/brief/name/{name}")
-    public AncientAuthor getBriefAncientAuthorByAuthorName(
+    public BaseDto getBriefAncientAuthorByAuthorName(
             @PathVariable("name")String authorName){
-        return ancientAuthorService.getBriefAncientAuthorByAuthorName(authorName);
+        return new BaseDto(ObjectType.OBJECT, ancientAuthorService.getBriefAncientAuthorByAuthorName(authorName));
     }
 
     @ResponseBody
     @PostMapping("/insert")
-    public int insertAncientAuthor(AncientAuthor ancientAuthor){
-        return ancientAuthorService.insertAncientAuthor(ancientAuthor);
+    public BaseDto insertAncientAuthor(AncientAuthor ancientAuthor){
+        return new BaseDto(ObjectType.OBJECT, ancientAuthorService.insertAncientAuthor(ancientAuthor));
     }
 
     @ResponseBody
     @PostMapping("/update")
-    public int updateAncientAuthor(AncientAuthor ancientAuthor){
-        return ancientAuthorService.updateAncientAuthor(ancientAuthor);
+    public BaseDto updateAncientAuthor(AncientAuthor ancientAuthor){
+        return new BaseDto(ObjectType.OBJECT, ancientAuthorService.updateAncientAuthor(ancientAuthor));
     }
 
     @ResponseBody
     @PostMapping("/update/id/{id}/likes/{likes}/visit_count/{visitCount}")
-    public int updateAncientAuthorLikesAndVisitCount(
+    public BaseDto updateAncientAuthorLikesAndVisitCount(
             @PathVariable("id")Integer authorId,
             @PathVariable("likes") Integer likes,
             @PathVariable("visitCount") Integer visitCount){
-        return ancientAuthorService.updateAncientAuthorLikesAndVisitCount(authorId, likes, visitCount);
+        return new BaseDto(ObjectType.OBJECT, ancientAuthorService.updateAncientAuthorLikesAndVisitCount(authorId, likes, visitCount));
     }
 }
 

@@ -1,7 +1,14 @@
 server:
   port: 7000
 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://ancient-poetry-eureka-server:9000/eureka/
+
 spring:
+  application:
+    name: ancient-poetry-poetry-core
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/ancient_article?useUnicode=true&characterEncoding=utf8
@@ -9,18 +16,37 @@ spring:
     password: root
     type: com.alibaba.druid.pool.DruidDataSource
     filters: stat
-    maxActive: 20
-    initialSize: 1
-    maxWait: 60000
-    minIdle: 1
-    timeBetweenEvictionRunsMillis: 60000
-    minEvictableIdleTimeMillis: 300000
-    validationQuery: select 'x'
-    testWhileIdle: true
-    testOnBorrow: false
-    testOnReturn: false
-    poolPreparedStatements: true
-    maxOpenPreparedStatements: 20
+    druid:
+      initial-size: 5
+      min-idle: 5
+      max-active: 50
+      max-wait: 60000
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+      max-open-prepared-statements: 20
+      validation-query: select 'x'
+      pool-prepared-statements: true
+      min-evictable-idle-time-millis: 300000
+      time-between-eviction-runs-millis: 60000
+  #Redis配置
+  redis:
+    host: 192.168.111.133
+    port: 6379
+    database: 0
+    timeout: 2000ms
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: 800ms
+        max-idle: 8
+        min-idle: 2
+  cache:
+    #缓存名称
+    cache-names: test
+    type: Caffeine
+    caffeine:
+      spec: maximumSize=500,expireAfterAccess=600s
 
 mybatis:
   type-aliases-package: com.moon.ancientpoetry.common.po

@@ -25,5 +25,5 @@ public interface AncientWordMapper {
      * @param ancientWord
      * @return
      */
-    int insertAuthorWord(AncientWord ancientWord);
+    Integer insertAuthorWord(AncientWord ancientWord);
 }

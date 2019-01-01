@@ -17,12 +17,18 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginController {
 
     @GetMapping("/login")
-    public String login(){
-        return "/login";
+    public String login(HttpServletRequest request){
+        if(request.getSession().getAttribute("userId") == null) {
+            return "/login";
+        }
+        return "/index";
     }
 
     @GetMapping("/index")
-    public String index(){
+    public String index(HttpServletRequest request){
+        if(request.getSession().getAttribute("userId") != null) {
+
+        }
         return "/index";
     }
 
@@ -36,4 +42,11 @@ public class LoginController {
         return "/find-password";
     }
 
+    @GetMapping("/")
+    public String defaultIndex(HttpServletRequest request){
+        if(request.getSession().getAttribute("userId") != null) {
+
+        }
+        return "/index";
+    }
 }

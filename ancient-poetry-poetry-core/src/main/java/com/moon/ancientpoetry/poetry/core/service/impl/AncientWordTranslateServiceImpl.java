@@ -76,7 +76,7 @@ public class AncientWordTranslateServiceImpl implements AncientWordTranslateServ
      * @return
      */
     @Override
-    public int updateAncientWordTranslate(AncientWordTranslate ancientWordTranslate){
+    public Integer updateAncientWordTranslate(AncientWordTranslate ancientWordTranslate){
         return ancientWordTranslateMapper.updateAncientWordTranslate(ancientWordTranslate);
     }
 
@@ -86,7 +86,7 @@ public class AncientWordTranslateServiceImpl implements AncientWordTranslateServ
      * @return
      */
     @Override
-    public int insertAncientWordTranslate(AncientWordTranslate ancientWordTranslate){
+    public Integer insertAncientWordTranslate(AncientWordTranslate ancientWordTranslate){
         return ancientWordTranslateMapper.insertAncientWordTranslate(ancientWordTranslate);
     }
 }

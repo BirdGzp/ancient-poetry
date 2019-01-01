@@ -5,5 +5,5 @@ package com.moon.ancientpoetry.article.core.service;
  * @Date: 2018/12/30 18:30
  * @Description:
  */
-public interface ArticleFloderService {
+public interface ArticleFolderService {
 }

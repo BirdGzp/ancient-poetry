@@ -51,7 +51,7 @@ public class AncientArticleServiceImpl implements AncientArticleService {
      * @return
      */
     @Override
-    public int updateAncientArticle(AncientArticle ancientArticle){
+    public Integer updateAncientArticle(AncientArticle ancientArticle){
         return ancientArticleMapper.updateAncientArticle(ancientArticle);
     }
 
@@ -61,7 +61,7 @@ public class AncientArticleServiceImpl implements AncientArticleService {
      * @return
      */
     @Override
-    public int insertAncientArticle(AncientArticle ancientArticle){
+    public Integer insertAncientArticle(AncientArticle ancientArticle){
         return ancientArticleMapper.insertAncientArticle(ancientArticle);
     }
 }

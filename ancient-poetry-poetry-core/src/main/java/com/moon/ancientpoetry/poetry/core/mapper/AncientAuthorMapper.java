@@ -54,19 +54,19 @@ public interface AncientAuthorMapper {
      * @param ancientAuthor
      * @return
      */
-    int insertAncientAuthor(AncientAuthor ancientAuthor);
+    Integer insertAncientAuthor(AncientAuthor ancientAuthor);
 
     /**
      * 更新作者的详细信息
      * @param ancientAuthor
      * @return
      */
-    int updateAncientAuthorByAuthorId(AncientAuthor ancientAuthor);
+    Integer updateAncientAuthorByAuthorId(AncientAuthor ancientAuthor);
 
     /**
      * 只更新作者的 点赞数和 访问量
      * @param ancientAuthor
      * @return
      */
-    int updateAncientAuthorLikesAndVisitCountByAuthorId(AncientAuthor ancientAuthor);
+    Integer updateAncientAuthorLikesAndVisitCountByAuthorId(AncientAuthor ancientAuthor);
 }

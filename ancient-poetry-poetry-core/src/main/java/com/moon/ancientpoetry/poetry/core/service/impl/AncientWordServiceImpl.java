@@ -38,7 +38,7 @@ public class AncientWordServiceImpl implements AncientWordService {
      * @return
      */
     @Override
-    public int insertAuthorWord(AncientWord ancientWord){
+    public Integer insertAuthorWord(AncientWord ancientWord){
         return  ancientWordMapper.insertAuthorWord(ancientWord);
     }
 }

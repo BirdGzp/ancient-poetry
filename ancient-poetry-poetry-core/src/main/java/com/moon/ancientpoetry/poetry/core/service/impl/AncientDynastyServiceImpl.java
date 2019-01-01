@@ -38,7 +38,7 @@ public class AncientDynastyServiceImpl implements AncientDynastyService {
      * @return
      */
     @Override
-    public int insertAncientDynasty(AncientDynasty ancientDynasty){
+    public Integer insertAncientDynasty(AncientDynasty ancientDynasty){
         return ancientDynastyMapper.insertAncientDynasty(ancientDynasty);
     }
 }

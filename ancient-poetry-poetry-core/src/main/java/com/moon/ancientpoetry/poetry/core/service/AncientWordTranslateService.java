@@ -45,12 +45,12 @@ public interface AncientWordTranslateService {
      * @param ancientWordTranslate
      * @return
      */
-    int updateAncientWordTranslate(AncientWordTranslate ancientWordTranslate);
+    Integer updateAncientWordTranslate(AncientWordTranslate ancientWordTranslate);
 
     /**
      * 插入一条新记录 —— 字的翻译
      * @param ancientWordTranslate
      * @return
      */
-    int insertAncientWordTranslate(AncientWordTranslate ancientWordTranslate);
+    Integer insertAncientWordTranslate(AncientWordTranslate ancientWordTranslate);
 }

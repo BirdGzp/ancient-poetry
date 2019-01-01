@@ -30,12 +30,12 @@ public interface AncientArticleService {
      * @param ancientArticle
      * @return
      */
-    int updateAncientArticle(AncientArticle ancientArticle);
+    Integer updateAncientArticle(AncientArticle ancientArticle);
 
     /**
      * 插入古代文章
      * @param ancientArticle
      * @return
      */
-    int insertAncientArticle(AncientArticle ancientArticle);
+    Integer insertAncientArticle(AncientArticle ancientArticle);
 }

@@ -38,13 +38,13 @@ public interface AncientArticleSentenceService {
      * @param ancientArticleSentence  封装修改的数据
      * @return
      */
-    int updateAncientArticleSentence(AncientArticleSentence ancientArticleSentence);
+    Integer updateAncientArticleSentence(AncientArticleSentence ancientArticleSentence);
 
     /**
      * 插入新的名句
      * @param ancientArticleSentence
      * @return
      */
-    int insertAncientArticleSentence(AncientArticleSentence ancientArticleSentence);
+    Integer insertAncientArticleSentence(AncientArticleSentence ancientArticleSentence);
 
 }
