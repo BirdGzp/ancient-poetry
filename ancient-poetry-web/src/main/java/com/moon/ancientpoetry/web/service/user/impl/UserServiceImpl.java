@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
  */
 @Service("userService")
 public class UserServiceImpl implements UserService {
+
     Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
 
     @Autowired
@@ -35,12 +36,10 @@ public class UserServiceImpl implements UserService {
     public Integer login(String accountId, String password, String ip){
         String md5Password = PrivacyEncrypt.md5Encrypt(password);
         BaseDto baseDto = ParseToObject.parseToDto(userBasicFeignService.getPasswordCheckResult(accountId, md5Password, ip));
-        System.out.println(md5Password);
         if(baseDto.getObjectType() == ObjectType.NULL){
             log.debug("查询对象为null");
             return null;
         }
-        System.out.println(baseDto.parseObject());
         return (Integer) baseDto.parseObject();
     }
 
@@ -54,7 +53,7 @@ public class UserServiceImpl implements UserService {
         if(userId == null){
             return null;
         }
-        return null;
+        return (UserBasic) ParseToObject.parseToDto(userBasicFeignService.getUserBriefBasicByUserId(userId)).parseObject();
     }
 
     /**
@@ -78,15 +77,5 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    /**
-     * 根据用户id  返回首页信息
-     * @param userId
-     * @return
-     */
-    public IndexVo index(String userId){
-        IndexVo indexVo = new IndexVo();
-
-        return indexVo;
-    }
 
 }

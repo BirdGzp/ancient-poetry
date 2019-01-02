@@ -5,6 +5,14 @@ import com.moon.ancientpoetry.common.po.AncientArticle;
 
 
 public interface AncientArticleService {
+
+    /**
+     * 获得简略的文章信息
+     * @return
+     */
+    PageInfo listAncientArticle(Integer pageNum, Integer pageSize);
+
+
     /**
      * 获得全部文章
      * @return

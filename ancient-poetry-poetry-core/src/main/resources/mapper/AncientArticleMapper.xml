@@ -19,6 +19,11 @@
         FROM <include refid="BASE_TABLE"/>
     </select>
 
+    <select id="listAncientArticle" resultType="com.moon.ancientpoetry.common.po.AncientArticle">
+        SELECT <include refid="BRIEF_INFO"/>
+        FROM <include refid="BASE_TABLE"/>
+    </select>
+
     <select id="getAncientArticleByAuthorId" resultType="com.moon.ancientpoetry.common.po.AncientArticle"  parameterType="java.lang.Integer">
         SELECT <include refid="BRIEF_INFO"/>
         FROM <include refid="BASE_TABLE"/>

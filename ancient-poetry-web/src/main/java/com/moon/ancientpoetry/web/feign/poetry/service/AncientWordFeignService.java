@@ -18,15 +18,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @FeignClient(value = "ANCIENT-POETRY-POETRY-CORE", fallback = AncientWordServiceFallback.class)
 public interface AncientWordFeignService {
     
-    @RequestMapping(value = "/get/id/{ancientWordId}", method = RequestMethod.POST)
+    @RequestMapping(value = "/ancient/word/get/id/{ancientWordId}", method = RequestMethod.POST)
     String getAncientWordByAncientWordId(
             @PathVariable(name = "ancientWordId") Integer ancientWordId);
     
-    @RequestMapping(value = "/get/word/{ancientWord}", method = RequestMethod.POST)
+    @RequestMapping(value = "/ancient/word/get/word/{ancientWord}", method = RequestMethod.POST)
     String getAncientWordByAncientWord(
             @PathVariable(name = "ancientWord") String ancientWord);
 
     
-    @RequestMapping(value = "/insert", method = RequestMethod.POST)
+    @RequestMapping(value = "/ancient/word/insert", method = RequestMethod.POST)
     String insertAuthorWord(AncientWord ancientWord);
 }

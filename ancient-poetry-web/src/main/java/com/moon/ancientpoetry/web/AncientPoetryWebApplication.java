@@ -21,13 +21,6 @@ public class AncientPoetryWebApplication {
         SpringApplication.run(AncientPoetryWebApplication.class, args);
     }
 
-    @Bean
-    public ServletRegistrationBean servletRegistrationBean(DispatcherServlet dispatcherServlet) {
-
-        ServletRegistrationBean<DispatcherServlet> servletServletRegistrationBean = new ServletRegistrationBean<>(dispatcherServlet);
-        servletServletRegistrationBean.addUrlMappings("*.html");
-        return servletServletRegistrationBean;
-    }
 }
 
 

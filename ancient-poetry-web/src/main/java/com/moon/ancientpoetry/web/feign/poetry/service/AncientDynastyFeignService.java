@@ -17,14 +17,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @FeignClient(value = "ANCIENT-POETRY-POETRY-CORE", fallback = AncientDynastyFeignServiceFallback.class)
 public interface AncientDynastyFeignService {
     
-    @RequestMapping(value = "/list/full", method = RequestMethod.POST)
+    @RequestMapping(value = "/ancient/dynasty/list/full", method = RequestMethod.POST)
     String listAllAncientDynasty();
 
     
-    @RequestMapping(value = "/list", method = RequestMethod.POST)
+    @RequestMapping(value = "/ancient/dynasty/list", method = RequestMethod.POST)
     String listAllBriefAncientDynasty();
 
     
-    @RequestMapping(value = "/insert", method = RequestMethod.POST)
+    @RequestMapping(value = "/ancient/dynasty/insert", method = RequestMethod.POST)
     String insertAncientAuthor(AncientDynasty ancientDynasty);
 }

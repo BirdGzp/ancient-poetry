@@ -16,29 +16,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @FeignClient(value = "ANCIENT-POETRY-POETRY-CORE", fallback = AncientArticleSentence.class)
 public interface AncientArticleSentenceFeignService {
     
-    @RequestMapping("/list/full/{pageNum}/{pageSize}")
+    @RequestMapping("/ancient/article/sentence/list/full/{pageNum}/{pageSize}")
     String listFullAncientArticleSentence(
             @PathVariable(name = "pageNum", required = false) Integer pageNum,
             @PathVariable(name = "pageSize", required = false) Integer pageSize);
 
     
-    @RequestMapping("/list/{articleId}/{pageNum}/{pageSize}")
+    @RequestMapping("/ancient/article/sentence/list/{articleId}/{pageNum}/{pageSize}")
     String listAncientArticleSentenceByAncientArticleId(
             @PathVariable(name = "articleId", required = false) Integer articleId,
             @PathVariable(name = "pageNum", required = false) Integer pageNum,
             @PathVariable(name = "pageSize", required = false) Integer pageSize);
     
-    @RequestMapping("/list/{authorId}/{pageNum}/{pageSize}")
+    @RequestMapping("/ancient/article/sentence/list/{authorId}/{pageNum}/{pageSize}")
     String listAncientArticleSentenceByAuthorId(
             @PathVariable(name = "authorId", required = false) Integer authorId,
             @PathVariable(name = "pageNum", required = false) Integer pageNum,
             @PathVariable(name = "pageSize", required = false) Integer pageSize);
 
     
-    @RequestMapping("/insert")
+    @RequestMapping("/ancient/article/sentence/insert")
     String insertAncientArticleSentence(AncientArticleSentence ancientArticleSentence);
 
     
-    @RequestMapping("/update")
+    @RequestMapping("/ancient/article/sentence/update")
     String updateAncientArticleSentence(AncientArticleSentence ancientArticleSentence);
 }

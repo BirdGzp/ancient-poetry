@@ -147,7 +147,6 @@ public class UserBasicServiceImpl implements UserBasicService {
             if(!RegularPattern.telephoneCheck(accountId)){
                 return null;
             }
-            System.out.println();
             userBasic = getCheckInfoByTelephone(accountId);
         }
 
@@ -156,8 +155,6 @@ public class UserBasicServiceImpl implements UserBasicService {
             log.info("查询失败，请检查 com/moon/ancientpoetry/user/web/service/impl/UserServiceImpl.java:116");
             return null;
         }
-        System.out.println(password);
-        System.out.println(userBasic.getPassword());
         if(password.equals(userBasic.getPassword())){
             userBasic.setPassword(null);
             return userBasic.getUserId();

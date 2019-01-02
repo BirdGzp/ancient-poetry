@@ -79,7 +79,6 @@ public class UserBasicController {
 
     @PostMapping("/get/check-result/{accountId}/{ip}")
     public BaseDto getPasswordCheckResult(@PathVariable(name = "accountId")String accountId, @RequestBody String password, @PathVariable(name = "ip") String ip){
-        System.out.println(password);
         Integer userId = userBasicService.getPasswordCheckResult(accountId, password);
         if(userId != null){
             return new BaseDto(ObjectType.OBJECT, userId);

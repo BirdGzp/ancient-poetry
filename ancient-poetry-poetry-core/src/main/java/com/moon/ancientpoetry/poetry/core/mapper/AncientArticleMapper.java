@@ -9,6 +9,12 @@ import java.util.List;
 public interface AncientArticleMapper {
 
     /**
+     * 获得简略的文章信息
+     * @return
+     */
+    List<AncientArticle> listAncientArticle();
+
+    /**
      * 获得全部文章
      * @return
      */

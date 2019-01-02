@@ -13,8 +13,15 @@ import org.springframework.stereotype.Component;
 @Component
 @DefaultFallback
 public class AncientArticleFeignServiceFallback implements AncientArticleFeignService {
+
+
     @Override
-    public String listFullAllAncientAuthor(Integer pageNum, Integer pageSize) {
+    public String listAllAncientArticle(Integer pageNum, Integer pageSize) {
+        return null;
+    }
+
+    @Override
+    public String listFullAllAncientArticle(Integer pageNum, Integer pageSize) {
         return null;
     }
 
@@ -24,7 +31,7 @@ public class AncientArticleFeignServiceFallback implements AncientArticleFeignSe
     }
 
     @Override
-    public String getBriefAncientAuthorByAuthorName(Integer articleId) {
+    public String getBriefAncientArticleByAuthorName(Integer articleId) {
         return null;
     }
 

@@ -1,10 +1,11 @@
 server:
-  port: 7000
+  port: 7001
 
 eureka:
   client:
     serviceUrl:
       defaultZone: http://ancient-poetry-eureka-server:9000/eureka/
+
 
 spring:
   application:

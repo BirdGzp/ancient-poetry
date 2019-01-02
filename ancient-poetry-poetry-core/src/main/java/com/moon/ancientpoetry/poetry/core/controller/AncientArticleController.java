@@ -8,6 +8,8 @@ import com.moon.ancientpoetry.poetry.core.service.AncientArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @Author: zhipeng gong
  * @Date: 2018/12/7 13:32
@@ -21,8 +23,16 @@ public class AncientArticleController {
     AncientArticleService ancientArticleService;
 
     @ResponseBody
+    @PostMapping("/list/{pageNum}/{pageSize}")
+    public BaseDto listAllAncientArticle(
+            @PathVariable(name = "pageNum", required = false) Integer pageNum,
+            @PathVariable(name = "pageSize", required = false) Integer pageSize){
+        return new BaseDto(ObjectType.OBJECT,  ancientArticleService.listAncientArticle(pageNum, pageSize));
+    }
+
+    @ResponseBody
     @PostMapping("/list/full/{pageNum}/{pageSize}")
-    public BaseDto listFullAllAncientAuthor(
+    public BaseDto listFullAllAncientArticle(
             @PathVariable(name = "pageNum", required = false) Integer pageNum,
             @PathVariable(name = "pageSize", required = false) Integer pageSize){
         return new BaseDto(ObjectType.OBJECT, ancientArticleService.listFullAncientArticle(pageNum, pageSize));
@@ -39,7 +49,7 @@ public class AncientArticleController {
 
     @ResponseBody
     @PostMapping("get/brief/id/{articleId}")
-    public BaseDto getBriefAncientAuthorByAuthorName(
+    public BaseDto getBriefAncientArticleByAuthorName(
             @PathVariable("articleId")Integer articleId){
         return new BaseDto(ObjectType.OBJECT, ancientArticleService.getAncientArticleByArticleId(articleId));
     }

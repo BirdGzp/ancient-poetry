@@ -22,12 +22,28 @@
             <li><a href="" th:if="${userId }">文章管理</a></li>
             <li><a href="" th:if="${userId }">信息管理</a></li>
         </ul>
-        <div class="am-topbar-right">
-            <h1 class="am-topbar-brand">
-                <a href="/login.html" class="am-icon-user am-form-inline am-topbar-nav" th:unless="${userId }">&nbsp;登录</a>
-                <a href = "#" class=" am-icon-user am-form-inline am-topbar-nav" th:if="${userId }" th:text="'&nbsp;' + ${userId }"></a>
-            </h1>
-        </div>
+
+        <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right">
+            <li th:unless="${session.userId }">
+                <a href="/login.html" class=" am-icon-user am-form-inline am-topbar-nav ">
+                    &nbsp;登录
+                </a>
+            </li>
+
+            <li th:if="${session.userId }" class="am-dropdown" data-am-dropdown>
+                <a  href="javascript:;" data-am-dropdown-toggle class="am-dropdown-toggle am-icon-user am-form-inline am-topbar-nav">
+                    <span th:text=" '&nbsp;' + ${session.userPenName }"/>
+                    <span class="am-icon-caret-down"/>
+
+                </a>
+                <ul class="am-dropdown-content">
+                    <li><a href="/index.html">个人信息</a></li>
+                    <li><a href="lw-index-nosidebar.html">文章管理</a></li>
+                    <li><a href="/exit.html">注销</a></li>
+                </ul>
+            </li>
+        </ul>
+
 
         <form class="am-topbar-form am-topbar-right am-form-inline" role="search">
             <div class="am-form-group">

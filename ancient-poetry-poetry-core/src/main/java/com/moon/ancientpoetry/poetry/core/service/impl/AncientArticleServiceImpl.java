@@ -15,6 +15,17 @@ public class AncientArticleServiceImpl implements AncientArticleService {
     AncientArticleMapper  ancientArticleMapper;
 
     /**
+     * 获得简略的文章信息
+     * @return
+     */
+    @Override
+    public PageInfo listAncientArticle(Integer pageNum, Integer pageSize){
+        PageHelper.startPage(pageNum, pageSize);
+        return new PageInfo(ancientArticleMapper.listAncientArticle());
+    }
+
+
+    /**
      * 获得全部文章
      * @return
      */
