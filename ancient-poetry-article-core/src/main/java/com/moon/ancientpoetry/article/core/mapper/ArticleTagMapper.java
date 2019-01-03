@@ -25,12 +25,12 @@ public interface ArticleTagMapper {
      * @param articleTag
      * @return
      */
-    int updateArticleTagByTagId(ArticleTag articleTag);
+    Integer updateArticleTagByTagId(ArticleTag articleTag);
 
     /**
      * 插入新的标签
      * @param articleTag
      * @return
      */
-    int insertArticleTag(ArticleTag articleTag);
+    Integer insertArticleTag(ArticleTag articleTag);
 }

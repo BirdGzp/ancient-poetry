@@ -5,5 +5,5 @@ package com.moon.ancientpoetry.web.service.article;
  * @Date: 2019/1/3 15:17
  * @Description:
  */
-public class ArticleService {
+public interface ArticleService {
 }

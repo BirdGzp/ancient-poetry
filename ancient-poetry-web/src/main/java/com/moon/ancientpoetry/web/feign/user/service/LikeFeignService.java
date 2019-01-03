@@ -15,30 +15,30 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Component
 @FeignClient(value = "ANCIENT-POETRY-USER-CORE", fallback = LikeFeignServiceFallback.class)
 public interface LikeFeignService {
-    @RequestMapping(value = "/list/user/{userId}/{pageNum}/{pageSize}", method = RequestMethod.POST)
+    @RequestMapping(value = "/like/list/user/{userId}/{pageNum}/{pageSize}", method = RequestMethod.POST)
     String listLikeByUserIdOrderByTime(
             @PathVariable(name = "userId", required = false) Integer userId,
             @PathVariable(name = "pageNum", required = false) Integer pageNum,
             @PathVariable(name = "pageSize", required = false) Integer pageSize);
 
 
-    @RequestMapping(value = "/count/{fromType}/{fromId}", method = RequestMethod.POST)
+    @RequestMapping(value = "/like/count/{fromType}/{fromId}", method = RequestMethod.POST)
     String getCountByFromIdAndFromType(
             @PathVariable(name = "fromId", required = false) Integer fromId,
             @PathVariable(name = "fromType", required = false) Integer fromType);
 
 
-    @RequestMapping(value = "/update/{like}", method = RequestMethod.POST)
+    @RequestMapping(value = "/like/update/{like}", method = RequestMethod.POST)
     String updateLikeDeleteState(
-            @PathVariable(name = "like", required = false) String like);
+            @PathVariable(name = "/likelike", required = false) String like);
 
 
-    @RequestMapping(value = "/insert/batch/{likeList}", method = RequestMethod.POST)
+    @RequestMapping(value = "/like/insert/batch/{likeList}", method = RequestMethod.POST)
     String insertBatchLikes(
             @PathVariable(name = "likeList", required = false) String likeList);
 
 
-    @RequestMapping(value = "/insert/{like}", method = RequestMethod.POST)
+    @RequestMapping(value = "/like/insert/{like}", method = RequestMethod.POST)
     String insertLike(
             @PathVariable(name = "like", required = false) String like);
 }

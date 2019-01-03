@@ -43,19 +43,19 @@ public interface ArticleFolderMapper {
      * @param articleFolder
      * @return
      */
-    int updateArticleFolderByArticleFloderId(ArticleFolder articleFolder);
+    Integer updateArticleFolderByArticleFloderId(ArticleFolder articleFolder);
 
     /**
      * 批量添加文件夹
      * @param articleFolderList
      * @return
      */
-    int insertBatchArticleFolder(List<ArticleFolder> articleFolderList);
+    Integer insertBatchArticleFolder(List<ArticleFolder> articleFolderList);
 
     /**
      * 添加文件夹
      * @param articleFolder
      * @return
      */
-    int insertArticleFolder(ArticleFolder articleFolder);
+    Integer insertArticleFolder(ArticleFolder articleFolder);
 }

@@ -33,19 +33,19 @@ public interface ArticleMapper {
      * @param article
      * @return
      */
-    int updateArticleByArticleId(Article article);
+    Integer updateArticleByArticleId(Article article);
 
     /**
      * 插入一批文章记录
      * @param articleList
      * @return
      */
-    int insertBatchArticle(List<Article> articleList);
+    Integer insertBatchArticle(List<Article> articleList);
 
     /**
      * 插入一篇文章记录
      * @param article
      * @return
      */
-    int insertArticle(Article article);
+    Integer insertArticle(Article article);
 }

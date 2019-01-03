@@ -16,14 +16,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @FeignClient(value = "ANCIENT-POETRY-USER-CORE", fallback = LikeFeignServiceFallback.class)
 public interface OperationHistoryFeignService {
     
-    @RequestMapping(value = "/list/user/{userId}/{pageNum}/{pageSize}", method = RequestMethod.POST)
+    @RequestMapping(value = "/operation-history/list/user/{userId}/{pageNum}/{pageSize}", method = RequestMethod.POST)
     String listOperationHistoryByUserIdOrderByTime(
             @PathVariable(name = "userId", required = false) Integer userId,
             @PathVariable(name = "pageNum", required = false) Integer pageNum,
             @PathVariable(name = "pageSize", required = false) Integer pageSize);
 
     
-    @RequestMapping(value = "/list/user/{userId}/operation-type/{operationType}/{pageNum}/{pageSize}", method = RequestMethod.POST)
+    @RequestMapping(value = "/operation-history/list/user/{userId}/operation-type/{operationType}/{pageNum}/{pageSize}", method = RequestMethod.POST)
     String listOperationHistoryByUserIdAndOperationTypeOrderByTime(
             @PathVariable(name = "userId", required = false) Integer userId,
             @PathVariable(name = "operationType", required = false) Integer operationType,
@@ -31,18 +31,18 @@ public interface OperationHistoryFeignService {
             @PathVariable(name = "pageSize", required = false) Integer pageSize);
 
     
-    @RequestMapping(value = "/update/batch/{operationHistoryList}", method = RequestMethod.POST)
+    @RequestMapping(value = "/operation-history/update/batch/{operationHistoryList}", method = RequestMethod.POST)
     String updateBatchOperationHistoryDeleteState(@PathVariable(name = "operationHistoryList", required = false) String operationHistoryList);
 
     
-    @RequestMapping(value = "/update/{operationHistory}", method = RequestMethod.POST)
+    @RequestMapping(value = "/operation-history/update/{operationHistory}", method = RequestMethod.POST)
     String updateOperationHistoryDeleteState(@PathVariable(name = "operationHistory", required = false) String operationHistory);
 
 
-    @RequestMapping(value = "/insert/batch/{operationHistoryList}", method = RequestMethod.POST)
+    @RequestMapping(value = "/operation-history/insert/batch/{operationHistoryList}", method = RequestMethod.POST)
     String insertBatchOperationHistory(@PathVariable(name = "operationHistoryList", required = false) String operationHistoryList);
 
 
-    @RequestMapping(value = "/insert/batch/{operationHistory}", method = RequestMethod.POST)
+    @RequestMapping(value = "/operation-history/insert/batch/{operationHistory}", method = RequestMethod.POST)
     String insertOperationHistory(@PathVariable(name = "operationHistory", required = false) String operationHistory);
 }
