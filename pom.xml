@@ -40,6 +40,7 @@
         <jsoup.version>1.10.2</jsoup.version>
         <caffeine.version>2.6.0</caffeine.version>
         <aspect.version>1.9.2</aspect.version>
+        <javax.mail.version>1.4</javax.mail.version>
 
         <java.encoding>UTF-8</java.encoding>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -133,6 +134,12 @@
                 <groupId>org.jsoup</groupId>
                 <artifactId>jsoup</artifactId>
                 <version>${jsoup.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.mail</groupId>
+                <artifactId>mail</artifactId>
+                <version>${javax.mail.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

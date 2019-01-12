@@ -40,4 +40,20 @@ public interface UserService {
      */
     UserDto getUserFullByUserId(Integer userId);
 
+    /**
+     * 传入 手机号码 和 笔名，创建用户
+     * @param telephone
+     * @param penName
+     * @return
+     */
+    Integer fastInsertUser(String telephone, String penName, String password);
+
+
+    /**
+     * 更新用户详细信息
+     * @param userDtao
+     * @return
+     */
+    Integer updateUser(UserDto userDtao);
+
 }

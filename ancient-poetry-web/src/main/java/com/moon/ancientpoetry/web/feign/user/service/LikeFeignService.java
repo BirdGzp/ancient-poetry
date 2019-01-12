@@ -30,7 +30,7 @@ public interface LikeFeignService {
 
     @RequestMapping(value = "/like/update/{like}", method = RequestMethod.POST)
     String updateLikeDeleteState(
-            @PathVariable(name = "/likelike", required = false) String like);
+            @PathVariable(name = "like", required = false) String like);
 
 
     @RequestMapping(value = "/like/insert/batch/{likeList}", method = RequestMethod.POST)

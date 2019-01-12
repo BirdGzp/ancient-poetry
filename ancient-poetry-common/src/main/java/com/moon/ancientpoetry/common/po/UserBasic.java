@@ -188,6 +188,17 @@ public class UserBasic {
         this.readCount = readCount;
     }
 
+    public void setWriteCount(Integer writeCount) {
+        this.writeCount = writeCount;
+    }
+
+    public void setFollowCount(Integer followCount) {
+        this.followCount = followCount;
+    }
+
+    public void setFollowerCount(Integer followerCount) {
+        this.followerCount = followerCount;
+    }
 
     public String getBriefIntroduce() {
         return briefIntroduce;
