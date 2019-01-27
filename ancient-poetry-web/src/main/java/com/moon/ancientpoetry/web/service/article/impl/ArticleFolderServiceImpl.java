@@ -1,6 +1,7 @@
 package com.moon.ancientpoetry.web.service.article.impl;
 
 import com.moon.ancientpoetry.web.service.article.ArticleFolderService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -10,4 +11,6 @@ import org.springframework.stereotype.Service;
  */
 @Service("articleFolderService")
 public class ArticleFolderServiceImpl implements ArticleFolderService {
+    @Autowired
+    pri
 }

@@ -13,7 +13,7 @@ public interface LikeService {
      * @param userId
      * @return
      */
-    PageInfo listLikeByUserIdOrderByTime(Integer userId);
+    PageInfo listLikeByUserIdOrderByTime(Integer userId,Integer pageNum, Integer pageSize);
 
     /**
      * 通过来源的数据 id 和 来源类型
