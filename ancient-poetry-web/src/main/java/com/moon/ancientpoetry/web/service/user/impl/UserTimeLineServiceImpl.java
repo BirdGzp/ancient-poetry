@@ -1,6 +1,7 @@
 package com.moon.ancientpoetry.web.service.user.impl;
 
 import com.moon.ancientpoetry.web.feign.user.service.UserTimeLineFeignService;
+import com.moon.ancientpoetry.web.service.user.UserTimeLineService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Service;
  * @Description:
  */
 @Service("userTimeLineService")
-public class UserTimeLineServiceImpl {
+public class UserTimeLineServiceImpl implements UserTimeLineService{
     @Autowired
     UserTimeLineFeignService userTimeLineFeignService;
 }
