@@ -1,4 +1,4 @@
-package com.moon.history.line.core.mapper;
+package com.moon.ancientpoetry.history.line.core.mapper;
 
 import com.moon.ancientpoetry.common.po.HistoryTimeLine;
 import org.apache.ibatis.annotations.Mapper;
@@ -22,7 +22,7 @@ public interface HistoryTimeLineMapper {
      * @param eventOfId
      * @return
      */
-    List<HistoryTimeLine> listHistoryTimeLineByEventOfId(Integer eventOfType,Integer eventOfId);
+    List<HistoryTimeLine> listHistoryTimeLineByEventOfId(Integer eventOfType, Integer eventOfId);
 
     /**
      * 通过事件id 获取事件详细信息

@@ -127,7 +127,7 @@
     <div class="am-u-md-4 am-u-sm-12 blog-sidebar">
         <div class="blog-sidebar-widget blog-bor">
             <h2 class="blog-text-center blog-title"><span>About ME</span></h2>
-            <img src="../static/assets/i/f14.jpg" alt="about me" class="blog-entry-img">
+            <img src="/assets/i/f14.jpg" alt="about me" class="blog-entry-img">
             <p>妹纸</p>
             <p>
                 我是妹子UI，中国首个开源 HTML5 跨屏前端框架
@@ -147,7 +147,7 @@
         <div class="blog-clear-margin blog-sidebar-widget blog-bor am-g ">
             <h2 class="blog-title"><span>TAG cloud</span></h2>
             <div class="am-u-sm-12 blog-clear-padding">
-                <a href="" class="blog-tag" th:text="${index.userPenName}">amaze</a>
+                <a href="" class="blog-tag"  th:if="${not #lists.isEmpty(index)}" th:text="${index.penName}">amaze</a>
                 <a href="" class="blog-tag">妹纸 UI</a>
                 <a href="" class="blog-tag">HTML5</a>
                 <a href="" class="blog-tag">这是标签</a>
@@ -156,7 +156,7 @@
             </div>
         </div>
         <div class="blog-sidebar-widget blog-bor">
-            <h2 class="blog-title"><span th:text="${index.userId }">么么哒</span></h2>
+            <h2 class="blog-title"><span th:if="${not #lists.isEmpty(index)}" th:text="${index.userId }">么么哒</span></h2>
             <ul class="am-list">
                 <li><a href="#">每个人都有一个死角， 自己走不出来，别人也闯不进去。</a></li>
                 <li><a href="#">我把最深沉的秘密放在那里。</a></li>
@@ -166,16 +166,23 @@
         </div>
     </div>
 </div>
+
+<div class="am-modal am-modal-no-btn" tabindex="-1" id="doc-modal-1">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">Modal 标题
+            <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+        </div>
+        <div class="am-modal-bd">
+            Modal 内容。本 Modal 无法通过遮罩层关闭。
+        </div>
+    </div>
+</div>
 <!-- content end -->
 <div th:replace="base-footer::copy"></div>
 
-
-<!--[if (gte IE 9)|!(IE)]><!-->
-<script src="../static/assets/js/jquery.min.js"></script>
 <!--<![endif]-->
 <!--[if lte IE 8 ]>
-<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
-<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="/assets/js/jquery.min.js"></script>
 <script src="/assets/js/amazeui.ie8polyfill.min.js"></script>
 <![endif]-->
 <script src="/assets/js/amazeui.min.js"></script>

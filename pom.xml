@@ -41,6 +41,7 @@
         <caffeine.version>2.6.0</caffeine.version>
         <aspect.version>1.9.2</aspect.version>
         <javax.mail.version>1.4</javax.mail.version>
+        <common.lang3.version>3.8.1</common.lang3.version>
 
         <java.encoding>UTF-8</java.encoding>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -56,7 +57,6 @@
         <module>ancient-poetry-gateway</module>
         <module>ancient-poetry-user-core</module>
         <module>ancient-poetry-poetry-core</module>
-        <module>history-line-core</module>
         <module>ancient-poetry-web</module>
     </modules>
 
@@ -135,11 +135,15 @@
                 <artifactId>jsoup</artifactId>
                 <version>${jsoup.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>javax.mail</groupId>
                 <artifactId>mail</artifactId>
                 <version>${javax.mail.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${common.lang3.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

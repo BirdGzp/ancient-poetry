@@ -4,6 +4,7 @@ import com.moon.ancientpoetry.common.constant.ObjectType;
 import com.moon.ancientpoetry.common.dto.BaseDto;
 import com.moon.ancientpoetry.common.po.UserBasic;
 import com.moon.ancientpoetry.common.po.UserDetail;
+import com.moon.ancientpoetry.common.util.DateUtil;
 import com.moon.ancientpoetry.common.util.ParseToObject;
 import com.moon.ancientpoetry.web.dto.UserDto;
 import com.moon.ancientpoetry.web.dto.convert.UserDtoConvert;
@@ -16,6 +17,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDateTime;
 
 /**
  * @Author: zhipeng gong
@@ -39,6 +42,7 @@ public class UserServiceImpl implements UserService {
      * @param  ip  ip 地址
      * @return
      */
+    @Override
     public Integer login(String accountId, String password, String ip){
         String md5Password = PrivacyEncrypt.md5Encrypt(password);
         BaseDto baseDto = ParseToObject.parseToDto(userBasicFeignService.getPasswordCheckResult(accountId, md5Password, ip));
@@ -46,7 +50,12 @@ public class UserServiceImpl implements UserService {
             log.debug("查询对象为null");
             return null;
         }
-        return (Integer) baseDto.parseObject();
+        Integer userId = (Integer) baseDto.parseObject();
+        if( userId != null){
+            LocalDateTime  localDateTime = DateUtil.getCurrentLocalDateTime();
+            System.out.println(localDateTime);
+        }
+        return userId;
     }
 
     /**
@@ -134,6 +143,7 @@ public class UserServiceImpl implements UserService {
      * @param userDto
      * @return
      */
+    @Override
     public Integer updateUser(UserDto userDto){
         UserBasic userBasic = UserDtoConvert.buildUserBaiscByUserDto(userDto);
         BaseDto baseDto = ParseToObject.parseToDto(userBasicFeignService.insertUserBasic(userBasic));

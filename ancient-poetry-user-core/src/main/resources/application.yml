@@ -17,22 +17,21 @@ spring:
     password: root
     type: com.alibaba.druid.pool.DruidDataSource
     filters: stat
-    druid:
-      initial-size: 5
-      min-idle: 5
-      max-active: 50
-      max-wait: 60000
-      test-on-borrow: false
-      test-on-return: false
-      test-while-idle: true
-      max-open-prepared-statements: 20
-      validation-query: select 'x'
-      pool-prepared-statements: true
-      min-evictable-idle-time-millis: 300000
-      time-between-eviction-runs-millis: 60000
+    initial-size: 5
+    min-idle: 5
+    max-active: 50
+    max-wait: 60000
+    test-on-borrow: false
+    test-on-return: false
+    test-while-idle: true
+    max-open-prepared-statements: 20
+    validation-query: select 'x'
+    pool-prepared-statements: true
+    min-evictable-idle-time-millis: 300000
+    time-between-eviction-runs-millis: 60000
   #Redis配置
   redis:
-    host: 192.168.111.133
+    host: 192.168.232.131
     port: 6379
     database: 0
     timeout: 2000ms

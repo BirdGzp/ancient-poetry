@@ -47,11 +47,13 @@ public class UserController {
         }
 
         Integer userId = userService.login(accountId, password, ip);
+        System.out.println("userId为 " + userId );
         if(userId == null){
             request.getSession().setAttribute("loginErrorCount", loginErrorCount++ );
             request.setAttribute("loginError", "登录账户密码不搭");
             return "/login";
         }
+
         request.getSession().setAttribute("userId", userId);
 
         return "redirect:/index";

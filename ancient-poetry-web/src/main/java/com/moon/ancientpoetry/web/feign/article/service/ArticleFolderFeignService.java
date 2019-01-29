@@ -24,7 +24,7 @@ public interface ArticleFolderFeignService {
      * @return
      */
     @RequestMapping(value = "/article/folder/list/user-id/{userId}", method = RequestMethod.POST)
-     String listDeleteFolderByUserId(@PathVariable("userId") Integer userId, LocalDateTime localDateTime, Integer pageSize, Integer pageNum);
+     String listDeleteFolderByUserId(@PathVariable("userId") Integer userId, LocalDateTime localDateTime,@PathVariable(name = "pageNum", required = false)  Integer pageSize, @PathVariable(name = "pageSize", required = false) Integer pageNum);
 
     /**
      * 根据文件夹id 查询子文件夹
@@ -32,7 +32,7 @@ public interface ArticleFolderFeignService {
      * @return
      */
     @RequestMapping(value = "/article/folder/list/parent-folder-id/{parentFolderId}", method = RequestMethod.POST)
-     String listArticleFolderByParentFolderId(@PathVariable("parentFolderId")Integer parentFolderId, Integer pageSize, Integer pageNum);
+     String listArticleFolderByParentFolderId(@PathVariable("parentFolderId")Integer parentFolderId, @RequestParam("pageSize") Integer pageSize, @RequestParam("pageNum") Integer pageNum);
 
     /**
      *  根据用户id 查询用户的顶层文件夹信息(ParentId 为null)
@@ -40,7 +40,7 @@ public interface ArticleFolderFeignService {
      * @return
      */
     @RequestMapping(value = "/article/folder/list/user-id/{userId}", method = RequestMethod.POST)
-    String listArticleFolderByUserId(@PathVariable("userId") Integer userId, Integer pageSize, Integer pageNum);
+    String listArticleFolderByUserId(@PathVariable("userId") Integer userId, @RequestParam("pageSize")Integer pageSize, @RequestParam("pageNum") Integer pageNum);
 
     /**
      * 根据文件夹id 获得文件的详细信息

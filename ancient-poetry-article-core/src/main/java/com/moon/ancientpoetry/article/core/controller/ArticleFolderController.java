@@ -30,9 +30,9 @@ public class ArticleFolderController {
      * @param localDateTime 可查询的最早时间
      * @return
      */
-    @PostMapping("/list/user-id/{userId}")
+    @PostMapping("/list/delete/user-id/{userId}")
     @ResponseBody
-    public String listDeleteFolderByUserId(@PathVariable("userId") Integer userId, LocalDateTime localDateTime, Integer pageSize, Integer pageNum) {
+    public String listDeleteFolderByUserId(@PathVariable("userId") Integer userId, @RequestParam("localDateTime") LocalDateTime localDateTime,  @RequestParam("pageSize")Integer pageSize,  @RequestParam("pageNum")Integer pageNum) {
         return JSON.toJSONString(new BaseDto(ObjectType.OBJECT,articleFolderService.listDeleteFolderByUserId(userId, localDateTime, pageSize, pageNum)));
     }
 

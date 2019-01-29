@@ -33,7 +33,7 @@ public class LoginController {
         Integer userId = (Integer) request.getSession().getAttribute("userId");
         if(userId  != null){
             IndexVo indexVo = indexService.indexByUserId(userId);
-            System.out.println(indexVo);
+            request.getSession().setAttribute("penName", indexVo.getPenName());
             request.setAttribute("index", indexVo);
         }
         return "/index";

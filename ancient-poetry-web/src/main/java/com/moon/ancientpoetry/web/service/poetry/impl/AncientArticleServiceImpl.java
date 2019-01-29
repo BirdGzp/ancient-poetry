@@ -25,6 +25,7 @@ public class AncientArticleServiceImpl implements AncientArticleService {
      * 获得推荐的十首古诗词
      * @return
      */
+    @Override
     public List listRecommendAncientPoetry(){
         int i = (int) (Math.random() * 1000);
         int j = (int)(Math.random() * 10) + 5;
@@ -33,7 +34,11 @@ public class AncientArticleServiceImpl implements AncientArticleService {
         if(baseDto == null){
             return null;
         }
+        if(((PageInfo) baseDto.parseObject()).getList().size() >= 5){
+            return ((PageInfo) baseDto.parseObject()).getList().subList(0,4);
+        }else{
+            return ((PageInfo) baseDto.parseObject()).getList();
+        }
 
-        return ((PageInfo) baseDto.parseObject()).getList().subList(0,5);
     }
 }

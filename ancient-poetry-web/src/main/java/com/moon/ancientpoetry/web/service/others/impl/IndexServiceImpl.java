@@ -5,6 +5,7 @@ import com.moon.ancientpoetry.web.service.others.IndexService;
 import com.moon.ancientpoetry.web.service.poetry.AncientArticleService;
 import com.moon.ancientpoetry.web.service.user.UserService;
 import com.moon.ancientpoetry.web.vo.IndexVo;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +17,9 @@ import org.springframework.stereotype.Service;
  * @Description:
  */
 @Service("indexService")
-public class IndexServiceImpl implements IndexService {
+public class  IndexServiceImpl implements IndexService {
 
-    Logger log = LoggerFactory.getLogger(IndexServiceImpl.class);
+    Logger log = LoggerFactory.getLogger(this.getClass());
     @Autowired
     UserService userService;
 
@@ -29,13 +30,17 @@ public class IndexServiceImpl implements IndexService {
      * @param userId
      * @return
      */
+    @Override
     public IndexVo indexByUserId(Integer userId){
         IndexVo indexVo = new IndexVo();
+        if(userId == null){
+            return null;
+        }
         UserBasic userBasic = userService.getUserBriefBasicByUserId(userId);
         if(userBasic == null){
             log.error("查询账户 userId  失败" + userId);
         }
-        indexVo.setUserPenName(userBasic.getPenName());
+        indexVo.setPenName(userBasic.getPenName());
         indexVo.setUserId(userBasic.getUserId());
         indexVo.setAncientArticleList(ancientArticleService.listRecommendAncientPoetry());
         return indexVo;

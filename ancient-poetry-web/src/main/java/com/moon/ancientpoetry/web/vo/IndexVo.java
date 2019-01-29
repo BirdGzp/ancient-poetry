@@ -11,7 +11,7 @@ public class IndexVo {
 
     private Integer userId;
 
-    private String userPenName;
+    private String penName;
 
     private List ancientArticleList;
 
@@ -23,14 +23,6 @@ public class IndexVo {
         this.userId = userId;
     }
 
-    public String getUserPenName() {
-        return userPenName;
-    }
-
-    public void setUserPenName(String userPenName) {
-        this.userPenName = userPenName;
-    }
-
     public List getAncientArticleList() {
         return ancientArticleList;
     }
@@ -39,11 +31,19 @@ public class IndexVo {
         this.ancientArticleList = ancientArticleList;
     }
 
+    public String getPenName() {
+        return penName;
+    }
+
+    public void setPenName(String penName) {
+        this.penName = penName;
+    }
+
     @Override
     public String toString() {
         return "IndexVo{" +
                 "userId=" + userId +
-                ", userPenName='" + userPenName + '\'' +
+                ", penName='" + penName + '\'' +
                 ", ancientArticleList=" + ancientArticleList +
                 '}';
     }

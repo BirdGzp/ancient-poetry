@@ -14,7 +14,7 @@ spring:
     mode: HTML5
     enabled: true
   redis:
-    host: 192.168.111.133
+    host: 192.168.232.131
     port: 6379
   devtools:
     restart:
