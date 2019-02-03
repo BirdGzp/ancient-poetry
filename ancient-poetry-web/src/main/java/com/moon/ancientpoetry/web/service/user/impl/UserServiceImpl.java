@@ -145,7 +145,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public Integer updateUser(UserDto userDto){
-        UserBasic userBasic = UserDtoConvert.buildUserBaiscByUserDto(userDto);
+        UserBasic userBasic = UserDtoConvert.buildUserBasicByUserDto(userDto);
         BaseDto baseDto = ParseToObject.parseToDto(userBasicFeignService.insertUserBasic(userBasic));
         if(baseDto.getObjectType() != ObjectType.OBJECT){
 

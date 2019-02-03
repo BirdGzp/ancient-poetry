@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head" xmlns:th="http://www.w3.org/1999/xhtml">
+    <title>用户信息</title>
+</head>
+
+<body id="blog" class="am-g am-g-fixed blog-fixed blog-content">
+<!-- nav start -->
+<div th:replace="base-nav::nav"></div>
+<div>
+    <ul class="am-nav am-u-lg-2">
+        <li class="am-active"><a href="#">个人资料</a></li>
+        <li class=""><a href="#">我的关注</a></li>
+        <li class=""><a>我的粉丝</a></li>
+        <li class=""><a>我的评论</a></li>
+        <li class=""><a>我的点赞</a></li>
+        <li class=""><a>操作历史</a></li>
+    </ul>
+    <div class=" am-u-lg-10">
+        <h1>的关注列表</h1>
+        <hr />
+        <ul class="am-list am-list-static am-list-border am-list-striped" >
+            <li class="li-height">
+                <div class="am-u-lg-2">
+                    <img class="am-circle " src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/1000/h/1000/q/80" width="80" height="80"/>
+                </div>
+                <span class="am-u-lg-3">龚志鹏 </span>
+                <div class="am-u-lg-2">
+                    <button  class="am-btn am-btn-primary am-round">取消关注</button>
+                </div>
+            </li>
+            <li class="li-height">
+                <div class="am-u-lg-2">
+                    <img class="am-circle " src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/1000/h/1000/q/80" width="80" height="80"/>
+                </div>
+                <span class="am-u-lg-3">龚志鹏 </span>
+                <div class="am-u-lg-2">
+                    <button  class="am-btn am-btn-primary am-round">取消关注</button>
+                </div>
+            </li>
+
+        </ul>
+        <ul class="am-pagination am-pagination-centered">
+            <li class="am-disabled"><a href="#">&laquo;</a></li>
+            <li class="am-active"><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">&raquo;</a></li>
+        </ul>
+    </div>
+</div>
+<div th:replace="base-footer::copy"></div>
+</body>

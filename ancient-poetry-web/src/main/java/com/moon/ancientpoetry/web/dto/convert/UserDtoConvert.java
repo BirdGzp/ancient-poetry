@@ -2,6 +2,7 @@ package com.moon.ancientpoetry.web.dto.convert;
 
 import com.moon.ancientpoetry.common.po.UserBasic;
 import com.moon.ancientpoetry.common.po.UserDetail;
+import com.moon.ancientpoetry.web.constant.OrdinalyConstant;
 import com.moon.ancientpoetry.web.dto.UserDto;
 
 /**
@@ -19,39 +20,46 @@ public class UserDtoConvert {
     public static UserDto buildUserDto(UserBasic userBasic, UserDetail userDetail){
         UserDto userDto = new UserDto();
 
-        // 用户基本信息里面的 18 个字段进行设值——除了 password
-        userDto.setUserId(userBasic.getUserId());
-        userDto.setPassword(userBasic.getPassword());
-        userDto.setBirthDate(userBasic.getBirthDate());
-        userDto.setAddressId(userBasic.getAddressId());
-        userDto.setEmail(userBasic.getEmail());
-        userDto.setFollowCount(userBasic.getFollowCount());
-        userDto.setPenName(userBasic.getPenName());
-        userDto.setUserName(userBasic.getUserName());
-        userDto.setLikes(userBasic.getLikes());
-        userDto.setFollowCount(userBasic.getFollowCount());
-        userDto.setFollowerCount(userBasic.getFollowerCount());
-        userDto.setUserCharacter(userBasic.getUserCharacter());
-        userDto.setBriefIntroduce(userBasic.getBriefIntroduce());
-        userDto.setDetailAddress(userBasic.getDetailAddress());
-        userDto.setReadCount(userBasic.getReadCount());
-        userDto.setWriteCount(userBasic.getWriteCount());
-        userDto.setIp(userBasic.getIp());
-        userDto.setUserImage(userBasic.getUserImage());
+        if(userBasic != null) {
+            // 用户基本信息里面的 18 个字段进行设值——除了 password
+            userDto.setUserId(userBasic.getUserId());
+            userDto.setPassword(userBasic.getPassword());
+            userDto.setBirthDate(userBasic.getBirthDate());
+            userDto.setAddressId(userBasic.getAddressId());
+            userDto.setEmail(userBasic.getEmail());
+            userDto.setFollowCount(userBasic.getFollowCount());
+            userDto.setPenName(userBasic.getPenName());
+            userDto.setUserName(userBasic.getUserName());
+            userDto.setLikes(userBasic.getLikes());
+            userDto.setFollowCount(userBasic.getFollowCount());
+            userDto.setFollowerCount(userBasic.getFollowerCount());
+            userDto.setUserCharacter(userBasic.getUserCharacter());
+            userDto.setBriefIntroduce(userBasic.getBriefIntroduce());
+            userDto.setDetailAddress(userBasic.getDetailAddress());
+            userDto.setReadCount(userBasic.getReadCount());
+            userDto.setWriteCount(userBasic.getWriteCount());
+            userDto.setIp(userBasic.getIp());
+            userDto.setUserImage(userBasic.getUserImage());
+            userDto.setSex(userBasic.getSex() ? OrdinalyConstant.MALE : OrdinalyConstant.FEMALE);
+        }
 
-        // 用户详细信息的值设置
-        userDto.setUserFame(userDetail.getUserFame());
-        userDto.setUserCall(userDetail.getUserCall());
-        userDto.setUserAlternativeName(userDetail.getUserAlternativeName());
-        userDto.setFavoriteArticleId(userDetail.getFavoriteArticleId());
-        userDto.setFavoriteArticleName(userDetail.getFavoriteArticleName());
-        userDto.setFavoriteAuthorId(userDetail.getFavoriteAuthorId());
-        userDto.setFavoriteAuthorName(userDetail.getFavoriteAuthorName());
-        userDto.setFavoriteArticleId(userDetail.getFavoriteArticleId());
+        if(userDetail != null) {
+            // 用户详细信息的值设置
+            userDto.setUserFame(userDetail.getUserFame());
+            userDto.setUserCall(userDetail.getUserCall());
+            userDto.setUserAlternativeName(userDetail.getUserAlternativeName());
+            userDto.setFavoriteArticleId(userDetail.getFavoriteArticleId());
+            userDto.setFavoriteArticleName(userDetail.getFavoriteArticleName());
+            userDto.setFavoriteAuthorId(userDetail.getFavoriteAuthorId());
+            userDto.setFavoriteAuthorName(userDetail.getFavoriteAuthorName());
+            userDto.setFavoriteArticleId(userDetail.getFavoriteArticleId());
+        }
+
+
         return userDto;
     }
     
-    public static UserBasic buildUserBaiscByUserDto(UserDto userDto){
+    public static UserBasic buildUserBasicByUserDto(UserDto userDto){
         UserBasic userBasic = new UserBasic();
         userBasic.setUserId(userDto.getUserId());
         userBasic.setPassword(userDto.getPassword());
@@ -71,7 +79,7 @@ public class UserDtoConvert {
         userBasic.setWriteCount(userDto.getWriteCount());
         userBasic.setIp(userDto.getIp());
         userBasic.setUserImage(userDto.getUserImage());
-
+        userBasic.setSex(userDto.getSex() == OrdinalyConstant.MALE ? true : false);
         return userBasic;
     }
 

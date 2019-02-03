@@ -1,0 +1,24 @@
+
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head" xmlns:th="http://www.w3.org/1999/xhtml">
+    <title>搜索</title>
+</head>
+
+<body id="blog" class="am-g am-g-fixed blog-fixed blog-content">
+<!-- nav start -->
+<div th:replace="base-nav::nav"></div
+<div class="text-position">
+    <div class="am-u-lg-2">&nbsp;</div>
+    <div>
+        <p class="am-u-lg-6"><input type="text" class="am-form-field am-radius" placeholder="搜索" /></p>
+    </div>
+    <div>
+        <button class="am-btn-primary am-round  am-u-lg-1" am-btn-primary>搜索</button>
+    </div>
+    <div class="am-u-lg-2">&nbsp;</div>
+</div>
+
+<div th:replace="base-footer::copy"></div>
+</body>
+</html>

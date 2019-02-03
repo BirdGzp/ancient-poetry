@@ -40,7 +40,11 @@ public class BaseDto<T> {
     public BaseDto(Byte objectType, T object) {
         this.objectType = objectType;
         this.object = object;
-        this.className = object.getClass().getName();
+        if(object == null){
+            this.className = null;
+        }else {
+            this.className = object.getClass().getName();
+        }
     }
 
     public Byte getObjectType() {

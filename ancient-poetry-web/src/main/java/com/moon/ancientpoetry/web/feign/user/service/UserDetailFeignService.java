@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @Date: 2018/12/20 9:44
  * @Description:
  */
-@FeignClient(value = "ALL-IN-CORE", fallback = UserDetailFeignServiceFallback.class)
+@FeignClient(value = "ANCIENT-POETRY-USER-CORE", fallback = UserDetailFeignServiceFallback.class)
 public interface UserDetailFeignService {
     
     @RequestMapping(value = "/user/detail/get/full/{userId}", method = RequestMethod.POST)

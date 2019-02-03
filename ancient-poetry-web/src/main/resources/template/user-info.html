@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="base-html-head::head">
+    <title>用户信息</title>
+</head>
+
+<body id="blog" class="am-g am-g-fixed blog-fixed blog-content">
+<!-- nav start -->
+<div th:replace="base-nav::nav"></div>
+<div>
+    <ul class="am-nav am-u-lg-2">
+        <li class="am-active"><a href="#">个人资料</a></li>
+        <li class="/follow.html"><a href="#">我的关注</a></li>
+        <li class="/follower.html"><a>我的粉丝</a></li>
+        <li class="/comment.html"><a>我的评论</a></li>
+        <li class="/like.html"><a>我的点赞</a></li>
+        <li class="/operation-history.html"><a>操作历史</a></li>
+    </ul>
+    <div>
+        <div class="am-u-lg-3">
+            <img class="am-circle " src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/1000/h/1000/q/80" width="160" height="160"/>
+        </div>
+        <div class="am-u-lg-5"><label>姓名:&nbsp;&nbsp;</label><span th:text="${user.userName}"/></div>
+        <div class="am-u-lg-5"><label>笔名：&nbsp;&nbsp;</label> <span th:text="${user.userName}"/></div>
+        <div class="am-u-lg-5"><label>字：&nbsp;&nbsp;</label><span th:text="${user.userCharacter}"/></div>
+        <div class="am-u-lg-5"><label>名：&nbsp;&nbsp;</label><span th:text="${user.userFame}"/></div>
+        <div class="am-u-lg-5"><label>号：&nbsp;&nbsp;</label><span th:text="${user.userCall}"/></div>
+        <div class="am-u-lg-5"><label>号：&nbsp;&nbsp;</label><span th:text="${user.userAlternativeName}"/></div>
+        <div class="am-u-lg-5"><label>性别：&nbsp;&nbsp;</label><span th:text="${user.sex}"/></div>
+        <div class="am-u-lg-5"><label>出生日期：&nbsp;&nbsp;</label><span th:text="${user.birthDate}"/></div>
+        <div class="am-u-lg-5"><label>电话号码：&nbsp;&nbsp;</label><span th:text="${user.telephone}"/></div>
+        <div class="am-u-lg-6 am-u-sm-12"><label>邮箱：&nbsp;&nbsp;</label><span th:text="${user.email}"/></div>
+        <div class="am-u-lg-6 am-u-sm-12"><label>点赞数：&nbsp;&nbsp;</label><span th:text="${user.likes}"/></div>
+        <div class="am-u-lg-6 am-u-sm-12"><label>访问量：&nbsp;&nbsp;</label><span th:text="${user.readCount}"/></div>
+        <div class="am-u-lg-6 am-u-sm-12"><label>文章数量：&nbsp;&nbsp;</label><span th:text="${user.writeCount}"/></div>
+        <div class="am-u-lg-6 am-u-sm-12"><label>关注量：&nbsp;&nbsp;</label><span th:text="${user.followCount}"/></div>
+        <div class="am-u-lg-6 am-u-sm-12"><label>粉丝量：&nbsp;&nbsp;</label><span th:text="${user.followerCount}"/></div>
+        <div class="am-u-lg-6 am-u-sm-12"><label>地址：&nbsp;&nbsp;</label><span th:text="${user.detailAddress}"/></div>
+        <div class="am-u-lg-6"><label>最喜欢的作者：&nbsp;&nbsp;</label><span th:text="${user.favoriteAuthorId}"/><span th:text="${user.favoriteAuthorName}"/></div>
+        <div class="am-u-lg-6 am-u-sm-12"><label>最喜欢的文章：&nbsp;&nbsp;</label><span th:text="${user.favoriteArticleId}"/><span th:text="${user.favoriteArticleName}"/></div>
+        <div class="am-u-lg-12 am-u-sm-12"><label>个人介绍：&nbsp;&nbsp;</label><span th:text="${user.briefIntroduce}"/></div>
+    </div>
+    <div>
+        <button class="am-btn-primary"></button>
+    </div>
+</div>
+<hr/>
+<div th:replace="base-footer::copy"></div>
+</body>

@@ -33,7 +33,11 @@ public class UserDetailController {
     @PostMapping("/get/{userId}")
     public BaseDto getUserDetailByUserId(
             @PathVariable(name = "userId", required = false) Integer userId){
-        return new BaseDto(ObjectType.OBJECT, userDetailService.getUserDetailByUserId(userId));
+        UserDetail userDetail = userDetailService.getUserDetailByUserId(userId);
+        if(userDetail == null){
+            return  new BaseDto(ObjectType.NULL, userDetail);
+        }
+        return new BaseDto(ObjectType.OBJECT, userDetail);
     }
 
     @ResponseBody

@@ -19,7 +19,7 @@ public class UserDto {
 
     private String userCharacter;
 
-    private Boolean sex;
+    private String sex;
 
     private LocalDateTime birthDate;
 
@@ -103,11 +103,11 @@ public class UserDto {
         this.userCharacter = userCharacter;
     }
 
-    public Boolean getSex() {
+    public String getSex() {
         return sex;
     }
 
-    public void setSex(Boolean sex) {
+    public void setSex(String sex) {
         this.sex = sex;
     }
 

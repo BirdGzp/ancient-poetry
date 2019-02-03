@@ -1,8 +1,10 @@
 package com.moon.ancientpoetry.web.controller;
 
 import com.moon.ancientpoetry.common.po.UserBasic;
+import com.moon.ancientpoetry.web.dto.UserDto;
 import com.moon.ancientpoetry.web.service.others.IndexService;
 import com.moon.ancientpoetry.web.service.user.UserService;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,11 +61,21 @@ public class UserController {
         return "redirect:/index";
     }
 
-    @GetMapping("/info/{userId}")
-    public String getBasicInfoByUserId(@PathVariable("userId") Integer userId, HttpServletRequest request){
-        request.setAttribute("user", userService.getUserBriefBasicByUserId(userId));
-        System.out.println(userId);
-        return "/index";
+
+    @GetMapping("/info")
+    public String getBasicInfo(HttpServletRequest request){
+        Integer userId = (Integer) request.getSession().getAttribute("userId");
+        if(userId == null){
+            return "redirect:/login";
+        }
+        UserDto userDto =  userService.getUserFullByUserId(userId);
+        request.setAttribute("user", userDto);
+        return "/user-info";
     }
 
+    @GetMapping("/basic/info/{userId}")
+    public String getBasicInfoByUserId(@PathVariable("userId") Integer userId, HttpServletRequest request){
+        request.setAttribute("user", userService.getUserBriefBasicByUserId(userId));
+        return "/index";
+    }
 }
