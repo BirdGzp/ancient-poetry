@@ -21,32 +21,32 @@ public class OperationHistoryServiceImpl implements OperationHistoryService {
 
 
     @Override
-    public PageInfo listOperationHistoryByUserIdOrderByTime(Integer userId, Integer pageNum, Integer pageSize) {
+    public PageInfo<OperationHistory> listOperationHistoryByUserIdAndOperationTypeOrderByTime(Integer articleId, Integer operatorType, Integer pageNum, Integer pageSize) {
         return null;
     }
 
     @Override
-    public PageInfo listOperationHistoryByUserIdAndOperationTypeOrderByTime(Integer userId, Integer pageNum, Integer pageSize) {
+    public PageInfo<OperationHistory> listOperationHistoryByUserIdOrderByTime(Integer userId, Integer pageNum, Integer pageSize) {
         return null;
     }
 
     @Override
-    public Integer updateBatchOperationHistoryDeleteState(OperationHistory operationHistory) {
-        return null;
+    public int updateBatchOperationHistoryDeleteState(List operationHistoryList) {
+        return 0;
     }
 
     @Override
-    public Integer updateOperationHistoryDeleteState(OperationHistory operationHistory) {
-        return null;
+    public int updateOperationHistoryDeleteState(OperationHistory operationHistory) {
+        return 0;
     }
 
     @Override
-    public Integer insertBatchOperationHistory(List<OperationHistory> operationHistoryList) {
-        return null;
+    public int insertBatchOperationHistory(List operationHistoryList) {
+        return 0;
     }
 
     @Override
-    public Integer insertOperationHistory(OperationHistory operationHistory) {
-        return null;
+    public int insertOperationHistory(OperationHistory operationHistory) {
+        return 0;
     }
 }

@@ -49,7 +49,7 @@ public class AncientArticleController {
 
     @ResponseBody
     @PostMapping("get/brief/id/{articleId}")
-    public BaseDto getBriefAncientArticleByAuthorName(
+    public BaseDto getAncientArticleByArticleId(
             @PathVariable("articleId")Integer articleId){
         return new BaseDto(ObjectType.OBJECT, ancientArticleService.getAncientArticleByArticleId(articleId));
     }

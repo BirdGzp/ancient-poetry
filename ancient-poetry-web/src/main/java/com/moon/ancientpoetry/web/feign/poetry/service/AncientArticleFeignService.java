@@ -37,7 +37,7 @@ public interface AncientArticleFeignService {
 
     
     @RequestMapping(value = "/ancient/article/get/brief/id/{articleId}", method = RequestMethod.POST)
-    String getBriefAncientArticleByAuthorName(
+    String getAncientArticleByArticleId(
             @PathVariable("articleId")Integer articleId);
 
     
