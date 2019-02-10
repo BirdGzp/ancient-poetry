@@ -49,5 +49,5 @@ public interface RelationService {
      * @param relation
      * @return
      */
-    int insertRelation(Relation relation);
+    String insertRelation(Relation relation);
 }
