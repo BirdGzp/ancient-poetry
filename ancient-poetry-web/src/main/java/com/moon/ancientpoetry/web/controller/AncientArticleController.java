@@ -19,7 +19,7 @@ public class AncientArticleController {
     @Autowired
     private AncientArticleService ancientArticleService;
    @RequestMapping("/get/{article-id}")
-    public String getAncientArticleByArticleId(@PathVariable("article-id") Integer articleId){
+   public String getAncientArticleByArticleId(@PathVariable("article-id") Integer articleId){
        ancientArticleService.getAncientArticleByArticleId(articleId);
        return null;
    }

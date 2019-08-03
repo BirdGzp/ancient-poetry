@@ -39,8 +39,7 @@ public interface LikeService {
 
     /**
      * 插入一条点赞记录信息
-     * @param like
      * @return
      */
-    Integer insertLike(String like);
+    Integer insertLike(Integer fromId, Byte fromType, Integer userId, String userPenName);
 }

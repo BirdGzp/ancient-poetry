@@ -31,9 +31,11 @@ public class AncientArticleFeignServiceFallback implements AncientArticleFeignSe
     }
 
     @Override
-    public String getBriefAncientArticleByAuthorName(Integer articleId) {
+    public String getAncientArticleByArticleId(Integer articleId) {
         return null;
     }
+
+
 
     @Override
     public String insertAncientArticle(AncientArticle ancientArticle) {

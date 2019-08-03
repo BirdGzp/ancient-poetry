@@ -1,6 +1,10 @@
 package com.moon.ancientpoetry.web.service.user.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
+import com.moon.ancientpoetry.common.dto.BaseDto;
+import com.moon.ancientpoetry.common.enums.LikeFromType;
+import com.moon.ancientpoetry.common.po.Like;
 import com.moon.ancientpoetry.common.util.ParseToObject;
 import com.moon.ancientpoetry.web.feign.user.service.LikeFeignService;
 import com.moon.ancientpoetry.web.service.user.LikeService;
@@ -24,9 +28,8 @@ public class LikeServiceImpl implements LikeService {
      */
     @Override
     public PageInfo listLikeByUserIdOrderByTime(Integer userId,Integer pageNum, Integer pageSize){
-        ParseToObject.parseToDto(likeFeignService.listLikeByUserIdOrderByTime(userId, pageNum, pageSize));
-        
-        return  null;
+        BaseDto baseDto = ParseToObject.parseToDto(likeFeignService.listLikeByUserIdOrderByTime(userId, pageNum, pageSize));
+        return (PageInfo) ParseToObject.parseObject(baseDto);
     }
 
     /**
@@ -62,11 +65,15 @@ public class LikeServiceImpl implements LikeService {
 
     /**
      * 插入一条点赞记录信息
-     * @param like
      * @return
      */
     @Override
-    public Integer insertLike(String like){
-        return  null;
+    public Integer insertLike(Integer fromId, Byte fromType, Integer userId, String userPenName){
+        Like likeObject = new Like();
+        likeObject.setFromId(fromId);
+        likeObject.setFromType(fromType);
+        likeObject.setUserId(userId);
+        likeObject.setUserName(userPenName);
+        return Integer.valueOf(likeFeignService.insertLike(JSON.toJSONString(likeObject)));
     }
 }

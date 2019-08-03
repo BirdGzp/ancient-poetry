@@ -1,5 +1,4 @@
 <div  th:fragment="nav" xmlns:th="http://www.w3.org/1999/xhtml">
-    <div th:if="${not #lists.isEmpty(userId)}" th:replace="base-user-model::user"/>
     <nav class="am-g am-g-fixed blog-fixed blog-nav am-topbar am-topbar-inverse">
         <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only blog-button" data-am-collapse="{target: '#blog-collapse'}" ><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
 
